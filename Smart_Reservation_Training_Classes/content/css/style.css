@@ -20,9 +20,6 @@
     background-color: #0b52be;
     border-radius: 5px;
 }
-main .px-5 {
-    padding-right: 21rem !important;
-}
 .sidebar {
     position: fixed;
     top: 100px;

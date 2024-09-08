@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12 fw-bold fs-3">الرئيسية</div>
         </div>
-        <div class="row mt-2">
+        <div class="row">
             <div class="col-md-3 mb-3">
                 <div class="card text-white bg-primary h-100">
                     <div class="card-header fw-bold">Header</div>

@@ -11,6 +11,10 @@
     <link href="content/css/bootstrap.rtl.min.css" rel="stylesheet" />
     <link href="content/css/style.css" rel="stylesheet" />
 
+    <script src="content/js/bootstrap.bundle.min.js"></script>
+    <script src="content/js/bootstrap.min.js"></script>
+    <%--<script src="content/js/script.js"></script>--%>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -132,9 +136,5 @@
             </div>
         </div>
     </form>
-
-    <script src="content/js/bootstrap.bundle.min.js"></script>
-    <script src="content/js/bootstrap.min.js"></script>
-    <%--<script src="content/js/script.js"></script>--%>
 </body>
 </html>

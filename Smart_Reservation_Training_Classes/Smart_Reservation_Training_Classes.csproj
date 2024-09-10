@@ -72,8 +72,8 @@
     <Content Include="content\css\bootstrap-utilities.rtl.min.css" />
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\bootstrap.rtl.min.css" />
-    <Content Include="content\css\bootstrap1.rtl.css" />
     <Content Include="content\css\dashboard.rtl.css" />
+    <Content Include="content\css\fontawesome.min.css" />
     <Content Include="content\css\signin.css" />
     <Content Include="content\css\style.css" />
     <Content Include="content\img\classroomblue_50px.png" />

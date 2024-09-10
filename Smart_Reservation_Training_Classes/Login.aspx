@@ -4,12 +4,16 @@
 
 <html lang="ar" dir="rtl" xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>نظام حجز القاعات التدريبية</title>
     <link rel="stylesheet" href="content/css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="content/css/fontawesome.min.css" />
     <link rel="stylesheet" href="content/css/style.css" />
+
+    <script src="content/js/bootstrap.bundle.min.js"></script>
+    <script src="content/js/bootstrap.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -64,7 +68,5 @@
             </div>
         </footer>
     </form>
-    <script src="content/js/bootstrap.bundle.min.js"></script>
-    <script src="content/js/bootstrap.min.js"></script>
 </body>
 </html>

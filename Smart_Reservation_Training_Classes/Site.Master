@@ -4,136 +4,113 @@
 
 <html lang="ar" dir="rtl">
 <head runat="server">
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>نظام حجز القاعات التدريبية</title>
-    <link rel="stylesheet" href="content/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="content/css/bootstrap.rtl.min.css" />
-    <link rel="stylesheet" href="content/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="content/css/style.css" />
-    
-    <script src="content/js/bootstrap.bundle.min.js"></script>
-    <script src="content/js/bootstrap.min.js"></script>
-    <%--<script src="content/js/script.js"></script>--%>
+    <link href="content/css/bootstrap1.rtl.css" rel="stylesheet" />
+    <link href="content/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="content/css/dashboard.rtl.css" rel="stylesheet" />
+    <link href="content/css/style.css" rel="stylesheet" />
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1_Master" runat="server"></asp:ScriptManager>
-        <div class="wrapper">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse px-3">
-                <div class="position-sticky pt-4">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.aspx">الرئيسية</a>
-                        </li>
-                    </ul>
-                    <div id="ListUsers" runat="server">
-                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center p-1 my-3 text-muted">
-                            <span>إدارة الحجوزات</span>
-                        </h6>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="NewReservation.aspx">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                                    </svg>
-                                    تسجيل حجز جديد
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="manage-student.aspx">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
-                                    </svg>
-                                    إدارة الحجوزات
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="ListAdmin" runat="server">
-                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center p-1 my-3 text-muted">
-                            <span>إدارة النظام</span>
-                        </h6>
-                        <ul class="nav flex-column mb-2">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
-                                    </svg>
-                                    إدارةالصلاحيات
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
-                                    </svg>
-                                    إدارة الحجوزات
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
-                                    </svg>
-                                    إدارة القاعات التدريبية
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
-                                    </svg>
-                                    إدارة الدورات التدريبية
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+        <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
+                <img src="content/img/ksu-logo.png" class="img-thumbnail" />
+                <span style="padding-right: 7rem !important;">نظام حجز القاعات التدريبية</span>
+            </a>
+            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="عرض/إخفاء لوحة التنقل">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-nav">
+                <div class="nav-item text-nowrap">
+                    <a class="nav-link px-3" href="#">تسجيل الخروج</a>
                 </div>
-            </nav>
-            <div class="main">
-                <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap px-3">
-                    <div class="navbar-collapse navbar">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <img src="content/img/ksu-logo.png" class="img-fluid rounded img-thumbnail" alt="ksu-logo" />
-                                <span class="text-light fs-4 px-3">نظام حجز القاعات التدريبية</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="عرض/إخفاء لوحة التنقل">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div id="Logout" class="Logout">
-                        <div class="text-nowrap">
-                            مرحبا :
-                            <asp:Label ID="lblEmpInfo" runat="server" Style="color: #454d88;"></asp:Label>
-                            | 
-                            <a href="Login.aspx">تسجيل الخروج</a>
-                        </div>
-                    </div>
-                </header>
-
-                <main class="content px-3 py-2">
-                    <div class="container-fluid">
-                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                        </asp:ContentPlaceHolder>
-                    </div>
-                </main>
-
-                <footer class="footer bg-primary text-light">
-                    <div class="container-fluid">
-                        <div class="text-center">
-                            &copy مشروع التخرج 1446 - 2024
-                        </div>
-                    </div>
-                </footer>
             </div>
+        </header>
+        <div class="container">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse px-3">
+                    <div class="position-sticky pt-4">
+                        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                            <span class="fs-4">مرحبا بك،
+                                    <asp:Label ID="lblName" runat="server" CssClass="text-danger"></asp:Label>
+                            </span>
+                        </a>
+                        <div id="ListUsers" runat="server">
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center p-1 my-3 text-muted">
+                                <span>إدارة الحجوزات</span>
+                            </h6>
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="register.aspx">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                                        </svg>
+                                        تسجيل حجز جديد
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="manage-student.aspx">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+                                        </svg>
+                                        إدارة الحجوزات
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="ListAdmin" runat="server">
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center p-1 my-3 text-muted">
+                                <span>إدارةالصلاحيات</span>
+                            </h6>
+                            <ul class="nav flex-column mb-2">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+                                        </svg>
+                                        إدارةالصلاحيات
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+                                        </svg>
+                                        إدارة الحجوزات
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+                                        </svg>
+                                        إدارة القاعات التدريبية
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+                                        </svg>
+                                        إدارة الدورات التدريبية
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
         </div>
     </form>
+
+    <script src="content/js/bootstrap.bundle.min.js"></script>
+    <script src="content/js/dashboard.js"></script>
 </body>
 </html>

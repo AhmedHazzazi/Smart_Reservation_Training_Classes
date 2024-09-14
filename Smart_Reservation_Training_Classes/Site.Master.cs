@@ -10,6 +10,7 @@ namespace Smart_Reservation_Training_Classes
 {
     public partial class Site : System.Web.UI.MasterPage
     {
+        //SRTC_DBDataContext ctxSRTC_DB;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

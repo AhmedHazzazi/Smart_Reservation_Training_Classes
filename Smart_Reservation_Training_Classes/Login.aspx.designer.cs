@@ -11,7 +11,7 @@ namespace Smart_Reservation_Training_Classes
 {
 
 
-    public partial class Login1
+    public partial class Login
     {
 
         /// <summary>

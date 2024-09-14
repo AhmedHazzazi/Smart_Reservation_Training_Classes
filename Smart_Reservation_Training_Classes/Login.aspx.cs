@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Smart_Reservation_Training_Classes.App_Code;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -7,8 +9,11 @@ using System.Web.UI.WebControls;
 
 namespace Smart_Reservation_Training_Classes
 {
-    public partial class Login1 : System.Web.UI.Page
+    public partial class Login : System.Web.UI.Page
     {
+        CLS_LoginUsers cls_LoginUsers = new CLS_LoginUsers();
+        DataTable dtAdmin = new DataTable();
+        DataTable dtUsers = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
 

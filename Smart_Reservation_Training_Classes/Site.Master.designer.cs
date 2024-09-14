@@ -42,22 +42,22 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.ScriptManager ScriptManager1_Master;
 
         /// <summary>
-        /// ListUsers control.
+        /// MenusUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ListUsers;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MenusUsers;
 
         /// <summary>
-        /// ListAdmin control.
+        /// MenusAdmin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ListAdmin;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MenusAdmin;
 
         /// <summary>
         /// lblEmpInfo control.

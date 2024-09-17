@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
 using System.Web;
 
 namespace Smart_Reservation_Training_Classes.App_Code
@@ -12,16 +11,14 @@ namespace Smart_Reservation_Training_Classes.App_Code
         DataAccessLayer DAL = new DataAccessLayer();
 
         //Retrieve Data From Database STRC_DB
-        public DataTable LoginUsers(string UserName, string Password, string Role)
+        public DataTable LoginUsers(string UserName, string Password)
         {
             DAL.OpenConnectionDB();
-            SqlParameter[] param = new SqlParameter[3];
+            SqlParameter[] param = new SqlParameter[2];
             param[0] = new SqlParameter("@UserName", SqlDbType.NVarChar);
             param[0].Value = UserName;
             param[1] = new SqlParameter("@Password", SqlDbType.NVarChar);
             param[1].Value = Password;
-            param[2] = new SqlParameter("@Role", SqlDbType.NVarChar);
-            param[2].Value = Role;
             DataTable Dt = new DataTable();
             Dt = DAL.SelectDataProcedure("SP_LoginUsers", param);
             DAL.CloseConnectionDB();

@@ -32,7 +32,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div id="MenusUsers" runat="server">
+                    <div id="MenusUsers" runat="server" visible="false">
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center p-1 my-3 text-muted">
                             <span>إدارة الحجوزات</span>
                         </h6>
@@ -56,7 +56,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div id="MenusAdmin" runat="server">
+                    <div id="MenusAdmin" runat="server" visible="false">
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center p-1 my-3 text-muted">
                             <span>إدارة النظام</span>
                         </h6>

@@ -46,7 +46,6 @@ namespace Smart_Reservation_Training_Classes.App_Code
         {
             OnCreated();
         }
-
         public SRTC_DBDataContext(string connection) : 
 				base(connection, mappingSource)
 		{

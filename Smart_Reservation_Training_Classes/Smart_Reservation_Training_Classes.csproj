@@ -107,9 +107,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SRTC_DB.dbml</DependentUpon>
-    </Content>
-    <Content Include="App_Code\SRTC_DB.cs">
-      <DependentUpon>SRTC_DB.dbml</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -148,9 +146,11 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>SRTC_DB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="App_Code\SRTC_DB.dbml.layout">
       <DependentUpon>SRTC_DB.dbml</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

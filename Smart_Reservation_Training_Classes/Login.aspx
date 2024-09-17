@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Smart_Reservation_Training_Classes.Login1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Smart_Reservation_Training_Classes.Login" %>
 
 <!DOCTYPE html >
 
@@ -41,7 +41,7 @@
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control"></asp:TextBox>
                     <label for="txtPassword">كلمة المرور</label>
                 </div>
-                <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-lg btn-primary w-100 mt-2" Text="تسجيل الدخول" OnClientClick="Loader();" OnClick="btnLogin_Click" />
+                <asp:Button ID="BtnLogin" runat="server" CssClass="btn btn-lg btn-primary w-100 mt-2" Text="تسجيل الدخول" OnClientClick="Loader();" OnClick="BtnLogin_Click" />
                 <div>
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
@@ -51,7 +51,7 @@
                             <asp:Label ID="passwordRequire" runat="server" Text="يجب إدخال كلمة المرور" ForeColor="Red" Visible="False" Font-Bold="True"></asp:Label>
                         </ContentTemplate>
                         <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="btnLogin" />
+                            <asp:AsyncPostBackTrigger ControlID="BtnLogin" />
                         </Triggers>
                     </asp:UpdatePanel>
                 </div>

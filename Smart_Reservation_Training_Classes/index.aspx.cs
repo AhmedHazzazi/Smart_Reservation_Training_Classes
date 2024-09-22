@@ -11,13 +11,13 @@ namespace Smart_Reservation_Training_Classes
 {
     public partial class index : System.Web.UI.Page
     {
-        CLS_LoginUsers cls_LoginUsers = new CLS_LoginUsers();
+        CLS_Users cls_LoginUsers = new CLS_Users();
         DataTable dtUsers = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Session["userOnLive"] == null)
+                if (Session["UserID"] == null)
                 {
                     Response.Redirect("~/Login.aspx");
                 }
@@ -28,7 +28,7 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                dtUsers = cls_LoginUsers.SearchUser((string)Session["userOnLive"]);
+                dtUsers = cls_LoginUsers.SearchUser((string)Session["UserID"]);
                 if (dtUsers.Rows.Count > 0)
                 {
                     foreach (DataRow row in dtUsers.Rows)

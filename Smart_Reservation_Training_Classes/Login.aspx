@@ -34,11 +34,11 @@
                 <img src="content/img/ksu-logo.png" class="mb-4" />
                 <h1 class="h3 mb-3 fw-normal">تسجيل الدخول</h1>
                 <div class="form-floating mb-2">
-                    <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control" autocomplete="off"></asp:TextBox>
                     <label for="txtUserName">اسم المستخدم</label>
                 </div>
                 <div class="form-floating">
-                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" autocomplete="off" TextMode="Password"></asp:TextBox>
                     <label for="txtPassword">كلمة المرور</label>
                 </div>
                 <asp:Button ID="BtnLogin" runat="server" CssClass="btn btn-lg btn-primary w-100 mt-2" Text="تسجيل الدخول" OnClientClick="Loader();" OnClick="BtnLogin_Click" />
@@ -58,13 +58,6 @@
                 <p class="mt-5 mb-3 text-muted">© مشروع التخرج 1446 - 2024</p>
             </main>
         </div>
-        <%--<footer class="footer bg-info text-light">
-            <div class="container-fluid">
-                <div class="text-center">
-                    &copy مشروع التخرج 1446 - 2024
-                </div>
-            </div>
-        </footer>--%>
     </form>
 </body>
 </html>

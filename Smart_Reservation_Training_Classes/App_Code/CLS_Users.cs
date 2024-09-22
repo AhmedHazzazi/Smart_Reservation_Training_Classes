@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Smart_Reservation_Training_Classes.App_Code
 {
-    public class CLS_LoginUsers
+    public class CLS_Users
     {
         DataAccessLayer DAL = new DataAccessLayer();
 
@@ -43,11 +43,11 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.CloseConnectionDB();
             return Dt;
         }
-        public void AddUser(int UserID, string Name, string UserName, string Password, string Email, string Role)
+        public void AddUser(decimal UserID, string Name, string UserName, string Password, string Email, string Role)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[6];
-            param[0] = new SqlParameter("@UserID", SqlDbType.Int);
+            param[0] = new SqlParameter("@UserID", SqlDbType.Decimal);
             param[0].Value = UserID;
             param[1] = new SqlParameter("@Name", SqlDbType.NVarChar);
             param[1].Value = Name;
@@ -62,11 +62,11 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.ExecuteCommandProcedure("SP_InsertUser", param);
             DAL.CloseConnectionDB();
         }
-        public void UpdateUser(int UserID, string Name, string UserName, string Password, string Email, string Role)
+        public void UpdateUser(decimal UserID, string Name, string UserName, string Password, string Email, string Role)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[6];
-            param[0] = new SqlParameter("@UserID", SqlDbType.Int);
+            param[0] = new SqlParameter("@UserID", SqlDbType.Decimal);
             param[0].Value = UserID;
             param[1] = new SqlParameter("@Name", SqlDbType.NVarChar);
             param[1].Value = Name;
@@ -81,11 +81,11 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.ExecuteCommandProcedure("SP_UpdateUser", param);
             DAL.CloseConnectionDB();
         }
-        public void DeleteUser(int UserID)
+        public void DeleteUser(decimal UserID)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@UserID", SqlDbType.Int);
+            param[0] = new SqlParameter("@UserID", SqlDbType.Decimal);
             param[0].Value = UserID;
             DAL.ExecuteCommandProcedure("SP_DeleteUser", param);
             DAL.CloseConnectionDB();

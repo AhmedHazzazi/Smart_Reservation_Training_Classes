@@ -11,6 +11,44 @@
     });
 }
 
+// Active Date Picker
+$(function () {
+    initHijrDatePicker();
+    //initHijrDatePickerDefault();
+    $('.disable-date').hijriDatePicker({
+        minDate: "2020-01-01",
+        maxDate: "2021-01-01",
+        viewMode: "years",
+        hijri: true,
+        debug: true
+    });
+});
+function initHijrDatePicker() {
+    $(".hijri-date-input").hijriDatePicker({
+        locale: "ar-sa",
+        format: "DD-MM-YYYY",
+        hijriFormat: "iYYYY-iMM-iDD",
+        dayViewHeaderFormat: "MMMM YYYY",
+        hijriDayViewHeaderFormat: "iMMMM iYYYY",
+        showSwitcher: true,
+        allowInputToggle: true,
+        showTodayButton: false,
+        useCurrent: true,
+        isRTL: false,
+        viewMode: 'days',
+        keepOpen: false,
+        hijri: true,
+        debug: true,
+        showClear: true,
+        showTodayButton: true,
+        showClose: true
+    });
+}
+function initHijrDatePickerDefault() {
+
+    $(".hijri-date-input").hijriDatePicker();
+}
+
 const sidebarToggle = document.querySelector("#sidebar-toggle");
 sidebarToggle.addEventListener("click",function(){
     document.querySelector("#sidebarMenu").classList.toggle("collapsed");
@@ -42,3 +80,4 @@ function isLight(){
 if(isLight()){
     toggleRootClass();
 }
+

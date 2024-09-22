@@ -12,19 +12,20 @@ namespace Smart_Reservation_Training_Classes
 {
     public partial class Login : System.Web.UI.Page
     {
-        CLS_LoginUsers cls_LoginUsers = new CLS_LoginUsers();
+        CLS_Users cls_LoginUsers = new CLS_Users();
         DataTable dtUsers = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             txtUserName.Focus();
-            liMsg.Text = string.Empty;
-            liMsg.Visible = false;
+            //liMsg.Text = string.Empty;
+            //liMsg.Visible = false;
             userNameRequire.Visible = false;
             passwordRequire.Visible = false;
             //HtmlGenericControl MenusUsers = (HtmlGenericControl)Master.FindControl("MenusUsers");
             //MenusUsers.Visible = false;
             //HtmlGenericControl MenusAdmin = (HtmlGenericControl)Master.FindControl("MenusAdmin");
             //MenusAdmin.Visible = false;
+
         }
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
@@ -32,38 +33,21 @@ namespace Smart_Reservation_Training_Classes
             {
                 if (!string.IsNullOrEmpty(txtUserName.Text) && !string.IsNullOrEmpty(txtPassword.Text))
                 {
-                    //if (result.Count > 0 && result != null)
-                    //{
-                    //    Session["userOnLive"] = LoginActiveDirectory.GetProperty(result[0], "extensionattribute1").ToString();
-                    //    Session["ArabicName"] = LoginActiveDirectory.GetProperty(result[0], "extensionattribute3").ToString();
                     dtUsers = cls_LoginUsers.LoginUsers(txtUserName.Text, txtPassword.Text);
                     if (dtUsers.Rows.Count > 0)
                     {
-                        Response.Redirect("index.aspx");
                         foreach (DataRow row in dtUsers.Rows)
                         {
-                            Session["userOnLive"] = row["UserID"].ToString();
-                            Session["ArabicName"] = row["Name"].ToString();
+                            Session["UserID"] = row["UserID"].ToString();
+                            Session["Name"] = row["Name"].ToString();
                         }
-                        //foreach (DataRow row in dtAdmin.Rows)
-                        //{
-                        //    if (row["IsAdmin"].ToString() == "Admin")
-                        //    {
-                        //        Response.Redirect("index.aspx");
-                        //    }
-                        //    else if (row["IsAdmin"].ToString() == "User")
-                        //    {
-                        //        Response.Redirect("index.aspx");
-                        //    }
-                        //}
+                        Response.Redirect("index.aspx");
                     }
                     else
                     {
                         liMsg.Visible = true;
-                        liMsg.Text = "لا يوجد لديك صلاحية بالدخول !";
+                        liMsg.Text = "عذرا.. غير مصرح لك بالدخول !";
                     }
-                    //}
-
                 }
                 else if (string.IsNullOrEmpty(txtUserName.Text) && string.IsNullOrEmpty(txtPassword.Text))
                 {

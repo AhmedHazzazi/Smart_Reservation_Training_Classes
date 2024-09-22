@@ -207,4 +207,17 @@ a.sidebar-link {
     padding: 48px 0 0;
     box-shadow: inset 1px 0 0 rgba(0, 0, 0, .1);
 }*/
-    
+/*#myTaps {
+    margin-left: 1px;
+    font-size: 0px;
+}*/
+.error {
+    background: none repeat scroll 0 0 #CC000E;
+    border: 1px solid #B3000C;
+    color: #FFFFFF;
+}
+.success {
+    background: none repeat scroll 0 0 #00BF5A;
+    border: 1px solid #00A64E;
+    color: #FFFFFF;
+}

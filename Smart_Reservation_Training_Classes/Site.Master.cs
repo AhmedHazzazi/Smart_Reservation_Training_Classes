@@ -12,16 +12,16 @@ namespace Smart_Reservation_Training_Classes
 {
     public partial class Site : System.Web.UI.MasterPage
     {
-        CLS_LoginUsers cls_LoginUsers = new CLS_LoginUsers();
+        CLS_Users cls_LoginUsers = new CLS_Users();
         DataTable dtUsers = new DataTable();
         //SRTC_DBDataContext ctxSRTC_DB;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Session["userOnLive"] != null)
+                if (Session["UserID"] != null)
                 {
-                    lblEmpInfo.Text = Session["ArabicName"].ToString();
+                    lblName.Text = Session["Name"].ToString();
                     MenusAdminAndUsers();
                 }
             }
@@ -38,7 +38,7 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                dtUsers = cls_LoginUsers.SearchUser((string)Session["userOnLive"]);
+                dtUsers = cls_LoginUsers.SearchUser((string)Session["UserID"]);
                 if (dtUsers.Rows.Count > 0)
                 {
                     foreach (DataRow row in dtUsers.Rows)
@@ -55,23 +55,11 @@ namespace Smart_Reservation_Training_Classes
                         }
                     }
                 }
-
-                //string userOnLive = (string)Session["userOnLive"];
-                //User users = ctxUpdateDataEmp.GetTable<User>().Where(x => x.EmployeeNumber.Equals(userOnLive) && x.AccessKey.Equals(1)).FirstOrDefault();
-                //if (users != null)
-                //{
-                //    Home.Visible = true;
-                //    Roles.Visible = true;
-                //}
-                //else
-                //{
-                //    Home.Visible = true;
-                //    Roles.Visible = false;
-                //}
             }
             catch (Exception excMenusAdminAndUsers)
             {
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", excMenusAdminAndUsers.Message.ToString() + "<script>swal('لم يتم العثور على بيانات','', 'error');</script>");
+                throw excMenusAdminAndUsers;
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "onload", excMenusAdminAndUsers.Message.ToString() + "<script>swal('لم يتم العثور على بيانات','', 'error');</script>");
             }
         }
     }

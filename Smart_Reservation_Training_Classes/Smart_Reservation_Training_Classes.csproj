@@ -65,6 +65,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\css\bootstrap-datetimepicker.css" />
     <Content Include="content\css\bootstrap-grid.min.css" />
     <Content Include="content\css\bootstrap-grid.rtl.min.css" />
     <Content Include="content\css\bootstrap-reboot.min.css" />
@@ -83,32 +84,61 @@
     <Content Include="content\img\cover.jpg" />
     <Content Include="content\img\cover3.jpg" />
     <Content Include="content\img\cover31.jpg" />
+    <Content Include="content\img\Delete.png" />
+    <Content Include="content\img\Edit.png" />
+    <Content Include="content\img\failed.png" />
     <Content Include="content\img\favicon.png" />
     <Content Include="content\img\ksu-logo.png" />
     <Content Include="content\img\ksu-logo2030.png" />
     <Content Include="content\img\pinterest_profile_image.png" />
     <Content Include="content\img\shutdown_50px.png" />
     <Content Include="content\img\student.png" />
+    <Content Include="content\img\success.png" />
     <Content Include="content\js\ae360af17e.js" />
+    <Content Include="content\js\bootstrap-hijri-datetimepicker.min.js" />
     <Content Include="content\js\bootstrap.bundle.min.js" />
     <Content Include="content\js\bootstrap.esm.min.js" />
     <Content Include="content\js\bootstrap.min.js" />
     <Content Include="content\js\dashboard.js" />
+    <Content Include="content\js\moment-hijri.js" />
+    <Content Include="content\js\moment-with-locales.js" />
+    <Content Include="content\js\momentjs.js" />
     <Content Include="content\js\script.js" />
+    <Content Include="Courses.aspx" />
     <Content Include="index.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="NewReservation.aspx" />
+    <Content Include="Roles.aspx" />
+    <Content Include="Rooms.aspx" />
+    <Content Include="ViewReservations.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\CLS_Rooms.cs" />
+    <Compile Include="App_Code\CLS_Courses.cs" />
+    <Compile Include="App_Code\CLS_Reservations.cs" />
     <Compile Include="App_Code\DataAccessLayer.cs" />
-    <Compile Include="App_Code\CLS_LoginUsers.cs" />
+    <Compile Include="App_Code\CLS_Users.cs" />
+    <Compile Include="ViewReservations.aspx.cs">
+      <DependentUpon>ViewReservations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewReservations.aspx.designer.cs">
+      <DependentUpon>ViewReservations.aspx</DependentUpon>
+    </Compile>
     <Content Include="App_Code\SRTC_DB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SRTC_DB.dbml</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Compile Include="Courses.aspx.cs">
+      <DependentUpon>Courses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Courses.aspx.designer.cs">
+      <DependentUpon>Courses.aspx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -131,6 +161,20 @@
       <DependentUpon>NewReservation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles.aspx.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roles.aspx.designer.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Rooms.aspx.cs">
+      <DependentUpon>Rooms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rooms.aspx.designer.cs">
+      <DependentUpon>Rooms.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,7 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
-    <Content Include="content\js\jquery.slim.min.js" />
+    <Content Include="content\js\jQuery-3.6.0.slim.min.js" />
     <Content Include="App_Code\SRTC_DB.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>SRTC_DB.designer.cs</LastGenOutput>

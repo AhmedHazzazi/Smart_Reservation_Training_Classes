@@ -59,7 +59,8 @@
                 <img src="content/img/cover.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title fs-3">تسجيل حجز جديد</h5>
-                    <asp:Button ID="BtnNewReservationUser" runat="server" Text="إضافة" CssClass="btn btn-group-lg btn-primary" OnClientClick="Loader();" />
+                    <%--<asp:Button ID="BtnNewReservationUser" runat="server" Text="حجز جديد" CssClass="btn btn-group-lg btn-primary" OnClientClick="Loader();" />--%>
+                    <a id="lbtnNewReservationUser" runat="server" href="NewReservation.aspx" class="btn btn-group-lg btn-primary" onclick="return Loader()">حجز جديد</a>
                 </div>
             </div>
         </div>

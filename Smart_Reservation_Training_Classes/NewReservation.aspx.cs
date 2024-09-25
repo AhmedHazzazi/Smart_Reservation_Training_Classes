@@ -19,6 +19,7 @@ namespace Smart_Reservation_Training_Classes
     {
         CLS_Rooms cls_rooms = new CLS_Rooms();
         DataTable dtRoomsAvailable;
+        int Id;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -34,7 +35,7 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                //int Id = 0;
+                //Id = 0;
                 foreach (GridViewRow row in gvRoomsAvailable.Rows)
                 {
                     RadioButton radiobutton = (RadioButton)row.FindControl("RadioButtonChooseRoom");

@@ -107,6 +107,7 @@
     <Content Include="Courses.aspx" />
     <Content Include="index.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="ManageReservations.aspx" />
     <Content Include="NewReservation.aspx" />
     <Content Include="Roles.aspx" />
     <Content Include="Rooms.aspx" />
@@ -119,6 +120,18 @@
     <Compile Include="App_Code\CLS_Reservations.cs" />
     <Compile Include="App_Code\DataAccessLayer.cs" />
     <Compile Include="App_Code\CLS_Users.cs" />
+    <Content Include="App_Code\SRTC_DB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SRTC_DB.dbml</DependentUpon>
+    </Content>
+    <Compile Include="ManageReservations.aspx.cs">
+      <DependentUpon>ManageReservations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageReservations.aspx.designer.cs">
+      <DependentUpon>ManageReservations.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewReservations.aspx.cs">
       <DependentUpon>ViewReservations.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -126,12 +139,6 @@
     <Compile Include="ViewReservations.aspx.designer.cs">
       <DependentUpon>ViewReservations.aspx</DependentUpon>
     </Compile>
-    <Content Include="App_Code\SRTC_DB.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SRTC_DB.dbml</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Compile Include="Courses.aspx.cs">
       <DependentUpon>Courses.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -190,11 +197,9 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>SRTC_DB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="App_Code\SRTC_DB.dbml.layout">
       <DependentUpon>SRTC_DB.dbml</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

@@ -46,6 +46,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
         {
             OnCreated();
         }
+
         public SRTC_DBDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
@@ -111,7 +112,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
 		
 		private decimal _CourseID;
 		
-		private System.Nullable<decimal> _CourseCode;
+		private string _CourseCode;
 		
 		private string _CourseName;
 		
@@ -123,7 +124,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
     partial void OnCreated();
     partial void OnCourseIDChanging(decimal value);
     partial void OnCourseIDChanged();
-    partial void OnCourseCodeChanging(System.Nullable<decimal> value);
+    partial void OnCourseCodeChanging(string value);
     partial void OnCourseCodeChanged();
     partial void OnCourseNameChanging(string value);
     partial void OnCourseNameChanged();
@@ -156,8 +157,8 @@ namespace Smart_Reservation_Training_Classes.App_Code
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseCode", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> CourseCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseCode", DbType="NVarChar(MAX)")]
+		public string CourseCode
 		{
 			get
 			{
@@ -249,11 +250,17 @@ namespace Smart_Reservation_Training_Classes.App_Code
 		
 		private System.Nullable<decimal> _CourseID;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private string _StartDate;
 		
-		private System.Nullable<System.TimeSpan> _Time;
+		private string _EndDate;
+		
+		private string _Time;
+		
+		private string _Duration;
 		
 		private string _Statuse;
+		
+		private string _CourseType;
 		
 		private string _Language;
 		
@@ -269,11 +276,15 @@ namespace Smart_Reservation_Training_Classes.App_Code
 		
 		private string _Requirements;
 		
-		private string _Notes;
+		private string _ExecutionLocation;
+		
+		private string _UseOfComputer;
+		
+		private string _Certificates;
 		
 		private string _CourseTopics;
 		
-		private string _ExecutionLocation;
+		private string _Notes;
 		
 		public TBLReservation()
 		{
@@ -343,24 +354,40 @@ namespace Smart_Reservation_Training_Classes.App_Code
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Char(10)")]
+		public string StartDate
 		{
 			get
 			{
-				return this._Date;
+				return this._StartDate;
 			}
 			set
 			{
-				if ((this._Date != value))
+				if ((this._StartDate != value))
 				{
-					this._Date = value;
+					this._StartDate = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time", DbType="Time")]
-		public System.Nullable<System.TimeSpan> Time
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="Char(10)")]
+		public string EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this._EndDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time", DbType="NChar(30)")]
+		public string Time
 		{
 			get
 			{
@@ -371,6 +398,22 @@ namespace Smart_Reservation_Training_Classes.App_Code
 				if ((this._Time != value))
 				{
 					this._Time = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Duration", DbType="NVarChar(MAX)")]
+		public string Duration
+		{
+			get
+			{
+				return this._Duration;
+			}
+			set
+			{
+				if ((this._Duration != value))
+				{
+					this._Duration = value;
 				}
 			}
 		}
@@ -387,6 +430,22 @@ namespace Smart_Reservation_Training_Classes.App_Code
 				if ((this._Statuse != value))
 				{
 					this._Statuse = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseType", DbType="NVarChar(MAX)")]
+		public string CourseType
+		{
+			get
+			{
+				return this._CourseType;
+			}
+			set
+			{
+				if ((this._CourseType != value))
+				{
+					this._CourseType = value;
 				}
 			}
 		}
@@ -503,18 +562,50 @@ namespace Smart_Reservation_Training_Classes.App_Code
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="NVarChar(MAX)")]
-		public string Notes
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExecutionLocation", DbType="NVarChar(MAX)")]
+		public string ExecutionLocation
 		{
 			get
 			{
-				return this._Notes;
+				return this._ExecutionLocation;
 			}
 			set
 			{
-				if ((this._Notes != value))
+				if ((this._ExecutionLocation != value))
 				{
-					this._Notes = value;
+					this._ExecutionLocation = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UseOfComputer", DbType="NVarChar(10)")]
+		public string UseOfComputer
+		{
+			get
+			{
+				return this._UseOfComputer;
+			}
+			set
+			{
+				if ((this._UseOfComputer != value))
+				{
+					this._UseOfComputer = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Certificates", DbType="NVarChar(10)")]
+		public string Certificates
+		{
+			get
+			{
+				return this._Certificates;
+			}
+			set
+			{
+				if ((this._Certificates != value))
+				{
+					this._Certificates = value;
 				}
 			}
 		}
@@ -535,18 +626,18 @@ namespace Smart_Reservation_Training_Classes.App_Code
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExecutionLocation", DbType="NVarChar(MAX)")]
-		public string ExecutionLocation
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="NVarChar(MAX)")]
+		public string Notes
 		{
 			get
 			{
-				return this._ExecutionLocation;
+				return this._Notes;
 			}
 			set
 			{
-				if ((this._ExecutionLocation != value))
+				if ((this._Notes != value))
 				{
-					this._ExecutionLocation = value;
+					this._Notes = value;
 				}
 			}
 		}
@@ -560,7 +651,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
 		
 		private decimal _RoomID;
 		
-		private System.Nullable<decimal> _RoomCode;
+		private string _RoomCode;
 		
 		private string _RoomName;
 		
@@ -574,7 +665,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
     partial void OnCreated();
     partial void OnRoomIDChanging(decimal value);
     partial void OnRoomIDChanged();
-    partial void OnRoomCodeChanging(System.Nullable<decimal> value);
+    partial void OnRoomCodeChanging(string value);
     partial void OnRoomCodeChanged();
     partial void OnRoomNameChanging(string value);
     partial void OnRoomNameChanged();
@@ -609,8 +700,8 @@ namespace Smart_Reservation_Training_Classes.App_Code
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomCode", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> RoomCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomCode", DbType="NVarChar(MAX)")]
+		public string RoomCode
 		{
 			get
 			{
@@ -718,7 +809,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
 		
 		private decimal _UserID;
 		
-		private System.Nullable<decimal> _Name;
+		private string _Name;
 		
 		private string _UserName;
 		
@@ -734,7 +825,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
     partial void OnCreated();
     partial void OnUserIDChanging(decimal value);
     partial void OnUserIDChanged();
-    partial void OnNameChanging(System.Nullable<decimal> value);
+    partial void OnNameChanging(string value);
     partial void OnNameChanged();
     partial void OnUserNameChanging(string value);
     partial void OnUserNameChanged();
@@ -771,8 +862,8 @@ namespace Smart_Reservation_Training_Classes.App_Code
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> Name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX)")]
+		public string Name
 		{
 			get
 			{

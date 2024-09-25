@@ -43,7 +43,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.CloseConnectionDB();
             return Dt;
         }
-        public void AddUser(decimal UserID, string Name, string UserName, string Password, string Email, string Role)
+        public void InsertUser(decimal UserID, string Name, string UserName, string Password, string Email, string Role)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[6];

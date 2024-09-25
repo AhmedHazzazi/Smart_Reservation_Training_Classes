@@ -1,5 +1,6 @@
 ﻿using Smart_Reservation_Training_Classes.App_Code;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -13,7 +14,8 @@ namespace Smart_Reservation_Training_Classes
     {
         CLS_Users cls_users = new CLS_Users();
         DataTable dtUsers;
-        //SRTC_DBDataContext
+        int Id;
+        //SRTC_DBDataContext ctxSRTC_DBD = new SRTC_DBDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserID"] == null)
@@ -55,7 +57,8 @@ namespace Smart_Reservation_Training_Classes
                 if (!string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtUserName.Text) 
                     && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtEmail.Text))
                 {
-                    //dtUsers=cls_users.
+                    //Id = cls_users.MaxIDUserID()
+                    //dtUsers = cls_users.InsertUser()
 
                     lblError.Visible = false;
                 }

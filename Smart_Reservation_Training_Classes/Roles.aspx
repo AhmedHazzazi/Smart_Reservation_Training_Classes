@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="UpdatePanel" runat="server">
         <ContentTemplate>
-            <div class="row p-1">
+            <div class="row text-center p-1">
                 <div class="col-sm-12">
                     <asp:Label ID="lblSuccess" runat="server" CssClass="success" Visible="false"></asp:Label>
                     <asp:Label ID="lblError" runat="server" CssClass="error" Visible="false"></asp:Label>
@@ -41,10 +41,10 @@
                                 <asp:BoundField DataField="Role" HeaderText="نوع الصلاحية"></asp:BoundField>
                                 <asp:TemplateField HeaderText=".....">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lnkEdit" runat="server" CausesValidation="False" CommandName="Edited" OnClientClick="Loader();" CommandArgument='<%# Eval("UserID") + "," + Eval("UserName") %>'>
+                                        <asp:LinkButton ID="lnkEdit" runat="server" CausesValidation="False" CommandName="Edited" OnClientClick="Loader();" CommandArgument='<%# Eval("UserID") %>'>
                                             <asp:Image ID="imgEdit" runat="server" ImageUrl="~/content/img/Edit.png" />
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف الصلاحية من المستخدم ؟')" CommandArgument='<%# Eval("UserID") + "," + Eval("UserName") %>'>
+                                        <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف الصلاحية من المستخدم ؟')" CommandArgument='<%# Eval("UserID") %>'>
                                             <asp:Image ID="imgRemove" runat="server" ImageUrl="~/content/img/Delete.png" />
                                         </asp:LinkButton>
                                     </ItemTemplate>
@@ -67,35 +67,36 @@
                 <asp:View ID="View2" runat="server">
                     <div class="row p-2 overflow-scroll">
                         <div class="row mb-3">
-                            <label for="txtName" class="col-sm-3 col-form-label col-form-label-sm">الإسم الكامل</label>
+                            <label for="txtName" class="col-sm-2 col-form-label">الإسم الكامل</label>
                             <div class="col-sm-8">
+                                <asp:HiddenField ID="hfUserID" runat="server" />
                                 <asp:TextBox ID="txtName" runat="server" CssClass="form-control form-control-sm" placeholder="الإسم الكامل"></asp:TextBox>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtUserName" class="col-sm-3 col-form-label">اسم المستخدم</label>
+                            <label for="txtUserName" class="col-sm-2 col-form-label">اسم المستخدم</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control form-control-sm" placeholder="اسم المستخدم"></asp:TextBox>
                             </div>
                         </div>
                         <div class="row">
-                            <label for="txtPassword" class="col-sm-3 col-form-label col-form-label-lg">كلمة المرور</label>
+                            <label for="txtPassword" class="col-sm-2 col-form-label">كلمة المرور</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control form-control-sm" placeholder="كلمة المرور" TextMode="Password"></asp:TextBox>
                             </div>
                         </div>
                         <div class="row">
-                            <label for="txtEmail" class="col-sm-3 col-form-label col-form-label-lg">البريد الإلكتروني</label>
+                            <label for="txtEmail" class="col-sm-2 col-form-label">البريد الإلكتروني</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control form-control-sm" placeholder="البريد الإلكتروني"></asp:TextBox>
                             </div>
                         </div>
                         <div class="row">
-                            <label for="RblRole" class="col-sm-3 col-form-label col-form-label-lg">نوع الصلاحية</label>
+                            <label for="RblRole" class="col-sm-2 col-form-label">نوع الصلاحية</label>
                             <div class="col-sm-8">
-                                <asp:RadioButtonList ID="RblRole" runat="server" CssClass="form-check  form-check-inline">
-                                    <asp:ListItem Value="Admin">مسؤول النظام</asp:ListItem>
-                                    <asp:ListItem Value="User">المستخدمين</asp:ListItem>
+                                <asp:RadioButtonList ID="RblRole" runat="server" CssClass="form-check form-check-inline">
+                                    <asp:ListItem Value="Admin" Text="مسؤول النظام">مسؤول النظام</asp:ListItem>
+                                    <asp:ListItem Value="User" Text="المستخدمين">المستخدمين</asp:ListItem>
                                 </asp:RadioButtonList>
                             </div>
                         </div>

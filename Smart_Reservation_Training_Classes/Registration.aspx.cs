@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -21,6 +22,46 @@ namespace Smart_Reservation_Training_Classes
             Logout.Visible = false;
             lblError.Visible = false;
             lblSuccess.Visible = false;
+        }
+
+        [WebMethod]
+        public static bool IsUserAvailable(string UserName)
+        {
+            bool result = false;
+            //SqlConnection Conn = new SqlConnection();
+            //Conn.ConnectionString = ConfigurationManager.ConnectionStrings["CarRentalConnectionString"].ConnectionString;
+            //SqlCommand cmd = new SqlCommand();
+            //cmd.Connection = Conn;
+            //cmd.CommandText = "Select *  From Customers Where UserName=@UserName";
+            //cmd.CommandType = System.Data.CommandType.Text;
+            //cmd.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
+            //DataTable dt = new DataTable();
+            //SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //da.Fill(dt);
+            //if (dt.Rows.Count == 0)
+            //    result = true;
+            //else result = false;
+            return result;
+
+        }
+        public static bool IsEmailAvailable(string Mail)
+        {
+            bool resultEmail = false;
+            //SqlConnection Conne = new SqlConnection();
+            //Conne.ConnectionString = ConfigurationManager.ConnectionStrings["CarRentalConnectionString"].ConnectionString;
+            //SqlCommand cmd = new SqlCommand();
+            //cmd.Connection = Conne;
+            //cmd.CommandText = "Select *  From Customers Where Mail=@Mail";
+            //cmd.CommandType = System.Data.CommandType.Text;
+            //cmd.Parameters.Add("@Mail", SqlDbType.NVarChar).Value = Mail;
+            //DataTable dt = new DataTable();
+            //SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //da.Fill(dt);
+            //if (dt.Rows.Count == 0)
+            //    resultEmail = true;
+            //else resultEmail = false;
+            return resultEmail;
+
         }
 
         protected void BtnSave_Click(object sender, EventArgs e)

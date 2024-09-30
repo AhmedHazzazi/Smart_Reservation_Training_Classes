@@ -13,7 +13,7 @@ namespace Smart_Reservation_Training_Classes
     public partial class Roles : System.Web.UI.Page
     {
         CLS_Users cls_users = new CLS_Users();
-        DataTable dtUsers;
+        DataTable dtUsers, dtUserName, dtEmail;
         public decimal Id;
         //SRTC_DBDataContext ctxSRTC_DBD = new SRTC_DBDataContext();
         protected void Page_Load(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace Smart_Reservation_Training_Classes
             lblError.Visible = false;
             lblSuccess.Visible = false;
         }
-        private void BindDataUsers()
+        public void BindDataUsers()
         {
             try
             {
@@ -54,49 +54,44 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                //Id = Convert.ToDecimal(hfUserID.Value = cls_users.MaxIDUserID().Rows[0]["UserID"].ToString());
-                dtUsers = cls_users.SearchUser(hfUserID.Value);
-                if (dtUsers.Rows.Count > 0 || hfUserID.Value!=null)
+                //Id = Convert.ToDecimal(cls_users.MaxIDUserID().Rows[0]["UserID"].ToString());
+                if (!string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtUserName.Text) 
+                    && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtConfirmPassword.Text)
+                    && !string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(RblRole.SelectedValue))
                 {
-                    if (!string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtUserName.Text)
-                        && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtEmail.Text))
+                    dtUserName = cls_users.SearchAvailableUser(txtUserName.Text);
+                    dtEmail = cls_users.SearchAvailableUser(txtEmail.Text);
+                    if (dtUserName.Rows.Count > 0 || dtEmail.Rows.Count > 0)
                     {
-                        Id = Convert.ToDecimal(hfUserID.Value = dtUsers.Rows[0]["UserID"].ToString());
+                        Id = Convert.ToDecimal(hfUserID.Value = dtUserName.Rows[0]["UserID"].ToString());
                         cls_users.UpdateUser(Id, txtName.Text, txtUserName.Text, txtPassword.Text, txtEmail.Text, RblRole.SelectedValue.ToString());
-                        lblError.Visible = false;
                         lblSuccess.Visible = true;
-                        lblSuccess.Text = "لقد تم التعديل بنجاح";
+                        lblSuccess.Text = "لقد تم تعديل بيانات المستخدم بنجاح";
+                        //lblError.Visible = false;
+                        //lblError.Text = "المستخدم تم إضافة بياناته سابقا يرجى التحقق من إسم المتخدم و البريد الإلكتروني";
                     }
                     else
-                    {
-                        lblSuccess.Visible = false;
-                        lblError.Visible = true;
-                        lblError.Text = "تأكد من إدخال جميع البيانات المطلوبة";
-                    }
-                }
-                else
-                {
-                    if (!string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtUserName.Text)
-                            && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtEmail.Text))
                     {
                         Id = Convert.ToDecimal(hfUserID.Value = cls_users.MaxIDUserID().Rows[0]["UserID"].ToString());
                         cls_users.InsertUser(Id, txtName.Text, txtUserName.Text, txtPassword.Text, txtEmail.Text, RblRole.SelectedValue.ToString());
                         lblError.Visible = false;
                         lblSuccess.Visible = true;
-                        lblSuccess.Text = "لقد تمت الإضافة بنجاح";
+                        lblSuccess.Text = "لقد تم إضافة المستخدم بنجاح";
                     }
-                    else
-                    {
-                        lblSuccess.Visible = false;
-                        lblError.Visible = true;
-                        lblError.Text = "تأكد من إدخال جميع البيانات المطلوبة";
-                    }
+                }
+                else
+                {
+                    lblSuccess.Visible = false;
+                    lblError.Visible = true;
+                    lblError.Text = "يرجى التأكد من جميع البيانات المطلوبة";
                 }
                 BindDataUsers();
             }
             catch (Exception excBtnSave)
             {
-                throw excBtnSave;
+                //throw excBtnSave;
+                lblError.Visible = true;
+                lblError.Text = excBtnSave.Message.ToString();
             }
         }
 
@@ -106,7 +101,7 @@ namespace Smart_Reservation_Training_Classes
             {
                 if (!string.IsNullOrEmpty(txtSearch.Text))
                 {
-                    dtUsers=cls_users.SearchUser(txtSearch.Text);
+                    dtUsers = cls_users.SearchUser(txtSearch.Text);
                     if (dtUsers.Rows.Count > 0)
                     {
                         gvUsers.DataSource = dtUsers;
@@ -135,7 +130,9 @@ namespace Smart_Reservation_Training_Classes
             }
             catch (Exception excBtnSearch)
             {
-                throw excBtnSearch;
+                //throw excBtnSearch;
+                lblError.Visible = true;
+                lblError.Text = excBtnSearch.Message.ToString();
             }
         }
 
@@ -148,10 +145,13 @@ namespace Smart_Reservation_Training_Classes
                 lblError.Text = string.Empty;
                 lblSuccess.Visible = false;
                 lblSuccess.Text = string.Empty;
+                BindDataUsers();
             }
             catch (Exception excBtnResetSearch)
             {
-                throw excBtnResetSearch;
+                //throw excBtnResetSearch;
+                lblError.Visible = true;
+                lblError.Text = excBtnResetSearch.Message.ToString();
             }
         }
 
@@ -163,7 +163,9 @@ namespace Smart_Reservation_Training_Classes
             }
             catch (Exception excBtnAddUser)
             {
-                throw excBtnAddUser;
+                //throw excBtnAddUser;
+                lblError.Visible = true;
+                lblError.Text = excBtnAddUser.Message.ToString();
             }
         }
         protected void gvUsers_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -186,6 +188,8 @@ namespace Smart_Reservation_Training_Classes
                                 txtPassword.Text = dr["Password"].ToString();
                                 txtEmail.Text = dr["Email"].ToString();
                                 RblRole.SelectedValue = dr["Role"].ToString();
+
+                                txtUserName.Enabled = false;
                             }
                             lblError.Visible = false;
                             lblError.Text = string.Empty;
@@ -235,7 +239,9 @@ namespace Smart_Reservation_Training_Classes
             }
             catch (Exception excgvUsers)
             {
-                throw excgvUsers;
+                //throw excgvUsers;
+                lblError.Visible = true;
+                lblError.Text = excgvUsers.Message.ToString();
             }
         }
 
@@ -247,8 +253,19 @@ namespace Smart_Reservation_Training_Classes
             }
             catch (Exception excBtnClose)
             {
-                throw excBtnClose;
+                //throw excBtnClose;
+                lblError.Visible = true;
+                lblError.Text = excBtnClose.Message.ToString();
             }
+        }
+
+        public void ClearData()
+        {
+            hfUserID.Value = string.Empty;
+            txtName.Text = string.Empty;
+            txtUserName.Text = string.Empty;
+            txtPassword.Text = string.Empty;
+            txtEmail.Text = string.Empty;
         }
     }
 }

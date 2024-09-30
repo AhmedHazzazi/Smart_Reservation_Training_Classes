@@ -8,12 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نظام إدارة حجز القاعات التدريبية</title>
-    <link href="content/css/bootstrap.rtl.min.css" rel="stylesheet" />
-    <link href="content/css/bootstrap-datetimepicker.css" rel="stylesheet" />
-    <link href="content/css/style.css" rel="stylesheet" />
+    <%--<link rel="stylesheet" href="content/css/bootstrap.min.css" />--%>
+    <link rel="stylesheet" href="content/css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="content/css/bootstrap-datetimepicker.css" />
+    <link rel="stylesheet" href="content/css/style.css" />
 
     <script src="content/js/jQuery-3.6.0.slim.min.js"></script>
     <script src="content/js/bootstrap.bundle.min.js"></script>
+    <script src="content/js/popper.min.js"></script>
     <script src="content/js/bootstrap.min.js"></script>
     <script src="content/js/momentjs.js"></script>
     <script src="content/js/moment-with-locales.js"></script>
@@ -115,7 +117,7 @@
                     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="عرض/إخفاء لوحة التنقل">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div id="Logout" class="Logout">
+                    <div id="Logout" runat="server" class="Logout">
                         <div class="text-nowrap">
                             مرحبا :
                             <asp:Label ID="lblName" runat="server" Style="color: #454d88;"></asp:Label>

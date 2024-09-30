@@ -19,7 +19,7 @@ namespace Smart_Reservation_Training_Classes
     {
         CLS_Rooms cls_rooms = new CLS_Rooms();
         DataTable dtRoomsAvailable;
-        int Id;
+        public decimal Id;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

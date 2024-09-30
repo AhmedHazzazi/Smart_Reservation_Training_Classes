@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="content/css/fontawesome.min.css" />
     <link rel="stylesheet" href="content/css/style.css" />
 
-    <script src="content/js/jquery.slim.min.js"></script>
+    <script src="content/js/jQuery-3.6.0.slim.min.js"></script>
     <script src="content/js/bootstrap.bundle.min.js"></script>
     <script src="content/js/bootstrap.min.js"></script>
 </head>
@@ -31,31 +31,32 @@
         </header>
         <div class="text-center divlogin">
             <main class="form-signin">
-                <img src="content/img/ksu-logo.png" class="mb-4" />
-                <h1 class="h3 mb-3 fw-normal">تسجيل الدخول</h1>
-                <div class="form-floating mb-2">
-                    <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control" autocomplete="off"></asp:TextBox>
-                    <label for="txtUserName">اسم المستخدم</label>
-                </div>
-                <div class="form-floating">
-                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" autocomplete="off" TextMode="Password"></asp:TextBox>
-                    <label for="txtPassword">كلمة المرور</label>
-                </div>
-                <asp:Button ID="BtnLogin" runat="server" CssClass="btn btn-lg btn-primary w-100 mt-2" Text="تسجيل الدخول" OnClientClick="Loader();" OnClick="BtnLogin_Click" />
-                <div>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
-                            <asp:Label ID="liMsg" runat="server" Style="color: red; margin-right: 2%; font-size: 16px;"></asp:Label>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <img src="content/img/ksu-logo.png" class="mb-4" />
+                        <h1 class="h3 mb-3 fw-normal">تسجيل الدخول</h1>
+                        <div class="form-floating mb-2">
+                            <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control" autocomplete="off"></asp:TextBox>
+                            <label for="txtUserName">اسم المستخدم</label>
                             <asp:Label ID="userNameRequire" runat="server" Text="يجب إدخال اسم المستخدم" ForeColor="Red" Visible="False" Font-Bold="True"></asp:Label>
-                            <br />
+                        </div>
+                        <div class="form-floating">
+                            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" autocomplete="off" TextMode="Password"></asp:TextBox>
+                            <label for="txtPassword">كلمة المرور</label>
                             <asp:Label ID="passwordRequire" runat="server" Text="يجب إدخال كلمة المرور" ForeColor="Red" Visible="False" Font-Bold="True"></asp:Label>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="BtnLogin" />
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-                <p class="mt-5 mb-3 text-muted">© مشروع التخرج 1446 - 2024</p>
+                        </div>
+                        <asp:Button ID="BtnLogin" runat="server" CssClass="btn btn-lg btn-primary w-100 mt-2" Text="تسجيل الدخول" OnClientClick="Loader();" OnClick="BtnLogin_Click" />
+                        <div class="row p-2">
+                            <a href="Registraion.aspx" onclick="Loader();">تسجيل مستخدم جديد</a>
+                            <a href="SendPassword.aspx" onclick="Loader();">نسيت كلمة المرور</a>
+                        </div>
+                        <asp:Label ID="MsgError" runat="server" ForeColor="Red" Visible="False" Font-Bold="True"></asp:Label>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="BtnLogin" />
+                    </Triggers>
+                </asp:UpdatePanel>
+                <p class="mt-2 text-muted">© مشروع التخرج 1446 - 2024</p>
             </main>
         </div>
     </form>

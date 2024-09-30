@@ -30,7 +30,7 @@
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <%# Container.DataItemIndex + 1 %>
-                                        <asp:HiddenField ID="hfUserID" runat="server" Value='<%#Eval("UserID")%>' />
+                                        <asp:HiddenField ID="hfInGridViewUserID" runat="server" Value='<%#Eval("UserID")%>' />
                                     </ItemTemplate>
                                     <ItemStyle Width="10px" />
                                 </asp:TemplateField>
@@ -65,39 +65,52 @@
                     </asp:Panel>
                 </asp:View>
                 <asp:View ID="View2" runat="server">
-                    <div class="row p-2 overflow-scroll">
+                    <div class="row p-2">
                         <div class="row mb-3">
                             <label for="txtName" class="col-sm-2 col-form-label">الإسم الكامل</label>
                             <div class="col-sm-8">
                                 <asp:HiddenField ID="hfUserID" runat="server" />
                                 <asp:TextBox ID="txtName" runat="server" CssClass="form-control form-control-sm" placeholder="الإسم الكامل"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RFVtxtName" runat="server" ErrorMessage="يجب إدخال الإسم الكامل" ForeColor="Red" ControlToValidate="txtName" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="txtUserName" class="col-sm-2 col-form-label">اسم المستخدم</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control form-control-sm" placeholder="اسم المستخدم"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RFVtxtUserName" runat="server" ErrorMessage="يجب إدخال اسم مستخدم" ForeColor="Red" ControlToValidate="txtUserName" />
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mb-3">
                             <label for="txtPassword" class="col-sm-2 col-form-label">كلمة المرور</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control form-control-sm" placeholder="كلمة المرور" TextMode="Password"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RFVtxtPassword" runat="server" ErrorMessage="يجب إدخال كلمة المرور" ForeColor="Red" ControlToValidate="txtPassword" />
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mb-3">
+                            <label for="txtPassword" class="col-sm-2 col-form-label">تأكيد كلمة المرور</label>
+                            <div class="col-sm-8">
+                                <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="form-control form-control-sm" placeholder="تأكيد كلمة المرور" TextMode="Password"></asp:TextBox>
+                                <asp:CompareValidator ID="ComparetxtConfirmPassword" runat="server" ErrorMessage="كلمة المرور وتأكيد كلمة المرور غير متطابقتين" ForeColor="Red" ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
                             <label for="txtEmail" class="col-sm-2 col-form-label">البريد الإلكتروني</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control form-control-sm" placeholder="البريد الإلكتروني"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RFVtxtEmail" runat="server" ErrorMessage="يجب إدخال البريد الإلكتروني" Display="Dynamic" ForeColor="Red" ControlToValidate="txtEmail" />
+                                <asp:RegularExpressionValidator ID="REVtxtEmail" runat="server" Display="Dynamic" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ForeColor="Red" ErrorMessage="عنوان البريد الإلكتروني غير صالح" />
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mb-3">
                             <label for="RblRole" class="col-sm-2 col-form-label">نوع الصلاحية</label>
                             <div class="col-sm-8">
                                 <asp:RadioButtonList ID="RblRole" runat="server" CssClass="form-check form-check-inline">
                                     <asp:ListItem Value="Admin" Text="مسؤول النظام">مسؤول النظام</asp:ListItem>
                                     <asp:ListItem Value="User" Text="المستخدمين">المستخدمين</asp:ListItem>
                                 </asp:RadioButtonList>
+                                <asp:RequiredFieldValidator ID="RFVRblRole" runat="server" ErrorMessage="يجب اختيار نوع صلاحية المستخدم" ForeColor="Red" ControlToValidate="RblRole" />
                             </div>
                         </div>
                         <div class="row">

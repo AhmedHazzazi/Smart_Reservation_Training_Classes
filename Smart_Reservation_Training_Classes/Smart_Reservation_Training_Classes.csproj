@@ -66,17 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\css\bootstrap-datetimepicker.css" />
-    <Content Include="content\css\bootstrap-grid.min.css" />
-    <Content Include="content\css\bootstrap-grid.rtl.min.css" />
-    <Content Include="content\css\bootstrap-reboot.min.css" />
-    <Content Include="content\css\bootstrap-reboot.rtl.min.css" />
-    <Content Include="content\css\bootstrap-utilities.min.css" />
-    <Content Include="content\css\bootstrap-utilities.rtl.min.css" />
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\bootstrap.rtl.min.css" />
-    <Content Include="content\css\dashboard.rtl.css" />
     <Content Include="content\css\fontawesome.min.css" />
-    <Content Include="content\css\signin.css" />
     <Content Include="content\css\style.css" />
     <Content Include="content\img\classroomblue_50px.png" />
     <Content Include="content\img\classroom_50coverpx.png" />
@@ -97,9 +89,7 @@
     <Content Include="content\js\ae360af17e.js" />
     <Content Include="content\js\bootstrap-hijri-datetimepicker.min.js" />
     <Content Include="content\js\bootstrap.bundle.min.js" />
-    <Content Include="content\js\bootstrap.esm.min.js" />
     <Content Include="content\js\bootstrap.min.js" />
-    <Content Include="content\js\dashboard.js" />
     <Content Include="content\js\moment-hijri.js" />
     <Content Include="content\js\moment-with-locales.js" />
     <Content Include="content\js\momentjs.js" />
@@ -109,8 +99,10 @@
     <Content Include="Login.aspx" />
     <Content Include="ManageReservations.aspx" />
     <Content Include="NewReservation.aspx" />
+    <Content Include="Registration.aspx" />
     <Content Include="Roles.aspx" />
     <Content Include="Rooms.aspx" />
+    <Content Include="SendPassword.aspx" />
     <Content Include="ViewReservations.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -131,6 +123,20 @@
     </Compile>
     <Compile Include="ManageReservations.aspx.designer.cs">
       <DependentUpon>ManageReservations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registration.aspx.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registration.aspx.designer.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SendPassword.aspx.cs">
+      <DependentUpon>SendPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SendPassword.aspx.designer.cs">
+      <DependentUpon>SendPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewReservations.aspx.cs">
       <DependentUpon>ViewReservations.aspx</DependentUpon>
@@ -201,6 +207,7 @@
     <None Include="App_Code\SRTC_DB.dbml.layout">
       <DependentUpon>SRTC_DB.dbml</DependentUpon>
     </None>
+    <Content Include="content\js\popper.min.js" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

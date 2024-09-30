@@ -17,8 +17,8 @@ namespace Smart_Reservation_Training_Classes
         protected void Page_Load(object sender, EventArgs e)
         {
             txtUserName.Focus();
-            //liMsg.Text = string.Empty;
-            //liMsg.Visible = false;
+            //MsgError.Text = string.Empty;
+            MsgError.Visible = false;
             userNameRequire.Visible = false;
             passwordRequire.Visible = false;
             //HtmlGenericControl MenusUsers = (HtmlGenericControl)Master.FindControl("MenusUsers");
@@ -45,8 +45,8 @@ namespace Smart_Reservation_Training_Classes
                     }
                     else
                     {
-                        liMsg.Visible = true;
-                        liMsg.Text = "عذرا.. غير مصرح لك بالدخول !";
+                        MsgError.Visible = true;
+                        MsgError.Text = "عذرا.. غير مصرح لك بالدخول !";
                     }
                 }
                 else if (string.IsNullOrEmpty(txtUserName.Text) && string.IsNullOrEmpty(txtPassword.Text))
@@ -70,8 +70,8 @@ namespace Smart_Reservation_Training_Classes
             }
             catch (Exception excLogin)
             {
-                liMsg.Visible = true;
-                liMsg.Text = excLogin.ToString();
+                MsgError.Visible = true;
+                MsgError.Text = excLogin.ToString();
             }
         }
     }

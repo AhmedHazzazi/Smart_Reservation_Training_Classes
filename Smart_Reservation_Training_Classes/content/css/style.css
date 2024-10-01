@@ -221,3 +221,26 @@ a.sidebar-link {
     border: 1px solid #00A64E;
     color: #FFFFFF;
 }
+/* -------------------- Text input and select input notifications -------------------- */
+
+.notification-input {
+    background: 10px 50% no-repeat;
+    margin: 0 0 0 5px;
+    padding: 5px 0 5px 32px;
+    font-size: 12px;
+}
+
+.ni-correct {
+    background-image: url(../img/tick-on-white.gif);
+    color: #00ae42;
+}
+
+.ni-ckeck {
+    background-image: url(../img/loader.gif);
+    color: #666;
+}
+
+.ni-error {
+    background-image: url(../img/cross-on-white.gif);
+    color: #c9282d;
+}

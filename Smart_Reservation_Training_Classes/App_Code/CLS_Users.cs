@@ -54,6 +54,17 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.CloseConnectionDB();
             return Dt;
         }
+        public DataTable SearchAvailableEmail(string Criterion)
+        {
+            DAL.OpenConnectionDB();
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@Criterion", SqlDbType.NVarChar);
+            param[0].Value = Criterion;
+            DataTable Dt = new DataTable();
+            Dt = DAL.SelectDataProcedure("SP_SearchAvailableEmail", param);
+            DAL.CloseConnectionDB();
+            return Dt;
+        }
         public void InsertUser(decimal UserID, string Name, string UserName, string Password, string Email, string Role)
         {
             DAL.OpenConnectionDB();

@@ -28,40 +28,49 @@ namespace Smart_Reservation_Training_Classes
         public static bool IsUserAvailable(string UserName)
         {
             bool result = false;
-            //SqlConnection Conn = new SqlConnection();
-            //Conn.ConnectionString = ConfigurationManager.ConnectionStrings["CarRentalConnectionString"].ConnectionString;
-            //SqlCommand cmd = new SqlCommand();
-            //cmd.Connection = Conn;
-            //cmd.CommandText = "Select *  From Customers Where UserName=@UserName";
-            //cmd.CommandType = System.Data.CommandType.Text;
-            //cmd.Parameters.Add("@UserName", SqlDbType.NVarChar).Value = UserName;
-            //DataTable dt = new DataTable();
-            //SqlDataAdapter da = new SqlDataAdapter(cmd);
-            //da.Fill(dt);
-            //if (dt.Rows.Count == 0)
-            //    result = true;
-            //else result = false;
+            CLS_Users cls_users = new CLS_Users();
+            DataTable dtUsers =new DataTable();
+            dtUsers = cls_users.SearchAvailableUser(UserName);
+            if (dtUsers.Rows.Count == 0)
+                result = true;
+            else result = false;
             return result;
-
         }
-        public static bool IsEmailAvailable(string Mail)
+        public static bool IsEmailAvailable(string Email)
         {
             bool resultEmail = false;
-            //SqlConnection Conne = new SqlConnection();
-            //Conne.ConnectionString = ConfigurationManager.ConnectionStrings["CarRentalConnectionString"].ConnectionString;
-            //SqlCommand cmd = new SqlCommand();
-            //cmd.Connection = Conne;
-            //cmd.CommandText = "Select *  From Customers Where Mail=@Mail";
-            //cmd.CommandType = System.Data.CommandType.Text;
-            //cmd.Parameters.Add("@Mail", SqlDbType.NVarChar).Value = Mail;
-            //DataTable dt = new DataTable();
-            //SqlDataAdapter da = new SqlDataAdapter(cmd);
-            //da.Fill(dt);
-            //if (dt.Rows.Count == 0)
-            //    resultEmail = true;
-            //else resultEmail = false;
+            CLS_Users cls_users = new CLS_Users();
+            DataTable dtEmail = new DataTable();
+            dtEmail = cls_users.SearchAvailableEmail(Email);
+            if (dtEmail.Rows.Count == 0)
+                resultEmail = true;
+            else resultEmail = false;
             return resultEmail;
+        }
 
+        protected void txtUserName_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dtUsers = cls_users.SearchAvailableUser(txtUserName.Text);
+                if (dtUsers.Rows.Count > 0)
+                {
+                    spanAvailability.Visible = false;
+                    spanNotAvailability.Visible = true;
+                    spanNotAvailability.InnerText = "غير متاح";
+                }
+                else
+                {
+                    spanNotAvailability.Visible = false;
+                    spanAvailability.Visible = true;
+                    spanAvailability.InnerText = "متاح";
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         protected void BtnSave_Click(object sender, EventArgs e)

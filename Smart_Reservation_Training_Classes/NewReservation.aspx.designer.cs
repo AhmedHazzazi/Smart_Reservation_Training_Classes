@@ -177,6 +177,15 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.WebControls.TextBox txtCourseCode;
 
         /// <summary>
+        /// txtCourseName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCourseName;
+
+        /// <summary>
         /// txtTargetGroup control.
         /// </summary>
         /// <remarks>
@@ -265,6 +274,15 @@ namespace Smart_Reservation_Training_Classes
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRoomName;
+
+        /// <summary>
+        /// txtCapacity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCapacity;
 
         /// <summary>
         /// txtExecutionLocation control.

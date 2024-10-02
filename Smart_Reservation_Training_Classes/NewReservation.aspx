@@ -115,12 +115,12 @@
                                     <asp:TableCell>
                                         <asp:TextBox ID="txtCourseCode" runat="server" CssClass="form-control"></asp:TextBox>
                                     </asp:TableCell>
-                                    <%--<asp:TableCell>
+                                    <asp:TableCell>
                                         <label class="forms-input-label">اسم الدورة</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
                                         <asp:TextBox ID="txtCourseName" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </asp:TableCell>--%>
+                                    </asp:TableCell>
                                 </asp:TableRow>
                                 <asp:TableRow CssClass="forms-input-row">
                                     <asp:TableCell>
@@ -185,6 +185,14 @@
                                     </asp:TableCell>
                                     <asp:TableCell>
                                         <asp:TextBox ID="txtRoomName" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow CssClass="forms-input-row">
+                                    <asp:TableCell>
+                                        <label class="forms-input-label">سعة القاعة</label>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <asp:TextBox ID="txtCapacity" runat="server" CssClass="form-control"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
                                         <label class="forms-input-label">مقر التنفيذ(القاعة)</label>

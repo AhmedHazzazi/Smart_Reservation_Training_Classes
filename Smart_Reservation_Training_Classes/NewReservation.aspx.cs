@@ -45,9 +45,9 @@ namespace Smart_Reservation_Training_Classes
                         txtRoomCode.Text = gvRoomsAvailable.Rows[row.RowIndex].Cells[2].Text;
                         txtRoomName.Text = gvRoomsAvailable.Rows[row.RowIndex].Cells[3].Text;
                         txtExecutionLocation.Text = gvRoomsAvailable.Rows[row.RowIndex].Cells[4].Text;
+                        txtCapacity.Text = gvRoomsAvailable.Rows[row.RowIndex].Cells[5].Text;
                         txtStartDate.Text = txtSearchStartDate.Text;
                         txtEndDate.Text = txtSearchEndDate.Text;
-
 
                         lblWizardError.Visible = false;
                         lblWizardError.Text = string.Empty;

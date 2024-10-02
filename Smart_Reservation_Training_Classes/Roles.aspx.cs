@@ -245,6 +245,25 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
+        protected void gvUsers_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            dtUsers = cls_users.BindAllUsers();
+            if (dtUsers.Rows.Count > 0)
+            {
+                foreach (DataRow row in dtUsers.Rows)
+                {
+                    if (row["Role"].ToString() == "Admin")
+                    {
+                        e.Row.Cells[0].CssClass = "successbkg";
+                    }
+                    else if (row["Role"].ToString() == "User")
+                    {
+                        e.Row.Cells[0].CssClass = "rejectedbkg";
+                    }
+                }
+            }
+        }
+
         protected void BtnClose_Click(object sender, EventArgs e)
         {
             try

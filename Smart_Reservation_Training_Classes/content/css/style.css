@@ -244,3 +244,13 @@ a.sidebar-link {
     background-image: url(../img/cross-on-white.gif);
     color: #c9282d;
 }
+.successbkg {
+    background-color: #89DC85;
+}
+
+.rejectedbkg {
+    background-color: #FF0000;
+}
+.lightbkg {
+    background-color: #F5F5F5;
+}

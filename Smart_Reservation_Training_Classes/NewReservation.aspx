@@ -47,15 +47,15 @@
                                 <asp:TemplateField>
                                     <ItemTemplate>
                                         <asp:RadioButton ID="RadioButtonChooseRoom" runat="server" />
-                                        <asp:HiddenField ID="hfRoomID" runat="server" Value='<%#Eval("RoomID")%>' />
+                                        <asp:HiddenField ID="hfRoomCode" runat="server" Value='<%#Eval("RoomCode")%>' />
                                     </ItemTemplate>
                                     <ItemStyle Width="10px" />
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="RoomID" HeaderText="RoomID" Visible="false"></asp:BoundField>
                                 <asp:BoundField DataField="RoomCode" HeaderText="كود القاعة"></asp:BoundField>
                                 <asp:BoundField DataField="RoomName" HeaderText="اسم القاعة"></asp:BoundField>
+                                <asp:BoundField DataField="RoomType" HeaderText="نوع القاعة"></asp:BoundField>
                                 <asp:BoundField DataField="RoomLocation" HeaderText="مقر القاعة"></asp:BoundField>
-                                <asp:BoundField DataField="Capacity" HeaderText="سعة القاعة"></asp:BoundField>
+                                <asp:BoundField DataField="RoomCapacity" HeaderText="سعة القاعة"></asp:BoundField>
                             </Columns>
                             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                             <AlternatingRowStyle BackColor="White" />
@@ -110,26 +110,13 @@
                                 </asp:TableRow>--%>
                                 <asp:TableRow CssClass="forms-input-row">
                                     <asp:TableCell>
-                                        <label class="forms-input-label">كود الدورة</label>
-                                    </asp:TableCell>
-                                    <asp:TableCell>
-                                        <asp:TextBox ID="txtCourseCode" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </asp:TableCell>
-                                    <asp:TableCell>
-                                        <label class="forms-input-label">اسم الدورة</label>
-                                    </asp:TableCell>
-                                    <asp:TableCell>
-                                        <asp:TextBox ID="txtCourseName" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </asp:TableCell>
-                                </asp:TableRow>
-                                <asp:TableRow CssClass="forms-input-row">
-                                    <asp:TableCell>
                                         <label class="forms-input-label">الفئة المستهدفة</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
                                         <asp:TextBox ID="txtTargetGroup" runat="server" CssClass="form-control"></asp:TextBox>
                                     </asp:TableCell>
                                 </asp:TableRow>
+
                                 <asp:TableRow CssClass="forms-input-row">
                                     <asp:TableCell>
                                         <label class="forms-input-label">الجهة المنفذة</label>
@@ -144,6 +131,7 @@
                                         <asp:TextBox ID="txtBeneficiaryEntity" runat="server" CssClass="form-control"></asp:TextBox>
                                     </asp:TableCell>
                                 </asp:TableRow>
+
                                 <asp:TableRow CssClass="forms-input-row">
                                     <asp:TableCell>
                                         <label class="forms-input-label">الوقت</label>
@@ -159,6 +147,7 @@
                                         <asp:TextBox ID="txtEndDate" runat="server" CssClass="form-control d-inline-block" placeholder="تاريخ النهاية"></asp:TextBox>
                                     </asp:TableCell>
                                 </asp:TableRow>
+
                                 <asp:TableRow CssClass="forms-input-row">
                                     <asp:TableCell>
                                         <label class="forms-input-label">العدد المتوقع</label>
@@ -173,6 +162,7 @@
                                         <asp:TextBox ID="txtDuration" runat="server" CssClass="form-control"></asp:TextBox>
                                     </asp:TableCell>
                                 </asp:TableRow>
+
                                 <asp:TableRow CssClass="forms-input-row">
                                     <asp:TableCell>
                                         <label class="forms-input-label">كود القاعة</label>
@@ -180,28 +170,34 @@
                                     <asp:TableCell>
                                         <asp:TextBox ID="txtRoomCode" runat="server" CssClass="form-control"></asp:TextBox>
                                     </asp:TableCell>
-                                    <asp:TableCell>
-                                        <label class="forms-input-label">اسم القاعة</label>
-                                    </asp:TableCell>
-                                    <asp:TableCell>
-                                        <asp:TextBox ID="txtRoomName" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </asp:TableCell>
                                 </asp:TableRow>
+
                                 <asp:TableRow CssClass="forms-input-row">
                                     <asp:TableCell>
-                                        <label class="forms-input-label">سعة القاعة</label>
+                                        <label class="forms-input-label">اسم المدرب</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <asp:TextBox ID="txtCapacity" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtLecturerName" runat="server" CssClass="form-control textarea"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <label class="forms-input-label">مقر التنفيذ(القاعة)</label>
+                                        <label class="forms-input-label">المتطلبات</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <asp:TextBox ID="txtExecutionLocation" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtRequirements" runat="server" CssClass="form-control textarea"></asp:TextBox>
                                     </asp:TableCell>
                                 </asp:TableRow>
+
                                 <asp:TableRow CssClass="forms-input-row">
+                                    <asp:TableCell>
+                                        <label class="forms-input-label">اللغة</label>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <asp:TextBox ID="txtLanguage" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:RadioButtonList ID="RblLanguage" runat="server" CssClass="form-check form-check-inline">
+                                            <asp:ListItem Value="عربي">عربي</asp:ListItem>
+                                            <asp:ListItem Value="إنجليزي">إنجليزي</asp:ListItem>
+                                        </asp:RadioButtonList>
+                                    </asp:TableCell>
                                     <asp:TableCell>
                                         <label class="forms-input-label">استخدام معمل الحاسب</label>
                                     </asp:TableCell>
@@ -211,16 +207,8 @@
                                             <asp:ListItem Value="لا">لا</asp:ListItem>
                                         </asp:RadioButtonList>
                                     </asp:TableCell>
-                                    <asp:TableCell>
-                                        <label class="forms-input-label">تسليم شهادات</label>
-                                    </asp:TableCell>
-                                    <asp:TableCell>
-                                        <asp:RadioButtonList ID="RblCertificates" runat="server" CssClass="form-check form-check-inline">
-                                            <asp:ListItem Value="نعم">نعم</asp:ListItem>
-                                            <asp:ListItem Value="لا">لا</asp:ListItem>
-                                        </asp:RadioButtonList>
-                                    </asp:TableCell>
                                 </asp:TableRow>
+
                                 <asp:TableRow CssClass="forms-input-row">
                                     <asp:TableCell>
                                         <label class="forms-input-label">محاور الدورة</label>

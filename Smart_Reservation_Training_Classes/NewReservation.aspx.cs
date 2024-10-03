@@ -35,17 +35,12 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                //Id = 0;
                 foreach (GridViewRow row in gvRoomsAvailable.Rows)
                 {
                     RadioButton radiobutton = (RadioButton)row.FindControl("RadioButtonChooseRoom");
                     if (radiobutton.Checked)
                     {
-                        //Id = Convert.ToInt32(gvRoomsAvailable.Rows[row.RowIndex].Cells[1].Text);
                         txtRoomCode.Text = gvRoomsAvailable.Rows[row.RowIndex].Cells[2].Text;
-                        txtRoomName.Text = gvRoomsAvailable.Rows[row.RowIndex].Cells[3].Text;
-                        txtExecutionLocation.Text = gvRoomsAvailable.Rows[row.RowIndex].Cells[4].Text;
-                        txtCapacity.Text = gvRoomsAvailable.Rows[row.RowIndex].Cells[5].Text;
                         txtStartDate.Text = txtSearchStartDate.Text;
                         txtEndDate.Text = txtSearchEndDate.Text;
 

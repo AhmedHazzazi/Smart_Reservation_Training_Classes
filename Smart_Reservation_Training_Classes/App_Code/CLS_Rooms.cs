@@ -44,38 +44,38 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.CloseConnectionDB();
             return Dt;
         }
-        public void InsertRoom(decimal RoomID, string RoomCode, string RoomName, string RoomLocation, string Capacity)
+        public void InsertRoom(string RoomCode, string RoomName, string RoomType, string RoomLocation, string RoomCapacity)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[5];
-            param[0] = new SqlParameter("@RoomID", SqlDbType.Decimal);
-            param[0].Value = RoomID;
-            param[1] = new SqlParameter("@RoomCode", SqlDbType.NVarChar);
-            param[1].Value = RoomCode;
-            param[2] = new SqlParameter("@RoomName", SqlDbType.NVarChar);
-            param[2].Value = RoomName;
+            param[0] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 200);
+            param[0].Value = RoomCode;
+            param[1] = new SqlParameter("@RoomName", SqlDbType.NVarChar);
+            param[1].Value = RoomName;
+            param[2] = new SqlParameter("@RoomType", SqlDbType.NVarChar);
+            param[2].Value = RoomType;
             param[3] = new SqlParameter("@RoomLocation", SqlDbType.NVarChar);
             param[3].Value = RoomLocation;
-            param[4] = new SqlParameter("@Capacity", SqlDbType.NVarChar);
-            param[4].Value = Capacity;
+            param[4] = new SqlParameter("@RoomCapacity", SqlDbType.NVarChar);
+            param[4].Value = RoomCapacity;
 
             DAL.ExecuteCommandProcedure("SP_InsertRoom", param);
             DAL.CloseConnectionDB();
         }
-        public void UpdateRoom(decimal RoomID, string RoomCode, string RoomName, string RoomLocation, string Capacity)
+        public void UpdateRoom(string RoomCode, string RoomName, string RoomType, string RoomLocation, string RoomCapacity)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[5];
-            param[0] = new SqlParameter("@RoomID", SqlDbType.Decimal);
-            param[0].Value = RoomID;
-            param[1] = new SqlParameter("@RoomCode", SqlDbType.NVarChar);
-            param[1].Value = RoomCode;
-            param[2] = new SqlParameter("@RoomName", SqlDbType.NVarChar);
-            param[2].Value = RoomName;
+            param[0] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 200);
+            param[0].Value = RoomCode;
+            param[1] = new SqlParameter("@RoomName", SqlDbType.NVarChar);
+            param[1].Value = RoomName;
+            param[2] = new SqlParameter("@RoomType", SqlDbType.NVarChar);
+            param[2].Value = RoomType;
             param[3] = new SqlParameter("@RoomLocation", SqlDbType.NVarChar);
             param[3].Value = RoomLocation;
-            param[4] = new SqlParameter("@Capacity", SqlDbType.NVarChar);
-            param[4].Value = Capacity;
+            param[4] = new SqlParameter("@RoomCapacity", SqlDbType.NVarChar);
+            param[4].Value = RoomCapacity;
 
             DAL.ExecuteCommandProcedure("SP_UpdateRoom", param);
             DAL.CloseConnectionDB();

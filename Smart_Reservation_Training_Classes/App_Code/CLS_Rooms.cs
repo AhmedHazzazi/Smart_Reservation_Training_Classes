@@ -80,12 +80,12 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.ExecuteCommandProcedure("SP_UpdateRoom", param);
             DAL.CloseConnectionDB();
         }
-        public void DeleteRoom(decimal RoomID)
+        public void DeleteRoom(string RoomCode)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@RoomID", SqlDbType.Decimal);
-            param[0].Value = RoomID;
+            param[0] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 200);
+            param[0].Value = RoomCode;
             DAL.ExecuteCommandProcedure("SP_DeleteRoom", param);
             DAL.CloseConnectionDB();
         }

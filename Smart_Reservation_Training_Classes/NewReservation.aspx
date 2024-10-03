@@ -40,7 +40,7 @@
                         <asp:Button ID="BtnResetSearch" runat="server" Text="X" CssClass="btn btn-danger" OnClientClick="Loader()" Visible="False" OnClick="BtnResetSearch_Click" />
                     </asp:Panel>
                     <asp:Panel ID="ViewsPanel" runat="server" CssClass="mt-1">
-                        <asp:GridView ID="gvRoomsAvailable" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="RoomID" HeaderStyle-BackColor="green" AutoGenerateColumns="False"
+                        <asp:GridView ID="gvRoomsAvailable" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="RoomCode" HeaderStyle-BackColor="green" AutoGenerateColumns="False"
                             Font-Names="Arial" Font-Size="11pt" AlternatingRowStyle-BackColor="#C2D69B" AllowPaging="True"
                             CellPadding="4" ForeColor="#333333" GridLines="None">
                             <Columns>

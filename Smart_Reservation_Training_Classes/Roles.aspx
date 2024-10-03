@@ -25,12 +25,13 @@
                     <asp:Panel ID="ViewsPanel" runat="server" CssClass="m-1">
                         <asp:GridView ID="gvUsers" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="UserID" HeaderStyle-BackColor="green" AutoGenerateColumns="False"
                             Font-Names="Arial" Font-Size="11pt" AlternatingRowStyle-BackColor="#C2D69B" AllowPaging="True"
-                            CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gvUsers_RowCommand">
+                            CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gvUsers_RowCommand"
+                            OnRowDataBound="gvUsers_RowDataBound">
                             <Columns>
-                                <asp:TemplateField>
+                                <asp:TemplateField HeaderText="#">
                                     <ItemTemplate>
                                         <%# Container.DataItemIndex + 1 %>
-                                        <asp:HiddenField ID="hfInGridViewUserID" runat="server" Value='<%#Eval("UserID")%>' />
+                                        <%--<asp:HiddenField ID="hfInGridViewUserID" runat="server" Value='<%#Eval("UserID")%>' />--%>
                                     </ItemTemplate>
                                     <ItemStyle Width="10px" />
                                 </asp:TemplateField>

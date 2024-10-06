@@ -28,7 +28,7 @@
             </div>
             <asp:MultiView ID="MultiViewCard" runat="server" ActiveViewIndex="0">
                 <asp:View ID="View1" runat="server">
-                    <div style="text-align: center; padding: 5px;">
+                    <div class="row-cols-6 text-center p-1">
                         <asp:Button ID="BtnSaveNext2" runat="server" Text="حفظ و التالي" CssClass="btn btn-primary" OnClientClick="Loader()" OnClick="BtnSaveNext2_Click" />
                     </div>
                     <asp:Panel ID="SearchToolbarPanel" runat="server" CssClass="floatright" DefaultButton="BtnSearch">
@@ -71,12 +71,11 @@
                     </asp:Panel>
                 </asp:View>
                 <asp:View ID="View2" runat="server">
-                    
-                            <div style="text-align: center; padding: 5px;">
-                                <asp:Button ID="BtnStepPrevious1" runat="server" CssClass="btn btn-info" Text="السابق" OnClientClick="Loader()" OnClick="BtnStepPrevious1_Click" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="BtnSaveNext3" runat="server" Text="حفظ و التالي" CssClass="btn btn-primary" OnClientClick="Loader()" OnClick="BtnSaveNext3_Click" />
-                            </div>
+                    <div style="text-align: center; padding: 5px;">
+                        <asp:Button ID="BtnStepPrevious1" runat="server" CssClass="btn btn-info" Text="السابق" OnClientClick="Loader()" OnClick="BtnStepPrevious1_Click" />
+                        <div class="vr"></div>
+                        <asp:Button ID="BtnSaveNext3" runat="server" Text="حفظ و التالي" CssClass="btn btn-primary" OnClientClick="Loader()" OnClick="BtnSaveNext3_Click" />
+                    </div>
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <asp:HiddenField ID="hfReservationID" runat="server" />
@@ -113,7 +112,20 @@
                                         <label class="forms-input-label">الفئة المستهدفة</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <asp:TextBox ID="txtTargetGroup" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:DropDownList ID="DDLTargetGroup" runat="server" CssClass="dropdown dropdown-item dropdown-item-text">
+                                            <asp:ListItem Value="" Selected="True">-- أختر --</asp:ListItem>
+                                            <asp:ListItem Value="هيئة التدريس">هيئة التدريس</asp:ListItem>
+                                            <asp:ListItem Value="هيئة التدريس الجدد">هيئة التدريس الجدد</asp:ListItem>
+                                            <asp:ListItem Value="قيادات أكاديمية">قيادات أكاديمية</asp:ListItem>
+                                            <asp:ListItem Value="قيادات إدارية">قيادات إدارية</asp:ListItem>
+                                            <asp:ListItem Value="إداريين">إداريين</asp:ListItem>
+                                            <asp:ListItem Value="سكرتارية">سكرتارية</asp:ListItem>
+                                            <asp:ListItem Value="طلاب">طلاب</asp:ListItem>
+                                            <asp:ListItem Value="طلاب دراسات عليا">طلاب دراسات عليا</asp:ListItem>
+                                            <asp:ListItem Value="معيدين ومحاضرين">معيدين ومحاضرين</asp:ListItem>
+                                            <asp:ListItem Value="فنيين">فنيين</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <%--<asp:TextBox ID="txtTargetGroup" runat="server" CssClass="form-control"></asp:TextBox>--%>
                                     </asp:TableCell>
                                 </asp:TableRow>
 
@@ -143,8 +155,9 @@
                                         <label class="forms-input-label">التاريخ</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <asp:TextBox ID="txtStartDate" runat="server" CssClass="form-control d-inline-block" placeholder="تاريخ البدية"></asp:TextBox>
-                                        <asp:TextBox ID="txtEndDate" runat="server" CssClass="form-control d-inline-block" placeholder="تاريخ النهاية"></asp:TextBox>
+                                        <asp:TextBox ID="txtStartDate" runat="server" CssClass="form-control hijri-date-input d-inline-block" autocomplete="off" Width="150px"></asp:TextBox>
+                                        <div class="vr"></div>
+                                        <asp:TextBox ID="txtEndDate" runat="server" CssClass="form-control hijri-date-input d-inline-block" autocomplete="off" Width="150px"></asp:TextBox>
                                     </asp:TableCell>
                                 </asp:TableRow>
 
@@ -153,13 +166,13 @@
                                         <label class="forms-input-label">العدد المتوقع</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <asp:TextBox ID="txtExpectedNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtExpectedNumber" runat="server" CssClass="form-control" autocomplete="off"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
                                         <label class="forms-input-label">مدتها</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <asp:TextBox ID="txtDuration" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtDuration" runat="server" CssClass="form-control" autocomplete="off"></asp:TextBox>
                                     </asp:TableCell>
                                 </asp:TableRow>
 
@@ -168,7 +181,13 @@
                                         <label class="forms-input-label">كود القاعة</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <asp:TextBox ID="txtRoomCode" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtRoomCode" runat="server" CssClass="form-control" autocomplete="off"></asp:TextBox>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <label class="forms-input-label">كود الدورة</label>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <asp:TextBox ID="txtCourseCode" runat="server" CssClass="form-control" autocomplete="off"></asp:TextBox>
                                     </asp:TableCell>
                                 </asp:TableRow>
 
@@ -177,13 +196,13 @@
                                         <label class="forms-input-label">اسم المدرب</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <asp:TextBox ID="txtLecturerName" runat="server" CssClass="form-control textarea"></asp:TextBox>
+                                        <asp:TextBox ID="txtLecturerName" runat="server" CssClass="form-control" autocomplete="off"></asp:TextBox>
                                     </asp:TableCell>
                                     <asp:TableCell>
                                         <label class="forms-input-label">المتطلبات</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <asp:TextBox ID="txtRequirements" runat="server" CssClass="form-control textarea"></asp:TextBox>
+                                        <asp:TextBox ID="txtRequirements" runat="server" CssClass="form-control" autocomplete="off" TextMode="MultiLine"></asp:TextBox>
                                     </asp:TableCell>
                                 </asp:TableRow>
 
@@ -192,7 +211,6 @@
                                         <label class="forms-input-label">اللغة</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <asp:TextBox ID="txtLanguage" runat="server" CssClass="form-control"></asp:TextBox>
                                         <asp:RadioButtonList ID="RblLanguage" runat="server" CssClass="form-check form-check-inline">
                                             <asp:ListItem Value="عربي">عربي</asp:ListItem>
                                             <asp:ListItem Value="إنجليزي">إنجليزي</asp:ListItem>
@@ -214,17 +232,23 @@
                                         <label class="forms-input-label">محاور الدورة</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <asp:TextBox ID="txtCourseTopics" runat="server" CssClass="form-control textarea"></asp:TextBox>
+                                        <asp:TextBox ID="txtCourseTopics" runat="server" CssClass="form-control" autocomplete="off" TextMode="MultiLine"></asp:TextBox>
                                     </asp:TableCell>
-                                </asp:TableRow>
-                                <asp:TableRow CssClass="forms-input-row">
                                     <asp:TableCell>
                                         <label class="forms-input-label">ملاحظات</label>
                                     </asp:TableCell>
                                     <asp:TableCell>
-                                        <asp:TextBox ID="txtNotes" runat="server" CssClass="form-control textarea"></asp:TextBox>
+                                        <asp:TextBox ID="txtNotes" runat="server" CssClass="form-control" autocomplete="off" TextMode="MultiLine"></asp:TextBox>
                                     </asp:TableCell>
                                 </asp:TableRow>
+                                <%--<asp:TableRow CssClass="forms-input-row">
+                                    <asp:TableCell>
+                                        <label class="forms-input-label">ملاحظات</label>
+                                    </asp:TableCell>
+                                    <asp:TableCell>
+                                        <asp:TextBox ID="txtNotes" runat="server" CssClass="form-control textarea" autocomplete="off"></asp:TextBox>
+                                    </asp:TableCell>
+                                </asp:TableRow>--%>
                             </asp:Table>
                         </div>
                     </div>
@@ -241,7 +265,7 @@
                         </div>
                         <div style="text-align: center; padding: 5px;">
                             <asp:Button ID="BtnStepPrevious2" runat="server" CssClass="btn btn-info" Text="السابق" OnClientClick="Loader()" OnClick="BtnStepPrevious2_Click" />
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="vr"></div>
                             <asp:Button ID="BtnSend" runat="server" Text="إرسال الطلب" CssClass="btn btn-primary" ValidationGroup="Send" OnClientClick="Loader()" OnClick="BtnSend_Click" />
                         </div>
                         <asp:Panel ID="Panel1" runat="server" CssClass="mt-1">
@@ -252,12 +276,18 @@
             
         </contenttemplate>
         <triggers>
-            <asp:PostBackTrigger ControlID="BtnSearch" />
-            <asp:PostBackTrigger ControlID="BtnResetSearch" />
-            <asp:PostBackTrigger ControlID="BtnSaveNext2" />
-            <asp:PostBackTrigger ControlID="BtnStepPrevious1" />
-            <asp:PostBackTrigger ControlID="BtnSaveNext3" />
-            <asp:PostBackTrigger ControlID="BtnStepPrevious2" />
+            <%--<asp:PostBackTrigger ControlID="BtnSearch" />--%>
+            <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
+            <%--<asp:PostBackTrigger ControlID="BtnResetSearch" />--%>
+            <asp:AsyncPostBackTrigger ControlID="BtnResetSearch" EventName="Click" />
+            <%--<asp:PostBackTrigger ControlID="BtnSaveNext2" />--%>
+            <asp:AsyncPostBackTrigger ControlID="BtnSaveNext2" EventName="Click" />
+            <%--<asp:PostBackTrigger ControlID="BtnStepPrevious1" />--%>
+            <asp:AsyncPostBackTrigger ControlID="BtnStepPrevious1" EventName="Click" />
+            <%--<asp:PostBackTrigger ControlID="BtnSaveNext3" />--%>
+            <asp:AsyncPostBackTrigger ControlID="BtnSaveNext3" EventName="Click" />
+            <%--<asp:PostBackTrigger ControlID="BtnStepPrevious2" />--%>
+            <asp:AsyncPostBackTrigger ControlID="BtnStepPrevious2" EventName="Click" />
             <%--<asp:PostBackTrigger ControlID="BtnSend" />--%>
         </triggers>
     </asp:UpdatePanel>

@@ -2,14 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type="text/javascript">
-    function ShowPopup(title, body) {
-        $("#MyPopup .modal-title").html(title);
-        $("#MyPopup .modal-body").html(body);
-        new bootstrap.Modal($("#MyPopup").show();
-    }
-    </script>
-    <asp:UpdatePanel ID="UpdatePanel" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div class="row text-center p-1">
                 <div class="col-sm-12">
@@ -28,10 +21,21 @@
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <label for="txtEmail" class="col-sm-2 col-form-label">البريد الإلكتروني</label>
+                        <div class="col-sm-4">
+                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control form-control-sm" autocomplete="off" placeholder="البريد الإلكتروني" AutoPostBack="True" OnTextChanged="txtEmail_TextChanged" />
+                            <span id="AvailabilityEmail" runat="server" class="notification-input ni-correct" visible="false" />
+                            <span id="NotAvailabilityEmail" runat="server" class="notification-input ni-error" visible="false" />
+                            <asp:RequiredFieldValidator ID="RFVtxtEmail" runat="server" ErrorMessage="<img src='content/img/validation-false.png'/> يجب إدخال البريد الإلكتروني" Display="Dynamic" ForeColor="Red" ControlToValidate="txtEmail" />
+                            <asp:RegularExpressionValidator ID="REVtxtEmail" runat="server" Display="Dynamic" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ForeColor="Red" ErrorMessage="عنوان البريد الإلكتروني غير صالح" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <label for="txtUserName" class="col-sm-2 col-form-label">اسم المستخدم</label>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control form-control-sm" autocomplete="off" placeholder="اسم المستخدم" OnTextChanged="txtUserName_TextChanged" AutoPostBack="True" />
-                            <span id="spanAvailability" runat="server" class="notification-input ni-correct" visible="false" /><span id="spanNotAvailability" runat="server" class="notification-input ni-error" visible="false" />
+                            <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control form-control-sm" autocomplete="off" placeholder="اسم المستخدم" AutoPostBack="True" OnTextChanged="txtUserName_TextChanged" />
+                            <span id="AvailabilityUserName" runat="server" class="notification-input ni-correct" visible="false" />
+                            <span id="NotAvailabilityUserName" runat="server" class="notification-input ni-error" visible="false" />
                             <asp:RequiredFieldValidator ID="RFVtxtUserName" runat="server" ErrorMessage="<img src='content/img/validation-false.png'/> يجب إدخال اسم المستخدم" ForeColor="Red" ControlToValidate="txtUserName" />
                         </div>
                     </div>
@@ -49,14 +53,6 @@
                             <asp:CompareValidator ID="ComparetxtConfirmPassword" runat="server" ErrorMessage="<img src='content/img/validation-false.png'/> كلمة المرور وتأكيد كلمة المرور غير متطابقتين" ForeColor="Red" ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" />
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label for="txtEmail" class="col-sm-2 col-form-label">البريد الإلكتروني</label>
-                        <div class="col-sm-4">
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control form-control-sm" autocomplete="off" placeholder="البريد الإلكتروني" />
-                            <asp:RequiredFieldValidator ID="RFVtxtEmail" runat="server" ErrorMessage="<img src='content/img/validation-false.png'/> يجب إدخال البريد الإلكتروني" Display="Dynamic" ForeColor="Red" ControlToValidate="txtEmail" />
-                            <asp:RegularExpressionValidator ID="REVtxtEmail" runat="server" Display="Dynamic" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ForeColor="Red" ErrorMessage="عنوان البريد الإلكتروني غير صالح" />
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-sm-10">
                             <asp:Button ID="BtnSave" runat="server" Text="حفظ" CssClass="btn btn-primary" OnClientClick="Loader()" OnClick="BtnSave_Click" />
@@ -66,8 +62,11 @@
             </asp:Panel>
         </ContentTemplate>
         <Triggers>
-            <asp:PostBackTrigger ControlID="BtnSave" />
-            <asp:PostBackTrigger ControlID="BtnSave" />
+            <%--<asp:PostBackTrigger ControlID="BtnSave" />--%>
+            <asp:AsyncPostBackTrigger ControlID="BtnSave" EventName="Click" />
+            <%--<asp:PostBackTrigger ControlID="txtUserName" />--%>
+            <asp:AsyncPostBackTrigger ControlID="txtUserName" EventName="TextChanged" />
+            <asp:AsyncPostBackTrigger ControlID="txtEmail" EventName="TextChanged" />
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>

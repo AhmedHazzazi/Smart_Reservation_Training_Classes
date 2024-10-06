@@ -42,22 +42,22 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.ScriptManager ScriptManager1_Master;
 
         /// <summary>
-        /// MenusUsers control.
+        /// Log control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MenusUsers;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Log;
 
         /// <summary>
-        /// MenusAdmin control.
+        /// Login control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MenusAdmin;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Login;
 
         /// <summary>
         /// Logout control.
@@ -76,6 +76,33 @@ namespace Smart_Reservation_Training_Classes
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblName;
+
+        /// <summary>
+        /// BtnLogout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnLogout;
+
+        /// <summary>
+        /// MenusUsers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MenusUsers;
+
+        /// <summary>
+        /// MenusAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MenusAdmin;
 
         /// <summary>
         /// ContentPlaceHolder1 control.

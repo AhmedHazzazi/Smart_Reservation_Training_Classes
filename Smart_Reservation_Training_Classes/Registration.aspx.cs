@@ -20,34 +20,14 @@ namespace Smart_Reservation_Training_Classes
         {
             HtmlGenericControl Logout = (HtmlGenericControl)Master.FindControl("Logout");
             Logout.Visible = false;
+            HtmlGenericControl Login = (HtmlGenericControl)Master.FindControl("Login");
+            Login.Visible = true;
             lblError.Visible = false;
             lblSuccess.Visible = false;
+            //txtName.Focus();
         }
 
-        [WebMethod]
-        public static bool IsUserAvailable(string UserName)
-        {
-            bool result = false;
-            CLS_Users cls_users = new CLS_Users();
-            DataTable dtUsers =new DataTable();
-            dtUsers = cls_users.SearchAvailableUser(UserName);
-            if (dtUsers.Rows.Count == 0)
-                result = true;
-            else result = false;
-            return result;
-        }
-        public static bool IsEmailAvailable(string Email)
-        {
-            bool resultEmail = false;
-            CLS_Users cls_users = new CLS_Users();
-            DataTable dtEmail = new DataTable();
-            dtEmail = cls_users.SearchAvailableEmail(Email);
-            if (dtEmail.Rows.Count == 0)
-                resultEmail = true;
-            else resultEmail = false;
-            return resultEmail;
-        }
-
+        //Check For Availability UserName Or Not Availability -- التحقق من توفر اسم المستخدم أو عدم توفره
         protected void txtUserName_TextChanged(object sender, EventArgs e)
         {
             try
@@ -55,24 +35,51 @@ namespace Smart_Reservation_Training_Classes
                 dtUsers = cls_users.SearchAvailableUser(txtUserName.Text);
                 if (dtUsers.Rows.Count > 0)
                 {
-                    spanAvailability.Visible = false;
-                    spanNotAvailability.Visible = true;
-                    spanNotAvailability.InnerText = "غير متاح";
+                    AvailabilityUserName.Visible = false;
+                    NotAvailabilityUserName.Visible = true;
+                    NotAvailabilityUserName.InnerText = "إسم المستخدم غير متاح";
                 }
                 else
                 {
-                    spanNotAvailability.Visible = false;
-                    spanAvailability.Visible = true;
-                    spanAvailability.InnerText = "متاح";
+                    NotAvailabilityUserName.Visible = false;
+                    AvailabilityUserName.Visible = true;
+                    AvailabilityUserName.InnerText = "إسم المستخدم متاح";
                 }
             }
-            catch (Exception)
+            catch (Exception excAvailabilityUserName)
             {
-
-                throw;
+                lblError.Visible = true;
+                lblError.Text = excAvailabilityUserName.Message.ToString();
             }
         }
 
+        //Check For Availability Email Or Not Availability -- التحقق من التوفر عن طريق البريد الإلكتروني أو عدم التوفر
+        protected void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dtUsers = cls_users.SearchAvailableEmail(txtEmail.Text);
+                if (dtUsers.Rows.Count > 0)
+                {
+                    AvailabilityEmail.Visible = false;
+                    NotAvailabilityEmail.Visible = true;
+                    NotAvailabilityEmail.InnerText = "البريد الإلكتروني غير متاح";
+                }
+                else
+                {
+                    NotAvailabilityEmail.Visible = false;
+                    AvailabilityEmail.Visible = true;
+                    AvailabilityEmail.InnerText = "البريد الإلكتروني متاح";
+                }
+            }
+            catch (Exception excAvailabilityEmail)
+            {
+                lblError.Visible = true;
+                lblError.Text = excAvailabilityEmail.Message.ToString();
+            }
+        }
+
+        //Save Data To Database After Verification
         protected void BtnSave_Click(object sender, EventArgs e)
         {
             try
@@ -104,7 +111,7 @@ namespace Smart_Reservation_Training_Classes
                         lblError.Visible = false;
                         lblSuccess.Visible = true;
                         lblSuccess.Text = "تم التسجيل بنجاح" + "\r\n" + "رقم المستخدم هو : " + Id.ToString() + "\r\n" + "اسم المستخدم هو : " + dtUsers.Rows[0]["UserName"].ToString();
-                        //ClearData();
+                        ClearData();
                     }
                 }
                 else
@@ -113,16 +120,15 @@ namespace Smart_Reservation_Training_Classes
                     lblError.Visible = true;
                     lblError.Text = "يرجى التأكد من إدخال جميع البيانات المطلوبة";
                 }
-                //ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
             }
             catch (Exception excBtnSave)
             {
-                //throw excBtnSave;
                 lblError.Visible = true;
                 lblError.Text = excBtnSave.Message.ToString();
             }
         }
 
+        //Function To Clear Data From The Form After Saving -- Used In The Save Event
         public void ClearData()
         {
             //hfUserID.Value = string.Empty;

@@ -35,24 +35,32 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                foreach (GridViewRow row in gvRoomsAvailable.Rows)
+                if (!string.IsNullOrWhiteSpace(txtSearchStartDate.Text) || !string.IsNullOrWhiteSpace(txtSearchEndDate.Text))
                 {
-                    RadioButton radiobutton = (RadioButton)row.FindControl("RadioButtonChooseRoom");
-                    if (radiobutton.Checked)
+                    foreach (GridViewRow row in gvRoomsAvailable.Rows)
                     {
-                        txtRoomCode.Text = gvRoomsAvailable.Rows[row.RowIndex].Cells[2].Text;
-                        txtStartDate.Text = txtSearchStartDate.Text;
-                        txtEndDate.Text = txtSearchEndDate.Text;
+                        RadioButton radiobutton = (RadioButton)row.FindControl("RadioButtonChooseRoom");
+                        if (radiobutton.Checked)
+                        {
+                            txtRoomCode.Text = gvRoomsAvailable.Rows[row.RowIndex].Cells[1].Text;
+                            txtStartDate.Text = txtSearchStartDate.Text;
+                            txtEndDate.Text = txtSearchEndDate.Text;
 
-                        lblWizardError.Visible = false;
-                        lblWizardError.Text = string.Empty;
-                        MultiViewCard.ActiveViewIndex = 1;
+                            lblWizardError.Visible = false;
+                            lblWizardError.Text = string.Empty;
+                            MultiViewCard.ActiveViewIndex = 1;
+                        }
+                        else
+                        {
+                            lblWizardError.Visible = true;
+                            lblWizardError.Text = "يجب إختيار قاعة تدريبية من القاعات التدريبية المتاحة للإنتقال على بيانات الدورة";
+                        }
                     }
-                    else
-                    {
-                        lblWizardError.Visible = true;
-                        lblWizardError.Text = "يجب إختيار قاعة تدريبية من القاعات التدريبية المتاحة للإنتقال على بيانات الدورة";
-                    }
+                }
+                else
+                {
+                    lblWizardError.Visible = true;
+                    lblWizardError.Text = "يجب إدخال تاريخ البداية و تاريخ النهاية لعرض القاعات التدريبية المتاحة";
                 }
             }
             catch (Exception excBtnSaveNext2)
@@ -146,8 +154,10 @@ namespace Smart_Reservation_Training_Classes
                         gvRoomsAvailable.DataSource = null;
                         gvRoomsAvailable.DataBind();
                     }
-                    lblWizardError.Text = string.Empty;
                     lblWizardError.Visible = false;
+                    lblWizardError.Text = string.Empty;
+                    txtSearchStartDate.Enabled = false;
+                    txtSearchEndDate.Enabled = false;
                 }
                 else
                 {
@@ -172,7 +182,11 @@ namespace Smart_Reservation_Training_Classes
             BtnResetSearch.Visible = false;
             txtSearchStartDate.Text = "";
             txtSearchEndDate.Text = "";
-            LoadRoomsAvailable();
+            txtSearchStartDate.Enabled = true;
+            txtSearchEndDate.Enabled = true;
+            lblWizardError.Visible = false;
+            lblWizardError.Text = string.Empty;
+            //LoadRoomsAvailable();
         }
     }
 }

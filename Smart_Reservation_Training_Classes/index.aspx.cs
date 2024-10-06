@@ -11,7 +11,7 @@ namespace Smart_Reservation_Training_Classes
 {
     public partial class index : System.Web.UI.Page
     {
-        CLS_Users cls_LoginUsers = new CLS_Users();
+        CLS_Users cls_users = new CLS_Users();
         DataTable dtUsers = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,7 +28,7 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                dtUsers = cls_LoginUsers.SearchUser((string)Session["UserID"]);
+                dtUsers = cls_users.SearchUser((string)Session["UserID"]);
                 if (dtUsers.Rows.Count > 0)
                 {
                     foreach (DataRow row in dtUsers.Rows)
@@ -47,7 +47,7 @@ namespace Smart_Reservation_Training_Classes
                 }
                 else
                 {
-                    Error_Panel.Visible=true;;
+                    Error_Panel.Visible = true;
                     lblErrorMsg.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
                 }
             }

@@ -23,10 +23,8 @@
                         <asp:Button ID="BtnResetSearch" runat="server" Text="X" CssClass="btn btn-danger" OnClientClick="Loader()" Visible="False" OnClick="BtnResetSearch_Click" />
                     </asp:Panel>
                     <asp:Panel ID="ViewsPanel" runat="server" CssClass="m-1">
-                        <asp:GridView ID="gvUsers" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="UserID" HeaderStyle-BackColor="green" AutoGenerateColumns="False"
-                            Font-Names="Arial" Font-Size="11pt" AlternatingRowStyle-BackColor="#C2D69B" AllowPaging="True"
-                            CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gvUsers_RowCommand"
-                            OnRowDataBound="gvUsers_RowDataBound">
+                        <asp:GridView ID="gvUsers" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="UserID" 
+                            AutoGenerateColumns="False" AllowPaging="True" OnRowCommand="gvUsers_RowCommand" OnRowDataBound="gvUsers_RowDataBound" PageSize="5">
                             <Columns>
                                 <asp:TemplateField HeaderText="#">
                                     <ItemTemplate>
@@ -71,14 +69,26 @@
                             <label for="txtName" class="col-sm-2 col-form-label">الإسم الكامل</label>
                             <div class="col-sm-8">
                                 <asp:HiddenField ID="hfUserID" runat="server" />
-                                <asp:TextBox ID="txtName" runat="server" CssClass="form-control form-control-sm" placeholder="الإسم الكامل"></asp:TextBox>
+                                <asp:TextBox ID="txtName" runat="server" CssClass="form-control form-control-sm" autocomplete="off" placeholder="الإسم الكامل"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RFVtxtName" runat="server" ErrorMessage="يجب إدخال الإسم الكامل" ForeColor="Red" ControlToValidate="txtName" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txtEmail" class="col-sm-2 col-form-label">البريد الإلكتروني</label>
+                            <div class="col-sm-8">
+                                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control form-control-sm" autocomplete="off" placeholder="البريد الإلكتروني" AutoPostBack="true" OnTextChanged="txtEmail_TextChanged"></asp:TextBox>
+                                <span id="AvailabilityEmail" runat="server" class="notification-input ni-correct" visible="false" />
+                                <span id="NotAvailabilityEmail" runat="server" class="notification-input ni-error" visible="false" />
+                                <asp:RequiredFieldValidator ID="RFVtxtEmail" runat="server" ErrorMessage="يجب إدخال البريد الإلكتروني" Display="Dynamic" ForeColor="Red" ControlToValidate="txtEmail" />
+                                <asp:RegularExpressionValidator ID="REVtxtEmail" runat="server" Display="Dynamic" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ForeColor="Red" ErrorMessage="عنوان البريد الإلكتروني غير صالح" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="txtUserName" class="col-sm-2 col-form-label">اسم المستخدم</label>
                             <div class="col-sm-8">
-                                <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control form-control-sm" placeholder="اسم المستخدم"></asp:TextBox>
+                                <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control form-control-sm" autocomplete="off" placeholder="اسم المستخدم" AutoPostBack="true" OnTextChanged="txtUserName_TextChanged"></asp:TextBox>
+                                <span id="AvailabilityUserName" runat="server" class="notification-input ni-correct" visible="false" />
+                                <span id="NotAvailabilityUserName" runat="server" class="notification-input ni-error" visible="false" />
                                 <asp:RequiredFieldValidator ID="RFVtxtUserName" runat="server" ErrorMessage="يجب إدخال اسم مستخدم" ForeColor="Red" ControlToValidate="txtUserName" />
                             </div>
                         </div>
@@ -97,14 +107,6 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtEmail" class="col-sm-2 col-form-label">البريد الإلكتروني</label>
-                            <div class="col-sm-8">
-                                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control form-control-sm" placeholder="البريد الإلكتروني"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RFVtxtEmail" runat="server" ErrorMessage="يجب إدخال البريد الإلكتروني" Display="Dynamic" ForeColor="Red" ControlToValidate="txtEmail" />
-                                <asp:RegularExpressionValidator ID="REVtxtEmail" runat="server" Display="Dynamic" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ForeColor="Red" ErrorMessage="عنوان البريد الإلكتروني غير صالح" />
-                            </div>
-                        </div>
-                        <div class="row mb-3">
                             <label for="RblRole" class="col-sm-2 col-form-label">نوع الصلاحية</label>
                             <div class="col-sm-8">
                                 <asp:RadioButtonList ID="RblRole" runat="server" CssClass="form-check form-check-inline">
@@ -117,7 +119,8 @@
                         <div class="row">
                             <div class="col-sm-10">
                                 <asp:Button ID="BtnSave" runat="server" Text="حفظ" CssClass="btn btn-primary" OnClientClick="Loader()" OnClick="BtnSave_Click" />
-                                <asp:Button ID="BtnClose" runat="server" Text="إغلاق" CssClass="btn btn-danger" OnClientClick="Loader()" OnClick="BtnClose_Click" />
+                                <%--<asp:Button ID="BtnClose" runat="server" Text="إغلاق" CssClass="btn btn-danger" OnClientClick="Loader()" OnClick="BtnClose_Click" />--%>
+                                <a href="Roles.aspx" class="btn btn-danger" onclick="Loader();">إغلاق</a>
                             </div>
                         </div>
                     </div>
@@ -125,10 +128,16 @@
             </asp:MultiView>
         </ContentTemplate>
         <Triggers>
-            <asp:PostBackTrigger ControlID="BtnAddUser" />
-            <asp:PostBackTrigger ControlID="BtnSearch" />
-            <asp:PostBackTrigger ControlID="BtnResetSearch" />
+            <%--<asp:PostBackTrigger ControlID="BtnAddUser" />--%>
+            <asp:AsyncPostBackTrigger ControlID="BtnAddUser" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="BtnSave" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="BtnResetSearch" EventName="Click" />
+            <%--<asp:PostBackTrigger ControlID="BtnSearch" />--%>
+            <%--<asp:PostBackTrigger ControlID="BtnResetSearch" />--%>
             <asp:PostBackTrigger ControlID="gvUsers" />
+            <asp:AsyncPostBackTrigger ControlID="txtUserName" EventName="TextChanged" />
+            <asp:AsyncPostBackTrigger ControlID="txtEmail" EventName="TextChanged" />
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>

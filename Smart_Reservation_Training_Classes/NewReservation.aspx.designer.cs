@@ -168,13 +168,13 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.WebControls.Table tblDataReservation;
 
         /// <summary>
-        /// txtTargetGroup control.
+        /// DDLTargetGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTargetGroup;
+        protected global::System.Web.UI.WebControls.DropDownList DDLTargetGroup;
 
         /// <summary>
         /// txtImplementingEntity control.
@@ -249,6 +249,15 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.WebControls.TextBox txtRoomCode;
 
         /// <summary>
+        /// txtCourseCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCourseCode;
+
+        /// <summary>
         /// txtLecturerName control.
         /// </summary>
         /// <remarks>
@@ -265,15 +274,6 @@ namespace Smart_Reservation_Training_Classes
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRequirements;
-
-        /// <summary>
-        /// txtLanguage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLanguage;
 
         /// <summary>
         /// RblLanguage control.

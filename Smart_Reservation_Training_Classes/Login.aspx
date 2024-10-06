@@ -47,7 +47,7 @@
                         </div>
                         <asp:Button ID="BtnLogin" runat="server" CssClass="btn btn-lg btn-primary w-100 mt-2" Text="تسجيل الدخول" OnClientClick="Loader();" OnClick="BtnLogin_Click" />
                         <div class="row p-2">
-                            <a href="Registraion.aspx" onclick="Loader();">تسجيل مستخدم جديد</a>
+                            <a href="Registration.aspx" onclick="Loader();">تسجيل مستخدم جديد</a>
                             <a href="SendPassword.aspx" onclick="Loader();">نسيت كلمة المرور</a>
                         </div>
                         <asp:Label ID="MsgError" runat="server" ForeColor="Red" Visible="False" Font-Bold="True"></asp:Label>

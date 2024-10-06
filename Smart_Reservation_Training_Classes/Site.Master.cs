@@ -22,7 +22,14 @@ namespace Smart_Reservation_Training_Classes
                 if (Session["UserID"] != null)
                 {
                     lblName.Text = Session["Name"].ToString();
+                    Login.Visible = false;
+                    Logout.Visible = true;
                     MenusAdminAndUsers();
+                }
+                else
+                {
+                    Login.Visible = true;
+                    Logout.Visible = false;
                 }
             }
             if (IsPostBack)
@@ -61,6 +68,12 @@ namespace Smart_Reservation_Training_Classes
                 throw excMenusAdminAndUsers;
                 //Page.ClientScript.RegisterStartupScript(this.GetType(), "onload", excMenusAdminAndUsers.Message.ToString() + "<script>swal('لم يتم العثور على بيانات','', 'error');</script>");
             }
+        }
+
+        protected void BtnLogout_Click(object sender, EventArgs e)
+        {
+            Session["UserID"] = null;
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

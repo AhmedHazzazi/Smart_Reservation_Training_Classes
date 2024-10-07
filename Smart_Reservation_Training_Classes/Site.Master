@@ -38,9 +38,10 @@
                                 <a href="login.aspx" onclick="Loader();">تسجيل الدخول</a>
                             </div>
                             <div id="Logout" runat="server" visible="false">
-                                مرحبا :
-                                <asp:Label ID="lblName" runat="server" CssClass="text-primary"></asp:Label>
-                                <div class="vr"></div>
+                                <div>
+                                    مرحبا :
+                                    <asp:Label ID="lblName" runat="server" CssClass="text-primary"></asp:Label>
+                                </div>
                                 <asp:LinkButton ID="BtnLogout" runat="server" OnClientClick="Loader()" OnClick="BtnLogout_Click">تسجيل خروج</asp:LinkButton>
                             </div>
                         </li>

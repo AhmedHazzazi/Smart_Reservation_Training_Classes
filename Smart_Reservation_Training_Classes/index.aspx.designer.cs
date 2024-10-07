@@ -51,24 +51,6 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.WebControls.Button BtnViewRoles;
 
         /// <summary>
-        /// BtnAddRoles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAddRoles;
-
-        /// <summary>
-        /// BtnEditRoles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEditRoles;
-
-        /// <summary>
         /// BtnViewReservationAdmin control.
         /// </summary>
         /// <remarks>
@@ -76,24 +58,6 @@ namespace Smart_Reservation_Training_Classes
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnViewReservationAdmin;
-
-        /// <summary>
-        /// BtnAddReservationAdmin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAddReservationAdmin;
-
-        /// <summary>
-        /// BtnEditReservationAdmin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEditReservationAdmin;
 
         /// <summary>
         /// BtnViewRooms control.
@@ -105,24 +69,6 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.WebControls.Button BtnViewRooms;
 
         /// <summary>
-        /// BtnAddRooms control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAddRooms;
-
-        /// <summary>
-        /// BtnEditRooms control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEditRooms;
-
-        /// <summary>
         /// BtnViewCourses control.
         /// </summary>
         /// <remarks>
@@ -130,24 +76,6 @@ namespace Smart_Reservation_Training_Classes
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnViewCourses;
-
-        /// <summary>
-        /// BtnAddCourses control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAddCourses;
-
-        /// <summary>
-        /// BtnEditCourses control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEditCourses;
 
         /// <summary>
         /// Users control.

@@ -24,7 +24,7 @@
                     </asp:Panel>
                     <asp:Panel ID="ViewsPanel" runat="server" CssClass="m-1">
                         <asp:GridView ID="gvUsers" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="UserID" 
-                            AutoGenerateColumns="False" AllowPaging="True" OnRowCommand="gvUsers_RowCommand" OnRowDataBound="gvUsers_RowDataBound" PageSize="5">
+                            AutoGenerateColumns="False" AllowPaging="True" OnRowCommand="gvUsers_RowCommand" OnRowDataBound="gvUsers_RowDataBound" OnPageIndexChanging="gvUsers_PageIndexChanging" PageSize="5">
                             <Columns>
                                 <asp:TemplateField HeaderText="#">
                                     <ItemTemplate>

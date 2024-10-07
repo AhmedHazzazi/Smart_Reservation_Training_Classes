@@ -29,7 +29,7 @@
             <asp:MultiView ID="MultiViewCard" runat="server" ActiveViewIndex="0">
                 <asp:View ID="View1" runat="server">
                     <div class="row-cols-6 text-center p-1">
-                        <asp:Button ID="BtnSaveNext2" runat="server" Text="حفظ و التالي" CssClass="btn btn-primary" OnClientClick="Loader()" OnClick="BtnSaveNext2_Click" />
+                        <asp:Button ID="BtnSaveNext2" runat="server" Text="حفظ و التالي" CssClass="btn btn-info w-auto" OnClientClick="Loader()" OnClick="BtnSaveNext2_Click" />
                     </div>
                     <asp:Panel ID="SearchToolbarPanel" runat="server" CssClass="floatright" DefaultButton="BtnSearch">
                         <label class="label">تاريخ البداية : </label>
@@ -71,10 +71,10 @@
                     </asp:Panel>
                 </asp:View>
                 <asp:View ID="View2" runat="server">
-                    <div style="text-align: center; padding: 5px;">
+                    <div class="row-cols-6 text-center p-1">
                         <asp:Button ID="BtnStepPrevious1" runat="server" CssClass="btn btn-info" Text="السابق" OnClientClick="Loader()" OnClick="BtnStepPrevious1_Click" />
                         <div class="vr"></div>
-                        <asp:Button ID="BtnSaveNext3" runat="server" Text="حفظ و التالي" CssClass="btn btn-primary" OnClientClick="Loader()" OnClick="BtnSaveNext3_Click" />
+                        <asp:Button ID="BtnSaveNext3" runat="server" Text="حفظ و التالي" CssClass="btn btn-info w-auto" OnClientClick="Loader()" OnClick="BtnSaveNext3_Click" />
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -263,10 +263,10 @@
                         <div class="col-12" style="text-align: right;">
                             <asp:Label ID="lblSendError" runat="server" ForeColor="Red" Visible="false" Style="text-align: center; padding: 10px;"></asp:Label>
                         </div>
-                        <div style="text-align: center; padding: 5px;">
+                        <div class="row-cols-6 text-center p-1">
                             <asp:Button ID="BtnStepPrevious2" runat="server" CssClass="btn btn-info" Text="السابق" OnClientClick="Loader()" OnClick="BtnStepPrevious2_Click" />
                             <div class="vr"></div>
-                            <asp:Button ID="BtnSend" runat="server" Text="إرسال الطلب" CssClass="btn btn-primary" ValidationGroup="Send" OnClientClick="Loader()" OnClick="BtnSend_Click" />
+                            <asp:Button ID="BtnSend" runat="server" Text="إرسال الطلب" CssClass="btn btn-info" ValidationGroup="Send" OnClientClick="Loader()" OnClick="BtnSend_Click" />
                         </div>
                         <asp:Panel ID="Panel1" runat="server" CssClass="mt-1">
                         </asp:Panel>

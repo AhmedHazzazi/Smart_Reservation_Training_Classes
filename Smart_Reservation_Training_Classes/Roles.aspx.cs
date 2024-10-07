@@ -13,7 +13,7 @@ namespace Smart_Reservation_Training_Classes
 {
     public partial class Roles : System.Web.UI.Page
     {
-        CLS_Users cls_users = new CLS_Users();
+        CLS_Users cls_Users = new CLS_Users();
         DataTable dtUsers, dtUserName, dtEmail;
         public decimal Id;
         //SRTC_DBDataContext ctxSRTC_DBD = new SRTC_DBDataContext();
@@ -36,7 +36,7 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                dtUsers = cls_users.BindAllUsers();
+                dtUsers = cls_Users.BindAllUsers();
                 if (dtUsers.Rows.Count > 0)
                 {
                     gvUsers.DataSource = dtUsers;
@@ -65,12 +65,12 @@ namespace Smart_Reservation_Training_Classes
                     && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtConfirmPassword.Text)
                     && !string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(RblRole.SelectedValue))
                 {
-                    dtUserName = cls_users.SearchAvailableUser(txtUserName.Text);
-                    dtEmail = cls_users.SearchAvailableEmail(txtEmail.Text);
+                    dtUserName = cls_Users.SearchAvailableUser(txtUserName.Text);
+                    dtEmail = cls_Users.SearchAvailableEmail(txtEmail.Text);
                     if (dtUserName.Rows.Count > 0)
                     {
                         Id = Convert.ToDecimal(hfUserID.Value = dtUserName.Rows[0]["UserID"].ToString());
-                        cls_users.UpdateUser(Id, txtName.Text, txtUserName.Text, txtPassword.Text, txtEmail.Text, RblRole.SelectedValue.ToString());
+                        cls_Users.UpdateUser(Id, txtName.Text, txtUserName.Text, txtPassword.Text, txtEmail.Text, RblRole.SelectedValue.ToString());
                         lblSuccess.Visible = true;
                         lblSuccess.Text = "لقد تم تعديل بيانات المستخدم بنجاح";
                     }
@@ -90,9 +90,9 @@ namespace Smart_Reservation_Training_Classes
                         }
                         else
                         {
-                            Id = Convert.ToDecimal(hfUserID.Value = cls_users.MaxIDUserID().Rows[0]["UserID"].ToString());
-                            cls_users.InsertUser(Id, txtName.Text, txtUserName.Text, txtPassword.Text, txtEmail.Text, "User");
-                            dtUsers = cls_users.SearchUser(Id.ToString());
+                            Id = Convert.ToDecimal(hfUserID.Value = cls_Users.MaxIDUserID().Rows[0]["UserID"].ToString());
+                            cls_Users.InsertUser(Id, txtName.Text, txtUserName.Text, txtPassword.Text, txtEmail.Text, RblRole.SelectedValue.ToString());
+                            dtUsers = cls_Users.SearchUser(Id.ToString());
                             lblError.Visible = false;
                             lblSuccess.Visible = true;
                             lblSuccess.Text = "تم التسجيل بنجاح" + "\r\n" + "رقم المستخدم هو : " + Id.ToString() + "\r\n" + "اسم المستخدم هو : " + dtUsers.Rows[0]["UserName"].ToString();
@@ -122,7 +122,7 @@ namespace Smart_Reservation_Training_Classes
             {
                 if (!string.IsNullOrEmpty(txtSearch.Text))
                 {
-                    dtUsers = cls_users.SearchUser(txtSearch.Text);
+                    dtUsers = cls_Users.SearchUser(txtSearch.Text);
                     if (dtUsers.Rows.Count > 0)
                     {
                         gvUsers.DataSource = dtUsers;
@@ -197,7 +197,7 @@ namespace Smart_Reservation_Training_Classes
                 if (e.CommandName == "Edited")
                 {
                     string UserID = e.CommandArgument.ToString();
-                    dtUsers = cls_users.SearchUser(UserID);
+                    dtUsers = cls_Users.SearchUser(UserID);
                     if (dtUsers.Rows.Count > 0)
                     {
                         if (!string.IsNullOrEmpty(UserID))
@@ -232,12 +232,12 @@ namespace Smart_Reservation_Training_Classes
                 else if (e.CommandName == "Deleted")
                 {
                     string UserID = e.CommandArgument.ToString();
-                    dtUsers = cls_users.SearchUser(UserID);
+                    dtUsers = cls_Users.SearchUser(UserID);
                     if (dtUsers.Rows.Count > 0)
                     {
                         if (!string.IsNullOrEmpty(UserID))
                         {
-                            cls_users.DeleteUser(Convert.ToDecimal(UserID));
+                            cls_Users.DeleteUser(Convert.ToDecimal(UserID));
                             DataRow dr = dtUsers.Rows[0];
                             dr.Delete();
                             lblError.Visible = false;
@@ -270,7 +270,7 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                dtUsers = cls_users.SearchAvailableUser(txtUserName.Text);
+                dtUsers = cls_Users.SearchAvailableUser(txtUserName.Text);
                 if (dtUsers.Rows.Count > 0)
                 {
                     AvailabilityUserName.Visible = false;
@@ -296,7 +296,7 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                dtUsers = cls_users.SearchAvailableEmail(txtEmail.Text);
+                dtUsers = cls_Users.SearchAvailableEmail(txtEmail.Text);
                 if (dtUsers.Rows.Count > 0)
                 {
                     AvailabilityEmail.Visible = false;
@@ -315,6 +315,12 @@ namespace Smart_Reservation_Training_Classes
                 lblError.Visible = true;
                 lblError.Text = excAvailabilityEmail.Message.ToString();
             }
+        }
+
+        protected void gvUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvUsers.PageIndex = e.NewPageIndex;
+            BindDataUsers();
         }
 
         //User Coloring Event System Administrator And User -- حدث تلوين المستخدمين مسؤول النظام ومستخدم 

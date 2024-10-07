@@ -60,7 +60,7 @@ namespace Smart_Reservation_Training_Classes
                 else
                 {
                     lblWizardError.Visible = true;
-                    lblWizardError.Text = "يجب إدخال تاريخ البداية و تاريخ النهاية لعرض القاعات التدريبية المتاحة";
+                    lblWizardError.Text = "يجب إدخال تاريخ البداية و تاريخ النهاية";
                 }
             }
             catch (Exception excBtnSaveNext2)

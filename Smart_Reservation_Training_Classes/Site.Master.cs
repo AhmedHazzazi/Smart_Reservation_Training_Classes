@@ -45,6 +45,7 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
+                //ctxSRTC_DB = new SRTC_DBDataContext();
                 dtUsers = cls_users.SearchUser((string)Session["UserID"]);
                 if (dtUsers.Rows.Count > 0)
                 {

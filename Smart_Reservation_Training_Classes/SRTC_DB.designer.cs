@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Smart_Reservation_Training_Classes.App_Code
+namespace Smart_Reservation_Training_Classes
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -33,6 +33,9 @@ namespace Smart_Reservation_Training_Classes.App_Code
     partial void InsertTBLCourse(TBLCourse instance);
     partial void UpdateTBLCourse(TBLCourse instance);
     partial void DeleteTBLCourse(TBLCourse instance);
+    partial void InsertTBLReservation(TBLReservation instance);
+    partial void UpdateTBLReservation(TBLReservation instance);
+    partial void DeleteTBLReservation(TBLReservation instance);
     partial void InsertTBLRoom(TBLRoom instance);
     partial void UpdateTBLRoom(TBLRoom instance);
     partial void DeleteTBLRoom(TBLRoom instance);
@@ -110,20 +113,18 @@ namespace Smart_Reservation_Training_Classes.App_Code
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private decimal _CourseID;
-		
 		private string _CourseCode;
 		
 		private string _CourseName;
 		
 		private string _CourseType;
 		
+		private EntitySet<TBLReservation> _TBLReservations;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnCourseIDChanging(decimal value);
-    partial void OnCourseIDChanged();
     partial void OnCourseCodeChanging(string value);
     partial void OnCourseCodeChanged();
     partial void OnCourseNameChanging(string value);
@@ -134,30 +135,11 @@ namespace Smart_Reservation_Training_Classes.App_Code
 		
 		public TBLCourse()
 		{
+			this._TBLReservations = new EntitySet<TBLReservation>(new Action<TBLReservation>(this.attach_TBLReservations), new Action<TBLReservation>(this.detach_TBLReservations));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseID", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
-		public decimal CourseID
-		{
-			get
-			{
-				return this._CourseID;
-			}
-			set
-			{
-				if ((this._CourseID != value))
-				{
-					this.OnCourseIDChanging(value);
-					this.SendPropertyChanging();
-					this._CourseID = value;
-					this.SendPropertyChanged("CourseID");
-					this.OnCourseIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseCode", DbType="NVarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseCode", DbType="NVarChar(200) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string CourseCode
 		{
 			get
@@ -217,6 +199,648 @@ namespace Smart_Reservation_Training_Classes.App_Code
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBLCourse_TBLReservation", Storage="_TBLReservations", ThisKey="CourseCode", OtherKey="CourseCode")]
+		public EntitySet<TBLReservation> TBLReservations
+		{
+			get
+			{
+				return this._TBLReservations;
+			}
+			set
+			{
+				this._TBLReservations.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TBLReservations(TBLReservation entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBLCourse = this;
+		}
+		
+		private void detach_TBLReservations(TBLReservation entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBLCourse = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBLReservations")]
+	public partial class TBLReservation : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ReservationID;
+		
+		private System.Nullable<int> _UserID;
+		
+		private string _CourseCode;
+		
+		private string _RoomCode;
+		
+		private string _StartDate;
+		
+		private string _EndDate;
+		
+		private string _Time;
+		
+		private string _Duration;
+		
+		private string _Statuse;
+		
+		private string _Language;
+		
+		private string _TargetGroup;
+		
+		private string _ExpectedNumber;
+		
+		private string _ImplementingEntity;
+		
+		private string _BeneficiaryEntity;
+		
+		private string _LecturerName;
+		
+		private string _Requirements;
+		
+		private string _UseOfComputer;
+		
+		private string _CourseTopics;
+		
+		private string _Notes;
+		
+		private EntityRef<TBLCourse> _TBLCourse;
+		
+		private EntityRef<TBLRoom> _TBLRoom;
+		
+		private EntityRef<TBLUser> _TBLUser;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnReservationIDChanging(int value);
+    partial void OnReservationIDChanged();
+    partial void OnUserIDChanging(System.Nullable<int> value);
+    partial void OnUserIDChanged();
+    partial void OnCourseCodeChanging(string value);
+    partial void OnCourseCodeChanged();
+    partial void OnRoomCodeChanging(string value);
+    partial void OnRoomCodeChanged();
+    partial void OnStartDateChanging(string value);
+    partial void OnStartDateChanged();
+    partial void OnEndDateChanging(string value);
+    partial void OnEndDateChanged();
+    partial void OnTimeChanging(string value);
+    partial void OnTimeChanged();
+    partial void OnDurationChanging(string value);
+    partial void OnDurationChanged();
+    partial void OnStatuseChanging(string value);
+    partial void OnStatuseChanged();
+    partial void OnLanguageChanging(string value);
+    partial void OnLanguageChanged();
+    partial void OnTargetGroupChanging(string value);
+    partial void OnTargetGroupChanged();
+    partial void OnExpectedNumberChanging(string value);
+    partial void OnExpectedNumberChanged();
+    partial void OnImplementingEntityChanging(string value);
+    partial void OnImplementingEntityChanged();
+    partial void OnBeneficiaryEntityChanging(string value);
+    partial void OnBeneficiaryEntityChanged();
+    partial void OnLecturerNameChanging(string value);
+    partial void OnLecturerNameChanged();
+    partial void OnRequirementsChanging(string value);
+    partial void OnRequirementsChanged();
+    partial void OnUseOfComputerChanging(string value);
+    partial void OnUseOfComputerChanged();
+    partial void OnCourseTopicsChanging(string value);
+    partial void OnCourseTopicsChanged();
+    partial void OnNotesChanging(string value);
+    partial void OnNotesChanged();
+    #endregion
+		
+		public TBLReservation()
+		{
+			this._TBLCourse = default(EntityRef<TBLCourse>);
+			this._TBLRoom = default(EntityRef<TBLRoom>);
+			this._TBLUser = default(EntityRef<TBLUser>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReservationID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ReservationID
+		{
+			get
+			{
+				return this._ReservationID;
+			}
+			set
+			{
+				if ((this._ReservationID != value))
+				{
+					this.OnReservationIDChanging(value);
+					this.SendPropertyChanging();
+					this._ReservationID = value;
+					this.SendPropertyChanged("ReservationID");
+					this.OnReservationIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					if (this._TBLUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseCode", DbType="NVarChar(200)")]
+		public string CourseCode
+		{
+			get
+			{
+				return this._CourseCode;
+			}
+			set
+			{
+				if ((this._CourseCode != value))
+				{
+					if (this._TBLCourse.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCourseCodeChanging(value);
+					this.SendPropertyChanging();
+					this._CourseCode = value;
+					this.SendPropertyChanged("CourseCode");
+					this.OnCourseCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomCode", DbType="NVarChar(200)")]
+		public string RoomCode
+		{
+			get
+			{
+				return this._RoomCode;
+			}
+			set
+			{
+				if ((this._RoomCode != value))
+				{
+					if (this._TBLRoom.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnRoomCodeChanging(value);
+					this.SendPropertyChanging();
+					this._RoomCode = value;
+					this.SendPropertyChanged("RoomCode");
+					this.OnRoomCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Char(15)")]
+		public string StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="Char(15)")]
+		public string EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this.OnEndDateChanging(value);
+					this.SendPropertyChanging();
+					this._EndDate = value;
+					this.SendPropertyChanged("EndDate");
+					this.OnEndDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time", DbType="Char(30)")]
+		public string Time
+		{
+			get
+			{
+				return this._Time;
+			}
+			set
+			{
+				if ((this._Time != value))
+				{
+					this.OnTimeChanging(value);
+					this.SendPropertyChanging();
+					this._Time = value;
+					this.SendPropertyChanged("Time");
+					this.OnTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Duration", DbType="NVarChar(MAX)")]
+		public string Duration
+		{
+			get
+			{
+				return this._Duration;
+			}
+			set
+			{
+				if ((this._Duration != value))
+				{
+					this.OnDurationChanging(value);
+					this.SendPropertyChanging();
+					this._Duration = value;
+					this.SendPropertyChanged("Duration");
+					this.OnDurationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Statuse", DbType="NVarChar(MAX)")]
+		public string Statuse
+		{
+			get
+			{
+				return this._Statuse;
+			}
+			set
+			{
+				if ((this._Statuse != value))
+				{
+					this.OnStatuseChanging(value);
+					this.SendPropertyChanging();
+					this._Statuse = value;
+					this.SendPropertyChanged("Statuse");
+					this.OnStatuseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Language", DbType="NVarChar(MAX)")]
+		public string Language
+		{
+			get
+			{
+				return this._Language;
+			}
+			set
+			{
+				if ((this._Language != value))
+				{
+					this.OnLanguageChanging(value);
+					this.SendPropertyChanging();
+					this._Language = value;
+					this.SendPropertyChanged("Language");
+					this.OnLanguageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetGroup", DbType="NVarChar(MAX)")]
+		public string TargetGroup
+		{
+			get
+			{
+				return this._TargetGroup;
+			}
+			set
+			{
+				if ((this._TargetGroup != value))
+				{
+					this.OnTargetGroupChanging(value);
+					this.SendPropertyChanging();
+					this._TargetGroup = value;
+					this.SendPropertyChanged("TargetGroup");
+					this.OnTargetGroupChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpectedNumber", DbType="NVarChar(MAX)")]
+		public string ExpectedNumber
+		{
+			get
+			{
+				return this._ExpectedNumber;
+			}
+			set
+			{
+				if ((this._ExpectedNumber != value))
+				{
+					this.OnExpectedNumberChanging(value);
+					this.SendPropertyChanging();
+					this._ExpectedNumber = value;
+					this.SendPropertyChanged("ExpectedNumber");
+					this.OnExpectedNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImplementingEntity", DbType="NVarChar(MAX)")]
+		public string ImplementingEntity
+		{
+			get
+			{
+				return this._ImplementingEntity;
+			}
+			set
+			{
+				if ((this._ImplementingEntity != value))
+				{
+					this.OnImplementingEntityChanging(value);
+					this.SendPropertyChanging();
+					this._ImplementingEntity = value;
+					this.SendPropertyChanged("ImplementingEntity");
+					this.OnImplementingEntityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeneficiaryEntity", DbType="NVarChar(MAX)")]
+		public string BeneficiaryEntity
+		{
+			get
+			{
+				return this._BeneficiaryEntity;
+			}
+			set
+			{
+				if ((this._BeneficiaryEntity != value))
+				{
+					this.OnBeneficiaryEntityChanging(value);
+					this.SendPropertyChanging();
+					this._BeneficiaryEntity = value;
+					this.SendPropertyChanged("BeneficiaryEntity");
+					this.OnBeneficiaryEntityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LecturerName", DbType="NVarChar(MAX)")]
+		public string LecturerName
+		{
+			get
+			{
+				return this._LecturerName;
+			}
+			set
+			{
+				if ((this._LecturerName != value))
+				{
+					this.OnLecturerNameChanging(value);
+					this.SendPropertyChanging();
+					this._LecturerName = value;
+					this.SendPropertyChanged("LecturerName");
+					this.OnLecturerNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Requirements", DbType="NVarChar(MAX)")]
+		public string Requirements
+		{
+			get
+			{
+				return this._Requirements;
+			}
+			set
+			{
+				if ((this._Requirements != value))
+				{
+					this.OnRequirementsChanging(value);
+					this.SendPropertyChanging();
+					this._Requirements = value;
+					this.SendPropertyChanged("Requirements");
+					this.OnRequirementsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UseOfComputer", DbType="NVarChar(10)")]
+		public string UseOfComputer
+		{
+			get
+			{
+				return this._UseOfComputer;
+			}
+			set
+			{
+				if ((this._UseOfComputer != value))
+				{
+					this.OnUseOfComputerChanging(value);
+					this.SendPropertyChanging();
+					this._UseOfComputer = value;
+					this.SendPropertyChanged("UseOfComputer");
+					this.OnUseOfComputerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseTopics", DbType="NVarChar(MAX)")]
+		public string CourseTopics
+		{
+			get
+			{
+				return this._CourseTopics;
+			}
+			set
+			{
+				if ((this._CourseTopics != value))
+				{
+					this.OnCourseTopicsChanging(value);
+					this.SendPropertyChanging();
+					this._CourseTopics = value;
+					this.SendPropertyChanged("CourseTopics");
+					this.OnCourseTopicsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="NVarChar(MAX)")]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this.OnNotesChanging(value);
+					this.SendPropertyChanging();
+					this._Notes = value;
+					this.SendPropertyChanged("Notes");
+					this.OnNotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBLCourse_TBLReservation", Storage="_TBLCourse", ThisKey="CourseCode", OtherKey="CourseCode", IsForeignKey=true)]
+		public TBLCourse TBLCourse
+		{
+			get
+			{
+				return this._TBLCourse.Entity;
+			}
+			set
+			{
+				TBLCourse previousValue = this._TBLCourse.Entity;
+				if (((previousValue != value) 
+							|| (this._TBLCourse.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBLCourse.Entity = null;
+						previousValue.TBLReservations.Remove(this);
+					}
+					this._TBLCourse.Entity = value;
+					if ((value != null))
+					{
+						value.TBLReservations.Add(this);
+						this._CourseCode = value.CourseCode;
+					}
+					else
+					{
+						this._CourseCode = default(string);
+					}
+					this.SendPropertyChanged("TBLCourse");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBLRoom_TBLReservation", Storage="_TBLRoom", ThisKey="RoomCode", OtherKey="RoomCode", IsForeignKey=true)]
+		public TBLRoom TBLRoom
+		{
+			get
+			{
+				return this._TBLRoom.Entity;
+			}
+			set
+			{
+				TBLRoom previousValue = this._TBLRoom.Entity;
+				if (((previousValue != value) 
+							|| (this._TBLRoom.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBLRoom.Entity = null;
+						previousValue.TBLReservations.Remove(this);
+					}
+					this._TBLRoom.Entity = value;
+					if ((value != null))
+					{
+						value.TBLReservations.Add(this);
+						this._RoomCode = value.RoomCode;
+					}
+					else
+					{
+						this._RoomCode = default(string);
+					}
+					this.SendPropertyChanged("TBLRoom");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBLUser_TBLReservation", Storage="_TBLUser", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
+		public TBLUser TBLUser
+		{
+			get
+			{
+				return this._TBLUser.Entity;
+			}
+			set
+			{
+				TBLUser previousValue = this._TBLUser.Entity;
+				if (((previousValue != value) 
+							|| (this._TBLUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TBLUser.Entity = null;
+						previousValue.TBLReservations.Remove(this);
+					}
+					this._TBLUser.Entity = value;
+					if ((value != null))
+					{
+						value.TBLReservations.Add(this);
+						this._UserID = value.UserID;
+					}
+					else
+					{
+						this._UserID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TBLUser");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -238,469 +862,47 @@ namespace Smart_Reservation_Training_Classes.App_Code
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBLReservations")]
-	public partial class TBLReservation
-	{
-		
-		private decimal _ReservationID;
-		
-		private System.Nullable<decimal> _UserID;
-		
-		private System.Nullable<decimal> _RoomID;
-		
-		private System.Nullable<decimal> _CourseID;
-		
-		private string _StartDate;
-		
-		private string _EndDate;
-		
-		private string _Time;
-		
-		private string _Duration;
-		
-		private string _Statuse;
-		
-		private string _CourseType;
-		
-		private string _Language;
-		
-		private string _TargetGroup;
-		
-		private string _ExpectedNumber;
-		
-		private string _ImplementingEntity;
-		
-		private string _BeneficiaryEntity;
-		
-		private string _LecturerName;
-		
-		private string _Requirements;
-		
-		private string _ExecutionLocation;
-		
-		private string _UseOfComputer;
-		
-		private string _Certificates;
-		
-		private string _CourseTopics;
-		
-		private string _Notes;
-		
-		public TBLReservation()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReservationID", DbType="Decimal(18,0) NOT NULL")]
-		public decimal ReservationID
-		{
-			get
-			{
-				return this._ReservationID;
-			}
-			set
-			{
-				if ((this._ReservationID != value))
-				{
-					this._ReservationID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this._UserID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomID", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> RoomID
-		{
-			get
-			{
-				return this._RoomID;
-			}
-			set
-			{
-				if ((this._RoomID != value))
-				{
-					this._RoomID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseID", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> CourseID
-		{
-			get
-			{
-				return this._CourseID;
-			}
-			set
-			{
-				if ((this._CourseID != value))
-				{
-					this._CourseID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Char(10)")]
-		public string StartDate
-		{
-			get
-			{
-				return this._StartDate;
-			}
-			set
-			{
-				if ((this._StartDate != value))
-				{
-					this._StartDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="Char(10)")]
-		public string EndDate
-		{
-			get
-			{
-				return this._EndDate;
-			}
-			set
-			{
-				if ((this._EndDate != value))
-				{
-					this._EndDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time", DbType="NChar(30)")]
-		public string Time
-		{
-			get
-			{
-				return this._Time;
-			}
-			set
-			{
-				if ((this._Time != value))
-				{
-					this._Time = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Duration", DbType="NVarChar(MAX)")]
-		public string Duration
-		{
-			get
-			{
-				return this._Duration;
-			}
-			set
-			{
-				if ((this._Duration != value))
-				{
-					this._Duration = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Statuse", DbType="NVarChar(MAX)")]
-		public string Statuse
-		{
-			get
-			{
-				return this._Statuse;
-			}
-			set
-			{
-				if ((this._Statuse != value))
-				{
-					this._Statuse = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseType", DbType="NVarChar(MAX)")]
-		public string CourseType
-		{
-			get
-			{
-				return this._CourseType;
-			}
-			set
-			{
-				if ((this._CourseType != value))
-				{
-					this._CourseType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Language", DbType="NVarChar(MAX)")]
-		public string Language
-		{
-			get
-			{
-				return this._Language;
-			}
-			set
-			{
-				if ((this._Language != value))
-				{
-					this._Language = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetGroup", DbType="NVarChar(MAX)")]
-		public string TargetGroup
-		{
-			get
-			{
-				return this._TargetGroup;
-			}
-			set
-			{
-				if ((this._TargetGroup != value))
-				{
-					this._TargetGroup = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpectedNumber", DbType="NVarChar(MAX)")]
-		public string ExpectedNumber
-		{
-			get
-			{
-				return this._ExpectedNumber;
-			}
-			set
-			{
-				if ((this._ExpectedNumber != value))
-				{
-					this._ExpectedNumber = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImplementingEntity", DbType="NVarChar(MAX)")]
-		public string ImplementingEntity
-		{
-			get
-			{
-				return this._ImplementingEntity;
-			}
-			set
-			{
-				if ((this._ImplementingEntity != value))
-				{
-					this._ImplementingEntity = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeneficiaryEntity", DbType="NVarChar(MAX)")]
-		public string BeneficiaryEntity
-		{
-			get
-			{
-				return this._BeneficiaryEntity;
-			}
-			set
-			{
-				if ((this._BeneficiaryEntity != value))
-				{
-					this._BeneficiaryEntity = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LecturerName", DbType="NVarChar(MAX)")]
-		public string LecturerName
-		{
-			get
-			{
-				return this._LecturerName;
-			}
-			set
-			{
-				if ((this._LecturerName != value))
-				{
-					this._LecturerName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Requirements", DbType="NVarChar(MAX)")]
-		public string Requirements
-		{
-			get
-			{
-				return this._Requirements;
-			}
-			set
-			{
-				if ((this._Requirements != value))
-				{
-					this._Requirements = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExecutionLocation", DbType="NVarChar(MAX)")]
-		public string ExecutionLocation
-		{
-			get
-			{
-				return this._ExecutionLocation;
-			}
-			set
-			{
-				if ((this._ExecutionLocation != value))
-				{
-					this._ExecutionLocation = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UseOfComputer", DbType="NVarChar(10)")]
-		public string UseOfComputer
-		{
-			get
-			{
-				return this._UseOfComputer;
-			}
-			set
-			{
-				if ((this._UseOfComputer != value))
-				{
-					this._UseOfComputer = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Certificates", DbType="NVarChar(10)")]
-		public string Certificates
-		{
-			get
-			{
-				return this._Certificates;
-			}
-			set
-			{
-				if ((this._Certificates != value))
-				{
-					this._Certificates = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseTopics", DbType="NVarChar(MAX)")]
-		public string CourseTopics
-		{
-			get
-			{
-				return this._CourseTopics;
-			}
-			set
-			{
-				if ((this._CourseTopics != value))
-				{
-					this._CourseTopics = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="NVarChar(MAX)")]
-		public string Notes
-		{
-			get
-			{
-				return this._Notes;
-			}
-			set
-			{
-				if ((this._Notes != value))
-				{
-					this._Notes = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBLRooms")]
 	public partial class TBLRoom : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private decimal _RoomID;
-		
 		private string _RoomCode;
 		
 		private string _RoomName;
 		
+		private string _RoomType;
+		
 		private string _RoomLocation;
 		
-		private string _Capacity;
+		private string _RoomCapacity;
+		
+		private EntitySet<TBLReservation> _TBLReservations;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnRoomIDChanging(decimal value);
-    partial void OnRoomIDChanged();
     partial void OnRoomCodeChanging(string value);
     partial void OnRoomCodeChanged();
     partial void OnRoomNameChanging(string value);
     partial void OnRoomNameChanged();
+    partial void OnRoomTypeChanging(string value);
+    partial void OnRoomTypeChanged();
     partial void OnRoomLocationChanging(string value);
     partial void OnRoomLocationChanged();
-    partial void OnCapacityChanging(string value);
-    partial void OnCapacityChanged();
+    partial void OnRoomCapacityChanging(string value);
+    partial void OnRoomCapacityChanged();
     #endregion
 		
 		public TBLRoom()
 		{
+			this._TBLReservations = new EntitySet<TBLReservation>(new Action<TBLReservation>(this.attach_TBLReservations), new Action<TBLReservation>(this.detach_TBLReservations));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomID", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
-		public decimal RoomID
-		{
-			get
-			{
-				return this._RoomID;
-			}
-			set
-			{
-				if ((this._RoomID != value))
-				{
-					this.OnRoomIDChanging(value);
-					this.SendPropertyChanging();
-					this._RoomID = value;
-					this.SendPropertyChanged("RoomID");
-					this.OnRoomIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomCode", DbType="NVarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomCode", DbType="NVarChar(200) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string RoomCode
 		{
 			get
@@ -740,6 +942,26 @@ namespace Smart_Reservation_Training_Classes.App_Code
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomType", DbType="NVarChar(MAX)")]
+		public string RoomType
+		{
+			get
+			{
+				return this._RoomType;
+			}
+			set
+			{
+				if ((this._RoomType != value))
+				{
+					this.OnRoomTypeChanging(value);
+					this.SendPropertyChanging();
+					this._RoomType = value;
+					this.SendPropertyChanged("RoomType");
+					this.OnRoomTypeChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomLocation", DbType="NVarChar(MAX)")]
 		public string RoomLocation
 		{
@@ -760,23 +982,36 @@ namespace Smart_Reservation_Training_Classes.App_Code
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Capacity", DbType="NVarChar(MAX)")]
-		public string Capacity
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomCapacity", DbType="NVarChar(MAX)")]
+		public string RoomCapacity
 		{
 			get
 			{
-				return this._Capacity;
+				return this._RoomCapacity;
 			}
 			set
 			{
-				if ((this._Capacity != value))
+				if ((this._RoomCapacity != value))
 				{
-					this.OnCapacityChanging(value);
+					this.OnRoomCapacityChanging(value);
 					this.SendPropertyChanging();
-					this._Capacity = value;
-					this.SendPropertyChanged("Capacity");
-					this.OnCapacityChanged();
+					this._RoomCapacity = value;
+					this.SendPropertyChanged("RoomCapacity");
+					this.OnRoomCapacityChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBLRoom_TBLReservation", Storage="_TBLReservations", ThisKey="RoomCode", OtherKey="RoomCode")]
+		public EntitySet<TBLReservation> TBLReservations
+		{
+			get
+			{
+				return this._TBLReservations;
+			}
+			set
+			{
+				this._TBLReservations.Assign(value);
 			}
 		}
 		
@@ -799,6 +1034,18 @@ namespace Smart_Reservation_Training_Classes.App_Code
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_TBLReservations(TBLReservation entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBLRoom = this;
+		}
+		
+		private void detach_TBLReservations(TBLReservation entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBLRoom = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TBLUsers")]
@@ -807,7 +1054,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private decimal _UserID;
+		private int _UserID;
 		
 		private string _Name;
 		
@@ -819,11 +1066,13 @@ namespace Smart_Reservation_Training_Classes.App_Code
 		
 		private string _Role;
 		
+		private EntitySet<TBLReservation> _TBLReservations;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnUserIDChanging(decimal value);
+    partial void OnUserIDChanging(int value);
     partial void OnUserIDChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
@@ -839,11 +1088,12 @@ namespace Smart_Reservation_Training_Classes.App_Code
 		
 		public TBLUser()
 		{
+			this._TBLReservations = new EntitySet<TBLReservation>(new Action<TBLReservation>(this.attach_TBLReservations), new Action<TBLReservation>(this.detach_TBLReservations));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Decimal(18,0) NOT NULL", IsPrimaryKey=true)]
-		public decimal UserID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int UserID
 		{
 			get
 			{
@@ -962,6 +1212,19 @@ namespace Smart_Reservation_Training_Classes.App_Code
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TBLUser_TBLReservation", Storage="_TBLReservations", ThisKey="UserID", OtherKey="UserID")]
+		public EntitySet<TBLReservation> TBLReservations
+		{
+			get
+			{
+				return this._TBLReservations;
+			}
+			set
+			{
+				this._TBLReservations.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -980,6 +1243,18 @@ namespace Smart_Reservation_Training_Classes.App_Code
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_TBLReservations(TBLReservation entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBLUser = this;
+		}
+		
+		private void detach_TBLReservations(TBLReservation entity)
+		{
+			this.SendPropertyChanging();
+			entity.TBLUser = null;
 		}
 	}
 }

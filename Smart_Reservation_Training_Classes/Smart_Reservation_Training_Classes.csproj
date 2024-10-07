@@ -120,11 +120,6 @@
     <Compile Include="App_Code\CLS_Reservations.cs" />
     <Compile Include="App_Code\DataAccessLayer.cs" />
     <Compile Include="App_Code\CLS_Users.cs" />
-    <Content Include="App_Code\SRTC_DB.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SRTC_DB.dbml</DependentUpon>
-    </Content>
     <Compile Include="ManageReservations.aspx.cs">
       <DependentUpon>ManageReservations.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -145,6 +140,11 @@
     </Compile>
     <Compile Include="SendPassword.aspx.designer.cs">
       <DependentUpon>SendPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SRTC_DB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SRTC_DB.dbml</DependentUpon>
     </Compile>
     <Compile Include="ViewReservations.aspx.cs">
       <DependentUpon>ViewReservations.aspx</DependentUpon>
@@ -207,16 +207,16 @@
   <ItemGroup>
     <Content Include="Site.Master" />
     <Content Include="content\js\jQuery-3.6.0.slim.min.js" />
-    <Content Include="App_Code\SRTC_DB.dbml">
+    <Content Include="content\js\popper.min.js" />
+    <None Include="packages.config" />
+    <Content Include="SRTC_DB.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>SRTC_DB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="App_Code\SRTC_DB.dbml.layout">
+    <None Include="SRTC_DB.dbml.layout">
       <DependentUpon>SRTC_DB.dbml</DependentUpon>
     </None>
-    <Content Include="content\js\popper.min.js" />
-    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

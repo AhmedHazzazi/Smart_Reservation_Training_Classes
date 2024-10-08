@@ -13,6 +13,7 @@ namespace Smart_Reservation_Training_Classes
     {
         CLS_Users cls_users = new CLS_Users();
         DataTable dtUsers = new DataTable();
+        SRTC_DBDataContext ctxSRTC_DB;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -28,27 +29,39 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                dtUsers = cls_users.SearchUser((string)Session["UserID"]);
-                if (dtUsers.Rows.Count > 0)
+                //dtUsers = cls_users.SearchUser((string)Session["UserID"]);
+                //if (dtUsers.Rows.Count > 0)
+                //{
+                //    foreach (DataRow row in dtUsers.Rows)
+                //    {
+                //        if (row["Role"].ToString() == "Admin")
+                //        {
+                //            Admin.Visible = true;
+                //            Users.Visible = false;
+                //        }
+                //        else if (row["Role"].ToString() == "User")
+                //        {
+                //            Admin.Visible = false;
+                //            Users.Visible = true;
+                //        }
+                //    }
+                //}
+                //else
+                //{
+                //    Error_Panel.Visible = true;
+                //    lblErrorMsg.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
+                //}
+                ctxSRTC_DB = new SRTC_DBDataContext();
+                var tblUsers = ctxSRTC_DB.GetTable<TBLUser>().Where(x => x.UserID.Equals(Session["UserID"]) && x.Role.Equals("Admin")).FirstOrDefault();
+                if (tblUsers != null)
                 {
-                    foreach (DataRow row in dtUsers.Rows)
-                    {
-                        if (row["Role"].ToString() == "Admin")
-                        {
-                            Admin.Visible = true;
-                            Users.Visible = false;
-                        }
-                        else if (row["Role"].ToString() == "User")
-                        {
-                            Admin.Visible = false;
-                            Users.Visible = true;
-                        }
-                    }
+                    Admin.Visible = true;
+                    Users.Visible = false;
                 }
                 else
                 {
-                    Error_Panel.Visible = true;
-                    lblErrorMsg.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
+                    Admin.Visible = false;
+                    Users.Visible = true;
                 }
             }
             catch (Exception excRolesMenu)

@@ -40,10 +40,10 @@
                                 <asp:BoundField DataField="RoomCapacity" HeaderText="سعة القاعة"></asp:BoundField>
                                 <asp:TemplateField HeaderText=".....">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lnkEdit" runat="server" CausesValidation="False" CommandName="Edited" OnClientClick="Loader();" CommandArgument='<%# Eval("UserID") %>'>
+                                        <asp:LinkButton ID="lnkEdit" runat="server" CausesValidation="False" CommandName="Edited" OnClientClick="Loader();" CommandArgument='<%# Eval("RoomCode") %>'>
                                             <asp:Image ID="imgEdit" runat="server" ImageUrl="~/content/img/Edit.png" />
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف الصلاحية من المستخدم ؟')" CommandArgument='<%# Eval("UserID") %>'>
+                                        <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف الصلاحية من المستخدم ؟')" CommandArgument='<%# Eval("RoomCode") %>'>
                                             <asp:Image ID="imgRemove" runat="server" ImageUrl="~/content/img/Delete.png" />
                                         </asp:LinkButton>
                                     </ItemTemplate>

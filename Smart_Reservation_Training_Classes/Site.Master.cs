@@ -14,7 +14,7 @@ namespace Smart_Reservation_Training_Classes
     {
         CLS_Users cls_users = new CLS_Users();
         DataTable dtUsers = new DataTable();
-        //SRTC_DBDataContext ctxSRTC_DB;
+        SRTC_DBDataContext ctxSRTC_DB;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -45,23 +45,35 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                //ctxSRTC_DB = new SRTC_DBDataContext();
-                dtUsers = cls_users.SearchUser((string)Session["UserID"]);
-                if (dtUsers.Rows.Count > 0)
+                //dtUsers = cls_users.SearchUser((string)Session["UserID"]);
+                //if (dtUsers.Rows.Count > 0)
+                //{
+                //    foreach (DataRow row in dtUsers.Rows)
+                //    {
+                //        if (row["Role"].ToString() == "Admin")
+                //        {
+                //            MenusAdmin.Visible = true;
+                //            MenusUsers.Visible = false;
+                //        }
+                //        else if (row["Role"].ToString() == "User")
+                //        {
+                //            MenusAdmin.Visible = false;
+                //            MenusUsers.Visible = true;
+                //        }
+                //    }
+                //}
+
+                ctxSRTC_DB = new SRTC_DBDataContext();
+                var tblUsers = ctxSRTC_DB.GetTable<TBLUser>().Where(x => x.UserID.Equals(Session["UserID"])&&x.Role.Equals("Admin")).FirstOrDefault();
+                if (tblUsers != null)
                 {
-                    foreach (DataRow row in dtUsers.Rows)
-                    {
-                        if (row["Role"].ToString() == "Admin")
-                        {
-                            MenusAdmin.Visible = true;
-                            MenusUsers.Visible = false;
-                        }
-                        else if (row["Role"].ToString() == "User")
-                        {
-                            MenusAdmin.Visible = false;
-                            MenusUsers.Visible = true;
-                        }
-                    }
+                    MenusAdmin.Visible = true;
+                    MenusUsers.Visible = false;
+                }
+                else
+                {
+                    MenusAdmin.Visible = false;
+                    MenusUsers.Visible = true;
                 }
             }
             catch (Exception excMenusAdminAndUsers)

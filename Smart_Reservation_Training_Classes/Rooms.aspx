@@ -12,6 +12,12 @@
             </div>
             <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                 <asp:View ID="View1" runat="server">
+                    <div class="text-info fs-5 p-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        إدارة القاعات التدريبية
+                    </div>
                     <div class="d-grid gap-2 d-md-block">
                         <asp:Button ID="BtnAddRoom" runat="server" Text="إضافة قاعة" CssClass="btn btn-success" OnClientClick="Loader()" OnClick="BtnAddRoom_Click" />
                     </div>
@@ -65,7 +71,12 @@
                 </asp:View>
                 <asp:View ID="View2" runat="server">
                     <form>
-                        <div class="text-info fs-5 p-3">إضافة - تعديل قاعة تدريبية</div>
+                        <div class="text-primary fs-5 p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            إضافة - تعديل قاعة تدريبية
+                        </div>
                         <div class="form-group row mb-3">
                             <label class="col-sm-1 col-form-label">كود القاعة</label>
                             <div class="col-sm-4">

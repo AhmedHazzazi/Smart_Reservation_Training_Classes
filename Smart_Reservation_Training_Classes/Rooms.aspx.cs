@@ -13,20 +13,53 @@ namespace Smart_Reservation_Training_Classes
 {
     public partial class Rooms : System.Web.UI.Page
     {
+        CLS_Users cls_Users = new CLS_Users();
         CLS_Rooms cls_Rooms = new CLS_Rooms();
-        DataTable dtRoom;
+        DataTable dtRooms, dtUsers;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserID"] == null)
-            {
-                Response.Redirect("~/Login.aspx");
-            }
             if (!IsPostBack)
             {
+                if (Session["UserID"] == null)
+                {
+                    Response.Redirect("~/Login.aspx");
+                }
                 BindDataRooms();
+                RoleAccess();
             }
-            lblError.Visible = false;
-            lblSuccess.Visible = false;
+        }
+
+        //Function Allow Access To Manage Roles For Admin And Not Allow For User
+        public void RoleAccess()
+        {
+            try
+            {
+                dtUsers = cls_Users.SearchUser((string)Session["UserID"]);
+                if (dtUsers.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtUsers.Rows)
+                    {
+                        if (row["Role"].ToString() == "Admin")
+                        { }
+                        else if (row["Role"].ToString() == "User")
+                        {
+                            MultiView1.Visible = false;
+                            lblError.Visible = true;
+                            lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
+                        }
+                    }
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
+                }
+            }
+            catch (Exception excRoleAccess)
+            {
+                lblError.Visible = true;
+                lblError.Text = excRoleAccess.Message.ToString();
+            }
         }
 
         //Function To Fetch Rooms Data And Display It In GridView
@@ -34,10 +67,10 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                dtRoom = cls_Rooms.BindAllRooms();
-                if (dtRoom.Rows.Count > 0)
+                dtRooms = cls_Rooms.BindAllRooms();
+                if (dtRooms.Rows.Count > 0)
                 {
-                    gvRooms.DataSource = dtRoom;
+                    gvRooms.DataSource = dtRooms;
                     gvRooms.DataBind();
                 }
                 else
@@ -62,8 +95,8 @@ namespace Smart_Reservation_Training_Classes
                     && !string.IsNullOrEmpty(DDLRoomType.SelectedValue) && !string.IsNullOrEmpty(txtRoomLocation.Text)
                     && !string.IsNullOrEmpty(txtRoomCapacity.Text))
                 {
-                    dtRoom = cls_Rooms.SearchRoom(txtRoomCode.Text);
-                    if (dtRoom.Rows.Count > 0)
+                    dtRooms = cls_Rooms.SearchRoom(txtRoomCode.Text);
+                    if (dtRooms.Rows.Count > 0)
                     {
                         cls_Rooms.UpdateRoom(txtRoomCode.Text, txtRoomName.Text, DDLRoomType.SelectedValue.ToString(), txtRoomLocation.Text, txtRoomCapacity.Text);
                         lblSuccess.Visible = true;
@@ -105,16 +138,70 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
-        //User Search Event -- حدث البحث عن القاعات
+        //Room Search Event -- حدث البحث عن القاعات
         protected void BtnSearch_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!string.IsNullOrEmpty(txtSearch.Text))
+                {
+                    dtRooms = cls_Rooms.SearchRoom(txtSearch.Text);
+                    if (dtRooms.Rows.Count > 0)
+                    {
+                        gvRooms.DataSource = dtRooms;
+                        gvRooms.DataBind();
+                        lblError.Visible = false;
+                        lblError.Text = string.Empty;
+                    }
+                    else
+                    {
+                        gvRooms.DataSource = null;
+                        gvRooms.DataBind();
+                        lblError.Visible = true;
+                        lblError.Text = "لم يتم العثور على بيانات تأكد من القيمة المدخلة الصحيحة";
+                        lblSuccess.Visible = false;
+                        lblSuccess.Text = string.Empty;
+                    }
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "يجب إدخال قيمة في حقل البحث";
+                    lblSuccess.Visible = false;
+                    lblSuccess.Text = string.Empty;
+                }
+                BtnResetSearch.Visible = true;
+            }
+            catch (Exception excBtnSearch)
+            {
+                lblError.Visible = true;
+                lblError.Text = excBtnSearch.Message.ToString();
+            }
         }
 
         //Search Reset Event -- حدث إعادة تعيين البحث
         protected void BtnResetSearch_Click(object sender, EventArgs e)
         {
+            try
+            {
+                txtSearch.Text = string.Empty;
+                lblError.Visible = false;
+                lblError.Text = string.Empty;
+                lblSuccess.Visible = false;
+                lblSuccess.Text = string.Empty;
+                BindDataRooms();
+            }
+            catch (Exception excBtnResetSearch)
+            {
+                lblError.Visible = true;
+                lblError.Text = excBtnResetSearch.Message.ToString();
+            }
+        }
 
+        protected void gvRooms_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvRooms.PageIndex = e.NewPageIndex;
+            BindDataRooms();
         }
 
         protected void gvRoomsAvailable_RowCommand(object sender, GridViewCommandEventArgs e)

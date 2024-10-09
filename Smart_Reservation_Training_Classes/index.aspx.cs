@@ -11,7 +11,7 @@ namespace Smart_Reservation_Training_Classes
 {
     public partial class index : System.Web.UI.Page
     {
-        CLS_Users cls_users = new CLS_Users();
+        CLS_Users cls_Users = new CLS_Users();
         DataTable dtUsers = new DataTable();
         SRTC_DBDataContext ctxSRTC_DB;
         protected void Page_Load(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                //dtUsers = cls_users.SearchUser((string)Session["UserID"]);
+                //dtUsers = cls_Users.SearchUser((string)Session["UserID"]);
                 //if (dtUsers.Rows.Count > 0)
                 //{
                 //    foreach (DataRow row in dtUsers.Rows)

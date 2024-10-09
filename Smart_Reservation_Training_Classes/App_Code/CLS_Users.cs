@@ -36,7 +36,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@Criterion", SqlDbType.NVarChar);
+            param[0] = new SqlParameter("@Criterion", SqlDbType.NVarChar, 500);
             param[0].Value = Criterion;
             DataTable Dt = new DataTable();
             Dt = DAL.SelectDataProcedure("SP_SearchUser", param);

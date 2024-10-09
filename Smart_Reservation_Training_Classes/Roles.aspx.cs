@@ -16,21 +16,52 @@ namespace Smart_Reservation_Training_Classes
         CLS_Users cls_Users = new CLS_Users();
         DataTable dtUsers, dtUserName, dtEmail;
         public decimal Id;
-        //SRTC_DBDataContext ctxSRTC_DBD = new SRTC_DBDataContext();
+        SRTC_DBDataContext ctxSRTC_DBD;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserID"] == null)
-            {
-                Response.Redirect("~/Login.aspx");
-            }
             if (!IsPostBack)
             {
+                if (Session["UserID"] == null)
+                {
+                    Response.Redirect("~/Login.aspx");
+                }
                 BindDataUsers();
+                RoleAccess();
             }
-            lblError.Visible = false;
-            lblSuccess.Visible = false;
         }
 
+        //Function Allow Access To Manage Roles For Admin And Not Allow For User
+        public void RoleAccess()
+        {
+            try
+            {
+                dtUsers = cls_Users.SearchUser((string)Session["UserID"]);
+                if (dtUsers.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtUsers.Rows)
+                    {
+                        if (row["Role"].ToString() == "Admin")
+                        { }
+                        else if (row["Role"].ToString() == "User")
+                        {
+                            MultiView1.Visible = false;
+                            lblError.Visible = true;
+                            lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
+                        }
+                    }
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
+                }
+            }
+            catch (Exception excRoleAccess)
+            {
+                lblError.Visible = true;
+                lblError.Text = excRoleAccess.Message.ToString();
+            }
+        }
         //Function To Fetch Users Data And Display It In GridView
         public void BindDataUsers()
         {
@@ -48,10 +79,10 @@ namespace Smart_Reservation_Training_Classes
                     gvUsers.DataBind();
                 }
             }
-            catch (Exception excLoadDataUsers)
+            catch (Exception excBindDataUsers)
             {
                 lblError.Visible = true;
-                lblError.Text = excLoadDataUsers.Message.ToString();
+                lblError.Text = excBindDataUsers.Message.ToString();
             }
         }
 

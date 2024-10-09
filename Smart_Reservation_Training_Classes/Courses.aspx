@@ -35,8 +35,8 @@
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:RadioButton ID="RadioButtonChooseRoom" runat="server" />
-                                        <asp:HiddenField ID="hfRoomCode" runat="server" Value='<%#Eval("CourseCode")%>' />
+                                        <%# Container.DataItemIndex + 1 %>
+                                        <asp:HiddenField ID="hfCourseCode" runat="server" Value='<%#Eval("CourseCode")%>' />
                                     </ItemTemplate>
                                     <ItemStyle Width="10px" />
                                 </asp:TemplateField>

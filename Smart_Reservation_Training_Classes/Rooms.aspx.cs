@@ -16,6 +16,7 @@ namespace Smart_Reservation_Training_Classes
         CLS_Users cls_Users = new CLS_Users();
         CLS_Rooms cls_Rooms = new CLS_Rooms();
         DataTable dtRooms, dtUsers;
+        SRTC_DBDataContext ctxSRTC_DB;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -34,25 +35,35 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                dtUsers = cls_Users.SearchUser((string)Session["UserID"]);
-                if (dtUsers.Rows.Count > 0)
-                {
-                    foreach (DataRow row in dtUsers.Rows)
-                    {
-                        if (row["Role"].ToString() == "Admin")
-                        { }
-                        else if (row["Role"].ToString() == "User")
-                        {
-                            MultiView1.Visible = false;
-                            lblError.Visible = true;
-                            lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
-                        }
-                    }
-                }
+                //dtUsers = cls_Users.SearchUser((string)Session["UserID"]);
+                //if (dtUsers.Rows.Count > 0)
+                //{
+                //    foreach (DataRow row in dtUsers.Rows)
+                //    {
+                //        if (row["Role"].ToString() == "Admin")
+                //        { }
+                //        else if (row["Role"].ToString() == "User")
+                //        {
+                //            MultiView1.Visible = false;
+                //            lblError.Visible = true;
+                //            lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
+                //        }
+                //    }
+                //}
+                //else
+                //{
+                //    lblError.Visible = true;
+                //    lblError.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
+                //}
+                ctxSRTC_DB = new SRTC_DBDataContext();
+                var tblUsers = ctxSRTC_DB.GetTable<TBLUser>().Where(x => x.UserID.Equals(Session["UserID"]) && x.Role.Equals("Admin")).FirstOrDefault();
+                if (tblUsers != null)
+                { }
                 else
                 {
+                    MultiView1.Visible = false;
                     lblError.Visible = true;
-                    lblError.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
+                    lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
                 }
             }
             catch (Exception excRoleAccess)
@@ -184,6 +195,7 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
+                BtnResetSearch.Visible = false;
                 txtSearch.Text = string.Empty;
                 lblError.Visible = false;
                 lblError.Text = string.Empty;

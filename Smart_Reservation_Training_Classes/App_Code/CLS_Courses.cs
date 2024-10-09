@@ -31,30 +31,30 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.CloseConnectionDB();
             return Dt;
         }
-        public void InsertCourse(string RoomCode, string RoomName, string RoomType)
+        public void InsertCourse(string CourseCode, string CourseName, string CourseType)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[3];
-            param[0] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 200);
-            param[0].Value = RoomCode;
-            param[1] = new SqlParameter("@RoomName", SqlDbType.NVarChar);
-            param[1].Value = RoomName;
-            param[2] = new SqlParameter("@RoomType", SqlDbType.NVarChar);
-            param[2].Value = RoomType;
+            param[0] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 200);
+            param[0].Value = CourseCode;
+            param[1] = new SqlParameter("@CourseName", SqlDbType.NVarChar);
+            param[1].Value = CourseName;
+            param[2] = new SqlParameter("@CourseType", SqlDbType.NVarChar);
+            param[2].Value = CourseType;
 
             DAL.ExecuteCommandProcedure("SP_InsertCourse", param);
             DAL.CloseConnectionDB();
         }
-        public void UpdateCourse(string RoomCode, string RoomName, string RoomType)
+        public void UpdateCourse(string CourseCode, string CourseName, string CourseType)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[3];
-            param[0] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 200);
-            param[0].Value = RoomCode;
-            param[1] = new SqlParameter("@RoomName", SqlDbType.NVarChar);
-            param[1].Value = RoomName;
-            param[2] = new SqlParameter("@RoomType", SqlDbType.NVarChar);
-            param[2].Value = RoomType;
+            param[0] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 200);
+            param[0].Value = CourseCode;
+            param[1] = new SqlParameter("@CourseName", SqlDbType.NVarChar);
+            param[1].Value = CourseName;
+            param[2] = new SqlParameter("@CourseType", SqlDbType.NVarChar);
+            param[2].Value = CourseType;
 
             DAL.ExecuteCommandProcedure("SP_UpdateCourse", param);
             DAL.CloseConnectionDB();

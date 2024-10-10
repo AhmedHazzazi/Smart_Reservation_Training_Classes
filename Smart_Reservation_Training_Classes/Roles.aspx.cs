@@ -88,6 +88,19 @@ namespace Smart_Reservation_Training_Classes
                     gvUsers.DataSource = null;
                     gvUsers.DataBind();
                 }
+
+                //ctxSRTC_DB = new SRTC_DBDataContext();
+                //var tblUsers = ctxSRTC_DB.GetTable<TBLUser>();
+                //if (tblUsers.Count() > 0)
+                //{
+                //    gvUsers.DataSource = tblUsers;
+                //    gvUsers.DataBind();
+                //}
+                //else
+                //{
+                //    gvUsers.DataSource = null;
+                //    gvUsers.DataBind();
+                //}
             }
             catch (Exception excBindDataUsers)
             {

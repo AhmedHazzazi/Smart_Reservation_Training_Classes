@@ -110,7 +110,7 @@
     <Content Include="Registration.aspx" />
     <Content Include="Roles.aspx" />
     <Content Include="Rooms.aspx" />
-    <Content Include="SendPassword.aspx" />
+    <Content Include="UpdatePassword.aspx" />
     <Content Include="ViewReservations.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -134,17 +134,17 @@
     <Compile Include="Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SendPassword.aspx.cs">
-      <DependentUpon>SendPassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SendPassword.aspx.designer.cs">
-      <DependentUpon>SendPassword.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SRTC_DB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SRTC_DB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePassword.aspx.cs">
+      <DependentUpon>UpdatePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdatePassword.aspx.designer.cs">
+      <DependentUpon>UpdatePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewReservations.aspx.cs">
       <DependentUpon>ViewReservations.aspx</DependentUpon>

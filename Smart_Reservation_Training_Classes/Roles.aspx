@@ -79,7 +79,7 @@
                     </div>
                     <div class="row p-2">
                         <div class="row mb-3">
-                            <label for="txtName" class="col-sm-2 col-form-label">الإسم الكامل</label>
+                            <label for="txtName" class="col-sm-1 col-form-label">الإسم الكامل</label>
                             <div class="col-sm-8">
                                 <asp:HiddenField ID="hfUserID" runat="server" />
                                 <asp:TextBox ID="txtName" runat="server" CssClass="form-control form-control-sm" autocomplete="off" placeholder="الإسم الكامل"></asp:TextBox>
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtEmail" class="col-sm-2 col-form-label">البريد الإلكتروني</label>
+                            <label for="txtEmail" class="col-sm-1 col-form-label">البريد الإلكتروني</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control form-control-sm" autocomplete="off" placeholder="البريد الإلكتروني" AutoPostBack="true" OnTextChanged="txtEmail_TextChanged"></asp:TextBox>
                                 <span id="AvailabilityEmail" runat="server" class="notification-input ni-correct" visible="false" />
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtUserName" class="col-sm-2 col-form-label">اسم المستخدم</label>
+                            <label for="txtUserName" class="col-sm-1 col-form-label">اسم المستخدم</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control form-control-sm" autocomplete="off" placeholder="اسم المستخدم" AutoPostBack="true" OnTextChanged="txtUserName_TextChanged"></asp:TextBox>
                                 <span id="AvailabilityUserName" runat="server" class="notification-input ni-correct" visible="false" />
@@ -106,7 +106,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtPassword" class="col-sm-2 col-form-label">كلمة المرور</label>
+                            <label for="txtPassword" class="col-sm-1 col-form-label">كلمة المرور</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control form-control-sm" placeholder="كلمة المرور" TextMode="Password"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RFVtxtPassword" runat="server" ErrorMessage="يجب إدخال كلمة المرور" ForeColor="Red" ControlToValidate="txtPassword" />

@@ -112,6 +112,17 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.ExecuteCommandProcedure("SP_DeleteUser", param);
             DAL.CloseConnectionDB();
         }
+        public void UpdatePasswordUser(string UserName, string Password)
+        {
+            DAL.OpenConnectionDB();
+            SqlParameter[] param = new SqlParameter[2];
+            param[0] = new SqlParameter("@UserName", SqlDbType.NVarChar);
+            param[0].Value = UserName;
+            param[1] = new SqlParameter("@Password", SqlDbType.NVarChar);
+            param[1].Value = Password;
+            DAL.ExecuteCommandProcedure("SP_UpdatePasswordUser", param);
+            DAL.CloseConnectionDB();
+        }
         public DataTable MaxIDUserID()
         {
             DAL.OpenConnectionDB();

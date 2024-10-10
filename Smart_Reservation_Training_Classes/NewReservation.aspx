@@ -26,6 +26,12 @@
                     <asp:Label ID="lblWizardError" runat="server" CssClass="error" Visible="false"></asp:Label>
                 </div>
             </div>
+            <div class="text-primary fs-5 p-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                تسجيل حجز جديد
+            </div>
             <asp:MultiView ID="MultiViewCard" runat="server" ActiveViewIndex="0">
                 <asp:View ID="View1" runat="server">
                     <div class="row-cols-6 text-center p-1">
@@ -125,7 +131,6 @@
                                             <asp:ListItem Value="معيدين ومحاضرين">معيدين ومحاضرين</asp:ListItem>
                                             <asp:ListItem Value="فنيين">فنيين</asp:ListItem>
                                         </asp:DropDownList>
-                                        <%--<asp:TextBox ID="txtTargetGroup" runat="server" CssClass="form-control"></asp:TextBox>--%>
                                     </asp:TableCell>
                                 </asp:TableRow>
 

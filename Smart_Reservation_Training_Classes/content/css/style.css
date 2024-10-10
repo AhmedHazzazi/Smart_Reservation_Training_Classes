@@ -254,3 +254,100 @@ a.sidebar-link {
 .lightbkg {
     background-color: #F5F5F5;
 }
+
+/*.navbar .btn-nav {
+    font-family: El Messiri, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    display: inline-block;
+    padding: 10px 12px;
+    border-radius: 20px;
+    transition: .3s;
+    line-height: 1;
+    color: #0084bd;
+    animation-delay: .8s;
+    margin-top: 6px;
+    border: 2px solid #0084bd;
+    margin-left: 5px;
+}
+
+.navbar .btn-nav2 {
+    font-family: El Messiri, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 20px;
+    transition: .3s;
+    line-height: 1;
+    color: #fff;
+    animation-delay: .8s;
+    margin-top: 6px;
+    background: #0084bd;
+    border: 2px solid #0084bd;
+}
+
+.navbar a, .navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3px;
+    font-size: 14px;
+    color: #1a1a1a;
+    white-space: nowrap;
+    transition: .3s;
+    position: relative;
+}
+
+.nav-link {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: var(--bs-nav-link-color);
+    text-decoration: none;
+    background: 0 0;
+    border: 0;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.navbar > ul > li {
+    position: relative;
+    white-space: nowrap;
+    padding: 10px 0 10px 24px;
+}
+
+user agent stylesheet
+li {
+    text-align: -webkit-match-parent;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+user agent stylesheet
+ul {
+    list-style-type: disc;
+}
+
+.navbar > ul > .no-underline-effect > a:before {
+    background-color: unset !important;
+}
+
+.navbar > ul > li > a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    right: 0;
+    background-color: #f6b024;
+    visibility: hidden;
+    width: 0px;
+    transition: all .3s ease-in-out 0s;
+}*/

@@ -7,5 +7,6 @@ namespace Smart_Reservation_Training_Classes.App_Code
 {
     public class CLS_Reservations
     {
+
     }
 }

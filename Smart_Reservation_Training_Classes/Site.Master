@@ -59,9 +59,9 @@
                         </li>
                     </ul>
                     <div id="MenusUsers" runat="server" visible="false">
-                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center p-1 my-3 text-muted">
+                        <%--<h6 class="sidebar-heading d-flex justify-content-between align-items-center p-1 my-3 text-muted">
                             <span>إدارة الحجوزات</span>
-                        </h6>
+                        </h6>--%>
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="NewReservation.aspx" onclick="Loader();">
@@ -83,8 +83,9 @@
                         </ul>
                     </div>
                     <div id="MenusAdmin" runat="server" visible="false">
-                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center p-1 my-3 text-muted">
-                            <span>إدارة النظام</span>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center p-1 my-2">
+                            <%--<span>إدارة النظام</span>--%>
+                            إدارة النظام
                         </h6>
                         <ul class="nav flex-column mb-2">
                             <li class="nav-item">
@@ -136,20 +137,9 @@
                     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="عرض/إخفاء لوحة التنقل">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <%--<div id="Log" runat="server" class="Logout">
-                        <div id="Login" runat="server" class="text-nowrap" visible="false">
-                            <a href="login.aspx" onclick="Loader();">تسجيل الدخول</a>
-                        </div>
-                        <div id="Logout" runat="server" class="text-nowrap" visible="false">
-                            مرحبا :
-                            <asp:Label ID="lblName" runat="server" Style="color: #454d88;"></asp:Label>
-                            | 
-                            <asp:LinkButton ID="BtnLogout" runat="server" OnClientClick="Loader()" onclick="BtnLogout_Click">تسجيل خروج</asp:LinkButton>
-                        </div>
-                    </div>--%>
                 </header>
 
-                <main class="content px-3 py-2">
+                <main class="content py-2">
                     <div class="container-fluid">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>

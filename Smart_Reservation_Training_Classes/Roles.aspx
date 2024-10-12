@@ -122,7 +122,7 @@
                         <div class="row mb-3">
                             <label for="RblRole" class="col-sm-1 col-form-label">نوع الصلاحية</label>
                             <div class="col-sm-4">
-                                <asp:RadioButtonList ID="RblRole" runat="server" CssClass="form-check form-check-inline">
+                                <asp:RadioButtonList ID="RblRole" runat="server" RepeatDirection="Horizontal">
                                     <asp:ListItem Value="Admin" Text="مسؤول النظام">مسؤول النظام</asp:ListItem>
                                     <asp:ListItem Value="User" Text="المستخدمين">المستخدمين</asp:ListItem>
                                 </asp:RadioButtonList>

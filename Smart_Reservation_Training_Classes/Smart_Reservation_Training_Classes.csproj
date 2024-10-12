@@ -70,6 +70,7 @@
     <Content Include="content\css\bootstrap.rtl.min.css" />
     <Content Include="content\css\fontawesome.min.css" />
     <Content Include="content\css\style.css" />
+    <Content Include="content\img\Arrowhead-Down-01.png" />
     <Content Include="content\img\classroomblue_50px.png" />
     <Content Include="content\img\classroom_50coverpx.png" />
     <Content Include="content\img\classroom_50whitepx.png" />
@@ -107,6 +108,7 @@
     <Content Include="Login.aspx" />
     <Content Include="ManageReservations.aspx" />
     <Content Include="NewReservation.aspx" />
+    <Content Include="RecoverUserName.aspx" />
     <Content Include="Registration.aspx" />
     <Content Include="Roles.aspx" />
     <Content Include="Rooms.aspx" />
@@ -126,6 +128,13 @@
     </Compile>
     <Compile Include="ManageReservations.aspx.designer.cs">
       <DependentUpon>ManageReservations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecoverUserName.aspx.cs">
+      <DependentUpon>RecoverUserName.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecoverUserName.aspx.designer.cs">
+      <DependentUpon>RecoverUserName.aspx</DependentUpon>
     </Compile>
     <Compile Include="Registration.aspx.cs">
       <DependentUpon>Registration.aspx</DependentUpon>

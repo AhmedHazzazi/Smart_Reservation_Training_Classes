@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace Smart_Reservation_Training_Classes
 {
-    public partial class UpdatePassword : System.Web.UI.Page
+    public partial class RecoverUserName : System.Web.UI.Page
     {
         CLS_Users cls_users = new CLS_Users();
         DataTable dtUsers;
@@ -24,25 +24,27 @@ namespace Smart_Reservation_Training_Classes
             lblSuccess.Visible = false;
         }
 
-        protected void BtnUpdatePassword_Click(object sender, EventArgs e)
+        protected void BtnRecoverUserName_Click(object sender, EventArgs e)
         {
             try
             {
-                if (!string.IsNullOrEmpty(txtUserName.Text) && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtConfirmPassword.Text))
+                if (!string.IsNullOrEmpty(txtEmail.Text))
                 {
-                    dtUsers = cls_users.SearchAvailableUser(txtUserName.Text);
+                    dtUsers = cls_users.RecoverUername(txtEmail.Text);
                     if (dtUsers.Rows.Count > 0)
                     {
-                        cls_users.UpdatePasswordUser(txtUserName.Text, txtPassword.Text);
+                        //txtUserName.Text = dtUsers.Rows[0]["UserName"].ToString();
                         lblError.Visible = false;
                         lblSuccess.Visible = true;
-                        lblSuccess.Text = "لقد تم تحديث كلمة المرور بنجاح للمستخدم : " + dtUsers.Rows[0]["UserName"].ToString();
+                        lblSuccess.Text = "اسم المستخدم الخاص بك هو : " + dtUsers.Rows[0]["UserName"].ToString();
                     }
                     else
                     {
                         lblSuccess.Visible = false;
                         lblError.Visible = true;
-                        lblError.Text = "لم يتم العثور على بيانات حسب اسم المستخدم المدخل في خانة اسم المستخدم !!!";
+                        lblError.Text = "معلومات البريد الإلكتروني التي أدخلتها خاطئة. يرجى التحقق مرة أخرى";
+                        //lblError.Text = "المعلومات التي أدخلتها خاطئة. يرجى التحقق مرة أخرى";
+                        //lblError.Text = "لم يتم العثور على بيانات مرتبطة بالبريد الإلكتروني المدخل في خانة البريد الإلكتروني !!!";
                     }
                 }
                 else
@@ -52,10 +54,10 @@ namespace Smart_Reservation_Training_Classes
                     lblError.Text = "يرجى التأكد من إدخال جميع البيانات المطلوبة";
                 }
             }
-            catch (Exception excUpdatePassword)
+            catch (Exception excRecoverUserName)
             {
                 lblError.Visible = false;
-                lblError.Text = excUpdatePassword.Message.ToString();
+                lblError.Text = excRecoverUserName.Message.ToString();
             }
         }
     }

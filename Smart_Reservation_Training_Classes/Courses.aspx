@@ -19,13 +19,13 @@
                         إدارة الدورات التدريبية
                     </div>
                     <div class="d-grid gap-2 d-md-block">
-                        <asp:Button ID="BtnAddCourse" runat="server" Text="إضافة قاعة" CssClass="btn btn-success" OnClientClick="Loader()" OnClick="BtnAddCourse_Click" />
+                        <asp:Button ID="BtnAddCourse" runat="server" Text="إضافة قاعة" CssClass="btn btn-success w-auto" OnClientClick="Loader()" OnClick="BtnAddCourse_Click" />
                     </div>
-                    <asp:Panel ID="SearchPanel" runat="server" CssClass="" DefaultButton="BtnSearch">
+                    <asp:Panel ID="SearchPanel" runat="server" CssClass="py-2" DefaultButton="BtnSearch">
                         <label class="label">البحث : </label>
                         <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control d-inline-block" autocomplete="off" Width="200px"></asp:TextBox>
-                        <asp:Button ID="BtnSearch" runat="server" Text="بحث" CssClass="btn btn-primary m-1" OnClientClick="Loader()" OnClick="BtnSearch_Click" />
-                        <asp:Button ID="BtnResetSearch" runat="server" Text="X" CssClass="btn btn-danger" OnClientClick="Loader()" Visible="False" OnClick="BtnResetSearch_Click" />
+                        <asp:Button ID="BtnSearch" runat="server" Text="بحث" CssClass="btn btn-primary w-auto" OnClientClick="Loader()" OnClick="BtnSearch_Click" />
+                        <asp:Button ID="BtnResetSearch" runat="server" Text="X" CssClass="btn btn-danger w-auto" OnClientClick="Loader()" Visible="False" OnClick="BtnResetSearch_Click" />
                     </asp:Panel>
                     <asp:Panel ID="ViewsPanel" runat="server" CssClass="m-1">
                         <asp:GridView ID="gvCourses" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="CourseCode" HeaderStyle-BackColor="green" AutoGenerateColumns="False"
@@ -70,7 +70,7 @@
                 </asp:View>
                 <asp:View ID="View2" runat="server">
                     <form>
-                        <div class="text-primary fs-5 p-3">
+                        <div class="text-primary fs-5 py-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline>
                             </svg>

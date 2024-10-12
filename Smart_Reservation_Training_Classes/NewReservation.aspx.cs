@@ -19,7 +19,6 @@ namespace Smart_Reservation_Training_Classes
     {
         CLS_Rooms cls_rooms = new CLS_Rooms();
         DataTable dtRoomsAvailable;
-        public decimal Id;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -39,16 +38,21 @@ namespace Smart_Reservation_Training_Classes
                 {
                     foreach (GridViewRow row in gvRoomsAvailable.Rows)
                     {
-                        RadioButton radiobutton = (RadioButton)row.FindControl("RadioButtonChooseRoom");
-                        if (radiobutton.Checked)
+                        RadioButton RadioButtonChooseRoom = (RadioButton)row.FindControl("RadioButtonChooseRoom");
+                        if (RadioButtonChooseRoom.Checked)
                         {
                             txtRoomCode.Text = gvRoomsAvailable.Rows[row.RowIndex].Cells[1].Text;
                             txtStartDate.Text = txtSearchStartDate.Text;
                             txtEndDate.Text = txtSearchEndDate.Text;
 
+                            txtRoomCode.Enabled = false;
+                            txtStartDate.Enabled = false;
+                            txtEndDate.Enabled = false;
+
                             lblWizardError.Visible = false;
                             lblWizardError.Text = string.Empty;
                             MultiViewCard.ActiveViewIndex = 1;
+                            break;
                         }
                         else
                         {
@@ -122,19 +126,22 @@ namespace Smart_Reservation_Training_Classes
                 if (checkSureInfo.Checked == true)
                 {
                     lblWizardError.Visible = false;
-                    lblWizardError.Text = string.Empty;
+                    lblErrorCheckSure.Visible = false;
+                    lblSendError.Visible = false;
                     //ApplicationSummary();
                 }
                 else
                 {
-                    lblWizardError.Visible = true;
-                    lblWizardError.Text = "يجب النقر على الإقرار";
+                    lblWizardError.Visible = false;
+                    lblErrorCheckSure.Visible = false;
+                    lblErrorCheckSure.Visible = true;
+                    lblErrorCheckSure.Text = "يجب النقر على الإقرار";
                 }
             }
             catch (Exception excBtnSend)
             {
-                lblWizardError.Visible = true;
-                lblWizardError.Text = excBtnSend.Message.ToString();
+                lblSendError.Visible = true;
+                lblSendError.Text = excBtnSend.Message.ToString();
             }
         }
         private void LoadRoomsAvailable()
@@ -154,8 +161,8 @@ namespace Smart_Reservation_Training_Classes
                         gvRoomsAvailable.DataSource = null;
                         gvRoomsAvailable.DataBind();
                     }
+                    gvRoomsAvailable.Visible = true;
                     lblWizardError.Visible = false;
-                    lblWizardError.Text = string.Empty;
                     txtSearchStartDate.Enabled = false;
                     txtSearchEndDate.Enabled = false;
                 }
@@ -180,13 +187,12 @@ namespace Smart_Reservation_Training_Classes
         protected void BtnResetSearch_Click(object sender, EventArgs e)
         {
             BtnResetSearch.Visible = false;
-            txtSearchStartDate.Text = "";
-            txtSearchEndDate.Text = "";
+            txtSearchStartDate.Text = string.Empty;
+            txtSearchEndDate.Text = string.Empty;
             txtSearchStartDate.Enabled = true;
             txtSearchEndDate.Enabled = true;
             lblWizardError.Visible = false;
-            lblWizardError.Text = string.Empty;
-            //LoadRoomsAvailable();
+            gvRoomsAvailable.Visible = false;
         }
     }
 }

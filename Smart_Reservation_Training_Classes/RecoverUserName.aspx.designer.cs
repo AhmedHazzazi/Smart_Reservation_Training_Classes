@@ -11,70 +11,79 @@ namespace Smart_Reservation_Training_Classes
 {
 
 
-    public partial class index
+    public partial class RecoverUserName
     {
 
         /// <summary>
-        /// Error_Panel control.
+        /// UpdatePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Error_Panel;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel;
 
         /// <summary>
-        /// lblErrorMsg control.
+        /// lblError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErrorMsg;
+        protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
-        /// Admin control.
+        /// ViewsPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Admin;
+        protected global::System.Web.UI.WebControls.Panel ViewsPanel;
 
         /// <summary>
-        /// Users control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Users;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// lbtnNewReservationUser control.
+        /// RFVtxtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lbtnNewReservationUser;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVtxtEmail;
 
         /// <summary>
-        /// BtnViewReservationUser control.
+        /// REVtxtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnViewReservationUser;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator REVtxtEmail;
 
         /// <summary>
-        /// BtnEditReservationUser control.
+        /// BtnRecoverUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEditReservationUser;
+        protected global::System.Web.UI.WebControls.Button BtnRecoverUserName;
+
+        /// <summary>
+        /// lblSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccess;
     }
 }

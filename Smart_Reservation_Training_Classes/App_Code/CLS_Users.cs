@@ -112,6 +112,17 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.ExecuteCommandProcedure("SP_DeleteUser", param);
             DAL.CloseConnectionDB();
         }
+        public DataTable RecoverUername(string Email)
+        {
+            DAL.OpenConnectionDB();
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@Email", SqlDbType.NVarChar);
+            param[0].Value = Email;
+            DataTable Dt = new DataTable();
+            Dt = DAL.SelectDataProcedure("SP_RecoverUserName", param);
+            DAL.CloseConnectionDB();
+            return Dt;
+        }
         public void UpdatePasswordUser(string UserName, string Password)
         {
             DAL.OpenConnectionDB();

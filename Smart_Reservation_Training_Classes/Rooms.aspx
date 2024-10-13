@@ -4,12 +4,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <%--<div class="row text-center p-1">
+            <div class="row text-center p-1">
                 <div class="col-sm-12">
                     <asp:Label ID="lblSuccess" runat="server" CssClass="success" Visible="false"></asp:Label>
                     <asp:Label ID="lblError" runat="server" CssClass="error" Visible="false"></asp:Label>
                 </div>
-            </div>--%>
+            </div>
             <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                 <asp:View ID="View1" runat="server">
                     <div class="text-primary fs-5 py-1">
@@ -20,8 +20,8 @@
                     </div>
                     <div class="d-grid gap-2 d-md-block">
                         <asp:Button ID="BtnAddRoom" runat="server" Text="إضافة قاعة" CssClass="btn btn-success w-auto" OnClientClick="Loader()" OnClick="BtnAddRoom_Click" />
-                        <asp:Label ID="lblSuccess" runat="server" CssClass="success" Visible="false"></asp:Label>
-                        <asp:Label ID="lblError" runat="server" CssClass="error" Visible="false"></asp:Label>
+                        <%--<asp:Label ID="lblSuccess" runat="server" CssClass="success" Visible="false"></asp:Label>--%>
+                        <%--<asp:Label ID="lblError" runat="server" CssClass="error" Visible="false"></asp:Label>--%>
                     </div>
                     <asp:Panel ID="SearchPanel" runat="server" CssClass="py-2" DefaultButton="BtnSearch">
                         <label class="label">البحث : </label>

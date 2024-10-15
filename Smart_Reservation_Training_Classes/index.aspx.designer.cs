@@ -42,6 +42,42 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Admin;
 
         /// <summary>
+        /// linkRoles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkRoles;
+
+        /// <summary>
+        /// linkViewReservations control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkViewReservations;
+
+        /// <summary>
+        /// linkRooms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkRooms;
+
+        /// <summary>
+        /// linkCourses control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkCourses;
+
+        /// <summary>
         /// Users control.
         /// </summary>
         /// <remarks>
@@ -51,30 +87,21 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Users;
 
         /// <summary>
-        /// lbtnNewReservationUser control.
+        /// linkNewReservationUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lbtnNewReservationUser;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkNewReservationUser;
 
         /// <summary>
-        /// BtnViewReservationUser control.
+        /// linkManageReservations control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnViewReservationUser;
-
-        /// <summary>
-        /// BtnEditReservationUser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEditReservationUser;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkManageReservations;
     }
 }

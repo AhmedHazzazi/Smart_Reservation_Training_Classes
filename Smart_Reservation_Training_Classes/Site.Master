@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نظام إدارة حجز القاعات التدريبية</title>
-    <%--<link rel="stylesheet" href="content/css/bootstrap.min.css" />--%>
     <link rel="stylesheet" href="content/css/bootstrap.rtl.min.css" />
     <link rel="stylesheet" href="content/css/bootstrap-datetimepicker.css" />
     <link rel="stylesheet" href="content/css/style.css" />
@@ -41,8 +40,11 @@
                                 <div>
                                     مرحبا :
                                     <asp:Label ID="lblName" runat="server" CssClass="text-primary"></asp:Label>
+                                    <div class="vr"></div>
+                                    <asp:LinkButton ID="BtnLogout" runat="server" OnClientClick="Loader()" OnClick="BtnLogout_Click" ToolTip="تسجيل خروج">
+                                        <img alt="تسجيل خروج" src="content/img/shutdown_50px.png" style="width: 25px; background-color: #dc3545; padding:3px;" />
+                                    </asp:LinkButton>
                                 </div>
-                                <asp:LinkButton ID="BtnLogout" runat="server" OnClientClick="Loader()" OnClick="BtnLogout_Click">تسجيل خروج</asp:LinkButton>
                             </div>
                         </li>
                     </ul>

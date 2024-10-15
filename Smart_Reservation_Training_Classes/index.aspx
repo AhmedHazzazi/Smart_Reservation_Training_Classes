@@ -7,74 +7,60 @@
             <asp:Label ID="lblErrorMsg" runat="server"></asp:Label>
         </asp:Panel>
     </div>
-    <div id="Admin" runat="server" visible="false" class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <div class="card h-auto">
-                <img src="content/img/cover.jpg" class="card-img-top" alt="...">
+    <div id="Admin" runat="server" visible="false" class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col-2 text-center">
+            <div class="item-image">
+                <img src="content/img/Roles.png" class="item-image" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">إدارة الصلاحيات</h5>
-                    <a class="btn btn-group-lg btn-primary" href="Roles.aspx" onclick="Loader();">عرض</a>
-                    <%--<asp:Button ID="BtnViewRoles" runat="server" Text="عرض" CssClass="btn btn-group-lg btn-primary" OnClientClick="Loader();" />--%>
-                    <%--<asp:Button ID="BtnAddRoles" runat="server" Text="إضافة" CssClass="btn btn-group-lg btn-success" OnClientClick="Loader();" />--%>
-                    <%--<asp:Button ID="BtnEditRoles" runat="server" Text="تعديل" CssClass="btn btn-group-lg btn-warning" OnClientClick="Loader();" />--%>
+                    <a id="linkRoles" runat="server" href="Roles.aspx" class="btn btn-group-lg btn-primary" onclick="return Loader();">عرض</a>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-auto">
-                <img src="content/img/cover.jpg" class="card-img-top" alt="...">
+        <div class="col-2 text-center">
+            <div class="item-image">
+                <img src="content/img/Reservations.png" class="item-image" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">إدارة الحجوزات</h5>
-                    <a class="btn btn-group-lg btn-primary" href="ViewReservations.aspx" onclick="Loader();">عرض</a>
-                    <%--<asp:Button ID="BtnViewReservationAdmin" runat="server" Text="عرض" CssClass="btn btn-group-lg btn-primary" OnClientClick="Loader();" />--%>
-                    <%--<asp:Button ID="BtnAddReservationAdmin" runat="server" Text="إضافة" CssClass="btn btn-group-lg btn-success" OnClientClick="Loader();" />--%>
-                    <%--<asp:Button ID="BtnEditReservationAdmin" runat="server" Text="تعديل" CssClass="btn btn-group-lg btn-warning" OnClientClick="Loader();" />--%>
+                    <a id="linkViewReservations" runat="server" href="ViewReservations.aspx" class="btn btn-group-lg btn-primary" onclick="return Loader();">عرض</a>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-auto">
-                <img src="content/img/cover31.jpg" class="card-img-top" alt="...">
+        <div class="col-2 text-center">
+            <div class="item-image">
+                <img src="content/img/Rooms.png" class="item-image" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">إدارة القاعات التدريبية</h5>
-                    <a class="btn btn-group-lg btn-primary" href="Rooms.aspx" onclick="Loader();">عرض</a>
-                    <%--<asp:Button ID="BtnViewRooms" runat="server" Text="عرض" CssClass="btn btn-group-lg btn-primary" OnClientClick="Loader();" />--%>
-                    <%--<asp:Button ID="BtnAddRooms" runat="server" Text="إضافة" CssClass="btn btn-group-lg btn-success" OnClientClick="Loader();" />--%>
-                    <%--<asp:Button ID="BtnEditRooms" runat="server" Text="تعديل" CssClass="btn btn-group-lg btn-warning" OnClientClick="Loader();" />--%>
+                    <a id="linkRooms" runat="server" href="Rooms.aspx" class="btn btn-group-lg btn-primary" onclick="return Loader();">عرض</a>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="content/img/cover31.jpg" class="card-img-top" alt="...">
+        <div class="col-2 text-center">
+            <div class="item-image">
+                <img src="content/img/Courses.png" class="item-image" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">إدارة الدورات التدريبية</h5>
-                    <a class="btn btn-group-lg btn-primary" href="Courses.aspx" onclick="Loader();">عرض</a>
-                    <%--<asp:Button ID="BtnViewCourses" runat="server" Text="عرض" CssClass="btn btn-group-lg btn-primary" OnClientClick="Loader();" />--%>
-                    <%--<asp:Button ID="BtnAddCourses" runat="server" Text="إضافة" CssClass="btn btn-group-lg btn-success" OnClientClick="Loader();" />--%>
-                    <%--<asp:Button ID="BtnEditCourses" runat="server" Text="تعديل" CssClass="btn btn-group-lg btn-warning" OnClientClick="Loader();" />--%>
+                    <a id="linkCourses" runat="server" href="Courses.aspx" class="btn btn-group-lg btn-primary" onclick="return Loader();">عرض</a>
                 </div>
             </div>
         </div>
     </div>
-    <div id="Users" runat="server" visible="false" class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <div class="card h-auto">
-                <img src="content/img/cover.jpg" class="card-img-top" alt="...">
+    <div id="Users" runat="server" visible="false" class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col-2 text-center">
+            <div class="item-image">
+                <img src="content/img/Reservations.png" class="item-image" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">تسجيل حجز جديد</h5>
-                    <%--<asp:Button ID="BtnNewReservationUser" runat="server" Text="حجز جديد" CssClass="btn btn-group-lg btn-primary" OnClientClick="Loader();" />--%>
-                    <a id="lbtnNewReservationUser" runat="server" href="NewReservation.aspx" class="btn btn-group-lg btn-primary" onclick="return Loader()">حجز جديد</a>
+                    <a id="linkNewReservationUser" runat="server" href="NewReservation.aspx" class="btn btn-group-lg btn-primary" onclick="return Loader()">حجز جديد</a>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-auto">
-                <img src="content/img/cover.jpg" class="card-img-top" alt="...">
+        <div class="col-2 text-center">
+            <div class="item-image">
+                <img src="content/img/Reservations.png" class="item-image" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">إدارة الحجوزات</h5>
-                    <asp:Button ID="BtnViewReservationUser" runat="server" Text="عرض" CssClass="btn btn-group-lg btn-primary" OnClientClick="Loader();" />
-                    <asp:Button ID="BtnEditReservationUser" runat="server" Text="تعديل" CssClass="btn btn-group-lg btn-warning" OnClientClick="Loader();" />
+                    <a id="linkManageReservations" runat="server" href="ManageReservations.aspx" class="btn btn-group-lg btn-primary" onclick="return Loader()">حجز جديد</a>
                 </div>
             </div>
         </div>

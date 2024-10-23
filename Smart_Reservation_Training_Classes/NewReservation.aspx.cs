@@ -17,8 +17,9 @@ namespace Smart_Reservation_Training_Classes
 {
     public partial class NewReservation : System.Web.UI.Page
     {
-        CLS_Rooms cls_rooms = new CLS_Rooms();
-        DataTable dtRoomsAvailable;
+        CLS_Rooms cls_Rooms = new CLS_Rooms();
+        CLS_Reservations cls_Reservations = new CLS_Reservations();
+        DataTable dtRoomsAvailable, dtReservations;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -27,6 +28,7 @@ namespace Smart_Reservation_Training_Classes
                 {
                     Response.Redirect("~/Login.aspx");
                 }
+                hfUserID.Value = (string)Session["UserID"];
             }
         }
 
@@ -96,6 +98,7 @@ namespace Smart_Reservation_Training_Classes
                 lblWizardError.Visible = false;
                 lblWizardError.Text = string.Empty;
                 MultiViewCard.ActiveViewIndex = 2;
+                ApplicationSummary();
             }
             catch (Exception excBtnSaveNext3)
             {
@@ -128,7 +131,7 @@ namespace Smart_Reservation_Training_Classes
                     lblWizardError.Visible = false;
                     lblErrorCheckSure.Visible = false;
                     lblSendError.Visible = false;
-                    //ApplicationSummary();
+                    SendRequest();
                 }
                 else
                 {
@@ -150,16 +153,18 @@ namespace Smart_Reservation_Training_Classes
             {
                 if (!string.IsNullOrEmpty(txtSearchStartDate.Text) && !string.IsNullOrEmpty(txtSearchEndDate.Text))
                 {
-                    dtRoomsAvailable = cls_rooms.SearchRoomsAvailable(txtSearchStartDate.Text, txtSearchEndDate.Text);
+                    dtRoomsAvailable = cls_Rooms.SearchRoomsAvailable(txtSearchStartDate.Text, txtSearchEndDate.Text);
                     if (dtRoomsAvailable.Rows.Count > 0)
                     {
                         gvRoomsAvailable.DataSource = dtRoomsAvailable;
                         gvRoomsAvailable.DataBind();
+                        ViewsPanel.Visible = true;
                     }
                     else
                     {
                         gvRoomsAvailable.DataSource = null;
                         gvRoomsAvailable.DataBind();
+                        ViewsPanel.Visible = false;
                     }
                     gvRoomsAvailable.Visible = true;
                     lblWizardError.Visible = false;
@@ -192,7 +197,84 @@ namespace Smart_Reservation_Training_Classes
             txtSearchStartDate.Enabled = true;
             txtSearchEndDate.Enabled = true;
             lblWizardError.Visible = false;
-            gvRoomsAvailable.Visible = false;
+            ViewsPanel.Visible = false;
+        }
+
+        private void SendRequest()
+        {
+            try
+            {
+                dtReservations = cls_Reservations.SearchReservation((string)Session["UserID"]);
+                if (dtReservations == null)
+                {
+                    cls_Reservations.InsertReservation(Convert.ToInt32(hfReservationID_S.Value), Convert.ToInt32(hfUserID_S.Value),
+                    txtRoomCode_S.Text, txtCourseCode_S.Text, txtTypeSubtraction_S.Text, txtEndDate_S.Text, txtExpectedNumber_S.Text, txtTargetGroup_S.Text,
+                    txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtTime_S.Text, txtStartDate_S.Text, "قيد المراجعة", txtDuration_S.Text,
+                    txtLecturerName_S.Text, txtRequirements_S.Text, txtLanguage_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
+                    //Response.Redirect("CompleteRequest.aspx");
+                }
+                else
+                {
+                    cls_Reservations.UpdateReservation(Convert.ToInt32(hfReservationID_S.Value), Convert.ToInt32(hfUserID_S.Value),
+                    txtRoomCode_S.Text, txtCourseCode_S.Text, txtTypeSubtraction_S.Text, txtEndDate_S.Text, txtExpectedNumber_S.Text, txtTargetGroup_S.Text,
+                    txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtTime_S.Text, txtStartDate_S.Text, "قيد المراجعة", txtDuration_S.Text,
+                    txtLecturerName_S.Text, txtRequirements_S.Text, txtLanguage_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
+                    //Response.Redirect("CompleteRequest.aspx");
+                }
+                Response.Redirect("CompleteRequest.aspx");
+                gvRoomsAvailable.Visible = true;
+                lblWizardError.Visible = false;
+                txtSearchStartDate.Enabled = false;
+                txtSearchEndDate.Enabled = false;
+            }
+            catch (Exception excSendRequest)
+            {
+                lblWizardError.Visible = true;
+                lblWizardError.Text = excSendRequest.Message.ToString();
+            }
+        }
+        private void ApplicationSummary()
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(txtCourseCode.Text))
+                {
+                    hfReservationID_S.Value = hfReservationID.Value;
+                    hfUserID_S.Value = hfUserID.Value;
+                    txtTypeSubtraction_S.Text = RBLTypeSubtraction.SelectedValue.ToString();
+                    txtTargetGroup_S.Text = DDLTargetGroup.SelectedValue.ToString();
+                    txtImplementingEntity_S.Text = txtImplementingEntity.Text;
+                    txtBeneficiaryEntity_S.Text = txtBeneficiaryEntity.Text;
+                    txtTime_S.Text = txtTime.Text;
+                    txtStartDate_S.Text = txtStartDate.Text;
+                    txtEndDate_S.Text = txtEndDate.Text;
+                    txtExpectedNumber_S.Text = txtExpectedNumber.Text;
+                    txtDuration_S.Text = txtDuration.Text;
+                    txtRoomCode_S.Text = txtRoomCode.Text;
+                    txtCourseCode_S.Text = txtCourseCode.Text;
+                    txtLecturerName_S.Text = txtLecturerName.Text;
+                    txtRequirements_S.Text = txtRequirements.Text;
+                    txtLanguage_S.Text = RblLanguage.SelectedValue.ToString();
+                    txtUseOfComputer_S.Text = RblUseOfComputer.SelectedValue.ToString();
+                    txtCourseTopics_S.Text = txtCourseTopics.Text;
+                    txtNotes_S.Text = txtNotes.Text;
+                }
+                else
+                {
+                    lblWizardError.Visible = true;
+                    lblWizardError.Text = "يجب إدخال كود الدورة التدريبية";
+                }
+                
+                gvRoomsAvailable.Visible = true;
+                lblWizardError.Visible = false;
+                txtSearchStartDate.Enabled = false;
+                txtSearchEndDate.Enabled = false;
+            }
+            catch (Exception excApplicationSummary)
+            {
+                lblWizardError.Visible = true;
+                lblWizardError.Text = excApplicationSummary.Message.ToString();
+            }
         }
     }
 }

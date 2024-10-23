@@ -17,14 +17,9 @@ namespace Smart_Reservation_Training_Classes
         protected void Page_Load(object sender, EventArgs e)
         {
             txtUserName.Focus();
-            //MsgError.Text = string.Empty;
             MsgError.Visible = false;
             userNameRequire.Visible = false;
             passwordRequire.Visible = false;
-            //HtmlGenericControl MenusUsers = (HtmlGenericControl)Master.FindControl("MenusUsers");
-            //MenusUsers.Visible = false;
-            //HtmlGenericControl MenusAdmin = (HtmlGenericControl)Master.FindControl("MenusAdmin");
-            //MenusAdmin.Visible = false;
 
         }
         protected void BtnLogin_Click(object sender, EventArgs e)

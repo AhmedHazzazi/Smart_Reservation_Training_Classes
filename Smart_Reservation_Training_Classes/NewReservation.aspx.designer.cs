@@ -51,6 +51,15 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.WebControls.View View1;
 
         /// <summary>
+        /// PanelWizard1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelWizard1;
+
+        /// <summary>
         /// SearchToolbarPanel control.
         /// </summary>
         /// <remarks>
@@ -132,6 +141,15 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.WebControls.View View2;
 
         /// <summary>
+        /// PanelWizard2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelWizard2;
+
+        /// <summary>
         /// hfReservationID control.
         /// </summary>
         /// <remarks>
@@ -141,6 +159,15 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.WebControls.HiddenField hfReservationID;
 
         /// <summary>
+        /// hfUserID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfUserID;
+
+        /// <summary>
         /// tblDataReservation control.
         /// </summary>
         /// <remarks>
@@ -148,6 +175,15 @@ namespace Smart_Reservation_Training_Classes
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tblDataReservation;
+
+        /// <summary>
+        /// RBLTypeSubtraction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RBLTypeSubtraction;
 
         /// <summary>
         /// DDLTargetGroup control.
@@ -321,22 +357,184 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.WebControls.View View3;
 
         /// <summary>
-        /// Panel1 control.
+        /// PanelWizard3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel PanelWizard3;
 
         /// <summary>
-        /// FormView1 control.
+        /// hfReservationID_S control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView FormView1;
+        protected global::System.Web.UI.WebControls.HiddenField hfReservationID_S;
+
+        /// <summary>
+        /// hfUserID_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfUserID_S;
+
+        /// <summary>
+        /// txtTypeSubtraction_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTypeSubtraction_S;
+
+        /// <summary>
+        /// txtTargetGroup_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTargetGroup_S;
+
+        /// <summary>
+        /// txtImplementingEntity_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtImplementingEntity_S;
+
+        /// <summary>
+        /// txtBeneficiaryEntity_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBeneficiaryEntity_S;
+
+        /// <summary>
+        /// txtTime_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTime_S;
+
+        /// <summary>
+        /// txtStartDate_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtStartDate_S;
+
+        /// <summary>
+        /// txtEndDate_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEndDate_S;
+
+        /// <summary>
+        /// txtExpectedNumber_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtExpectedNumber_S;
+
+        /// <summary>
+        /// txtDuration_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDuration_S;
+
+        /// <summary>
+        /// txtRoomCode_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRoomCode_S;
+
+        /// <summary>
+        /// txtCourseCode_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCourseCode_S;
+
+        /// <summary>
+        /// txtLecturerName_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLecturerName_S;
+
+        /// <summary>
+        /// txtRequirements_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRequirements_S;
+
+        /// <summary>
+        /// txtLanguage_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLanguage_S;
+
+        /// <summary>
+        /// txtUseOfComputer_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUseOfComputer_S;
+
+        /// <summary>
+        /// txtCourseTopics_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCourseTopics_S;
+
+        /// <summary>
+        /// txtNotes_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNotes_S;
 
         /// <summary>
         /// checkSureInfo control.

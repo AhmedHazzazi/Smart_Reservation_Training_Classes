@@ -65,6 +65,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CompleteRequest.aspx" />
     <Content Include="content\css\bootstrap-datetimepicker.css" />
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\bootstrap.rtl.min.css" />
@@ -126,6 +127,13 @@
     <Compile Include="App_Code\CLS_Reservations.cs" />
     <Compile Include="App_Code\DataAccessLayer.cs" />
     <Compile Include="App_Code\CLS_Users.cs" />
+    <Compile Include="CompleteRequest.aspx.cs">
+      <DependentUpon>CompleteRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompleteRequest.aspx.designer.cs">
+      <DependentUpon>CompleteRequest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManageReservations.aspx.cs">
       <DependentUpon>ManageReservations.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

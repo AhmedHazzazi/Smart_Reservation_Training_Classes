@@ -45,36 +45,37 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                //dtUsers = cls_users.SearchUser((string)Session["UserID"]);
-                //if (dtUsers.Rows.Count > 0)
-                //{
-                //    foreach (DataRow row in dtUsers.Rows)
-                //    {
-                //        if (row["Role"].ToString() == "Admin")
-                //        {
-                //            MenusAdmin.Visible = true;
-                //            MenusUsers.Visible = false;
-                //        }
-                //        else if (row["Role"].ToString() == "User")
-                //        {
-                //            MenusAdmin.Visible = false;
-                //            MenusUsers.Visible = true;
-                //        }
-                //    }
-                //}
+                dtUsers = cls_users.SearchUser((string)Session["UserID"]);
+                if (dtUsers.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtUsers.Rows)
+                    {
+                        if (row["Role"].ToString() == "Admin")
+                        {
+                            MenusAdmin.Visible = true;
+                            MenusUsers.Visible = false;
+                        }
+                        else if (row["Role"].ToString() == "User")
+                        {
+                            MenusAdmin.Visible = false;
+                            MenusUsers.Visible = true;
+                        }
+                        break;
+                    }
+                }
 
-                ctxSRTC_DB = new SRTC_DBDataContext();
-                var tblUsers = ctxSRTC_DB.GetTable<TBLUser>().Where(x => x.UserID.Equals(Session["UserID"])&&x.Role.Equals("Admin")).FirstOrDefault();
-                if (tblUsers != null)
-                {
-                    MenusAdmin.Visible = true;
-                    MenusUsers.Visible = false;
-                }
-                else
-                {
-                    MenusAdmin.Visible = false;
-                    MenusUsers.Visible = true;
-                }
+                //ctxSRTC_DB = new SRTC_DBDataContext();
+                //var tblUsers = ctxSRTC_DB.GetTable<TBLUser>().Where(x => x.UserID.Equals(Session["UserID"])&&x.Role.Equals("Admin")).FirstOrDefault();
+                //if (tblUsers != null)
+                //{
+                //    MenusAdmin.Visible = true;
+                //    MenusUsers.Visible = false;
+                //}
+                //else
+                //{
+                //    MenusAdmin.Visible = false;
+                //    MenusUsers.Visible = true;
+                //}
             }
             catch (Exception excMenusAdminAndUsers)
             {

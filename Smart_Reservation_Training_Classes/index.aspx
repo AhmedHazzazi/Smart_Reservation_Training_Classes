@@ -7,7 +7,7 @@
             <asp:Label ID="lblErrorMsg" runat="server"></asp:Label>
         </asp:Panel>
     </div>
-    <div id="Admin" runat="server" visible="false" class="row row-cols-1 row-cols-md-4 g-4">
+    <div id="Admin" runat="server" visible="false" class="row row-cols-1">
         <div class="col-2 text-center">
             <div class="item-image">
                 <img src="content/img/Roles.png" class="item-image" alt="...">
@@ -45,7 +45,7 @@
             </div>
         </div>
     </div>
-    <div id="Users" runat="server" visible="false" class="row row-cols-1 row-cols-md-4 g-4">
+    <div id="Users" runat="server" visible="false" class="row row-cols-1">
         <div class="col-2 text-center">
             <div class="item-image">
                 <img src="content/img/Reservations.png" class="item-image" alt="...">

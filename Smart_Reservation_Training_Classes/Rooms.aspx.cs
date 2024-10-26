@@ -1,4 +1,5 @@
 ﻿using Smart_Reservation_Training_Classes.App_Code;
+using Smart_Reservation_Training_Classes.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -35,36 +36,40 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                //dtUsers = cls_Users.SearchUser((string)Session["UserID"]);
-                //if (dtUsers.Rows.Count > 0)
-                //{
-                //    foreach (DataRow row in dtUsers.Rows)
-                //    {
-                //        if (row["Role"].ToString() == "Admin")
-                //        { }
-                //        else if (row["Role"].ToString() == "User")
-                //        {
-                //            MultiView1.Visible = false;
-                //            lblError.Visible = true;
-                //            lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
-                //        }
-                //    }
-                //}
-                //else
-                //{
-                //    lblError.Visible = true;
-                //    lblError.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
-                //}
-                ctxSRTC_DB = new SRTC_DBDataContext();
-                var tblUsers = ctxSRTC_DB.GetTable<TBLUser>().Where(x => x.UserID.Equals(Session["UserID"]) && x.Role.Equals("Admin")).FirstOrDefault();
-                if (tblUsers != null)
-                { }
+                dtUsers = cls_Users.SearchUser((string)Session["UserID"]);
+                if (dtUsers.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtUsers.Rows)
+                    {
+                        if (row["Role"].ToString() == "Admin")
+                        { }
+                        else if (row["Role"].ToString() == "User")
+                        {
+                            MultiView1.Visible = false;
+                            lblError.Visible = true;
+                            lblError.Text = Resources.ErrorMessageRoleAccess;
+                            //lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
+                        }
+                        break;
+                    }
+                }
                 else
                 {
-                    MultiView1.Visible = false;
                     lblError.Visible = true;
-                    lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
+                    lblError.Text = Resources.ErrorMessageRoleAccess;
+                    //lblError.Text = "عفواً !!! حدث خطأ في إسترجاع البيانات أو أنه لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
                 }
+                //ctxSRTC_DB = new SRTC_DBDataContext();
+                //var tblUsers = ctxSRTC_DB.GetTable<TBLUser>().Where(x => x.UserID.Equals(Session["UserID"]) && x.Role.Equals("Admin")).FirstOrDefault();
+                //if (tblUsers != null)
+                //{ }
+                //else
+                //{
+                //    MultiView1.Visible = false;
+                //    lblError.Visible = true;
+                //    lblError.Text = Resources.ErrorMessageRoleAccess;
+                //    lblError.Text = "عفواً !!! حدث خطأ في إسترجاع البيانات أو أنه لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
+                //}
             }
             catch (Exception excRoleAccess)
             {
@@ -216,78 +221,77 @@ namespace Smart_Reservation_Training_Classes
             BindDataRooms();
         }
 
-        protected void gvRoomsAvailable_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvRooms_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
             {
-                //if (e.CommandName == "Edited")
-                //{
-                //    string UserID = e.CommandArgument.ToString();
-                //    dtUsers = cls_users.SearchUser(UserID);
-                //    if (dtUsers.Rows.Count > 0)
-                //    {
-                //        if (!string.IsNullOrEmpty(UserID))
-                //        {
-                //            foreach (DataRow dr in dtUsers.Rows)
-                //            {
-                //                //hfUserID.Value = dr["UserID"].ToString();
-                //                txtName.Text = dr["Name"].ToString();
-                //                txtUserName.Text = dr["UserName"].ToString();
-                //                txtPassword.Text = dr["Password"].ToString();
-                //                txtEmail.Text = dr["Email"].ToString();
-                //                RblRole.SelectedValue = dr["Role"].ToString();
-
-                //                txtUserName.Enabled = false;
-                //                txtEmail.Enabled = false;
-                //            }
-                //            lblError.Visible = false;
-                //        }
-                //        else
-                //        {
-                //            lblError.Visible = true;
-                //            lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم";
-                //        }
-                //    }
-                //    else
-                //    {
-                //        lblError.Visible = true;
-                //        lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم";
-                //    }
-                //    MultiView1.ActiveViewIndex = 1;
-                //}
-                //else if (e.CommandName == "Deleted")
-                //{
-                //    string UserID = e.CommandArgument.ToString();
-                //    dtUsers = cls_users.SearchUser(UserID);
-                //    if (dtUsers.Rows.Count > 0)
-                //    {
-                //        if (!string.IsNullOrEmpty(UserID))
-                //        {
-                //            cls_users.DeleteUser(Convert.ToDecimal(UserID));
-                //            DataRow dr = dtUsers.Rows[0];
-                //            dr.Delete();
-                //            lblError.Visible = false;
-                //            lblSuccess.Visible = true;
-                //            lblSuccess.Text = "لقد تم حذف صلاحية المستخدم بنجاح";
-                //        }
-                //        else
-                //        {
-                //            lblError.Visible = true;
-                //            lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم حتى يتم حذفه";
-                //        }
-                //    }
-                //    else
-                //    {
-                //        lblError.Visible = true;
-                //        lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم حتى يتم حذفه";
-                //    }
-                //    BindDataUsers();
-                //}
+                string RoomCode = e.CommandArgument.ToString();
+                dtUsers = cls_Rooms.SearchRoom(RoomCode);
+                if (e.CommandName == "Edited")
+                {
+                    //string RoomCode = e.CommandArgument.ToString();
+                    //dtUsers = cls_Rooms.SearchRoom(RoomCode);
+                    if (dtUsers.Rows.Count > 0)
+                    {
+                        if (!string.IsNullOrEmpty(RoomCode))
+                        {
+                            foreach (DataRow dr in dtUsers.Rows)
+                            {
+                                txtRoomCode.Text = dr["RoomCode"].ToString();
+                                txtRoomName.Text = dr["RoomName"].ToString();
+                                DDLRoomType.SelectedValue = dr["RoomType"].ToString();
+                                txtRoomLocation.Text = dr["RoomLocation"].ToString();
+                                txtRoomCapacity.Text = dr["RoomCapacity"].ToString();
+                                txtRoomCode.Enabled = false;
+                            }
+                            lblError.Visible = false;
+                        }
+                        else
+                        {
+                            lblError.Visible = true;
+                            lblError.Text = "لم يتم العثور على بيانات القاعة التدريبية التي تم اختيارها";
+                        }
+                    }
+                    else
+                    {
+                        lblError.Visible = true;
+                        lblError.Text = "لم يتم العثور على بيانات القاعة التدريبية التي تم اختيارها";
+                    }
+                    MultiView1.ActiveViewIndex = 1;
+                }
+                else if (e.CommandName == "Deleted")
+                {
+                    //string RoomCode = e.CommandArgument.ToString();
+                    //dtUsers = cls_Rooms.SearchRoom(RoomCode);
+                    if (dtUsers.Rows.Count > 0)
+                    {
+                        if (!string.IsNullOrEmpty(RoomCode))
+                        {
+                            cls_Rooms.DeleteRoom(RoomCode);
+                            DataRow dr = dtUsers.Rows[0];
+                            dr.Delete();
+                            lblError.Visible = false;
+                            lblSuccess.Visible = true;
+                            lblSuccess.Text = "لقد تم حذف بيانات القاعة التدريبية بنجاح";
+                        }
+                        else
+                        {
+                            lblError.Visible = true;
+                            lblError.Text = "لم يتم العثور على بيانات القاعة التدريبية حتى يتم حذفها";
+                        }
+                    }
+                    else
+                    {
+                        lblError.Visible = true;
+                        lblError.Text = "لم يتم العثور على بيانات القاعة التدريبية حتى يتم حذفها";
+                    }
+                    BindDataRooms();
+                }
             }
-            catch (Exception excgvUsers)
+            catch (Exception excgvRooms)
             {
                 lblError.Visible = true;
-                lblError.Text = excgvUsers.Message.ToString();
+                lblError.Text = excgvRooms.Message.ToString();
             }
         }
     }

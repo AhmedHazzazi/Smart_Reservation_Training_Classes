@@ -33,36 +33,37 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                //dtUsers = cls_Users.SearchUser((string)Session["UserID"]);
-                //if (dtUsers.Rows.Count > 0)
-                //{
-                //    foreach (DataRow row in dtUsers.Rows)
-                //    {
-                //        if (row["Role"].ToString() == "Admin")
-                //        { }
-                //        else if (row["Role"].ToString() == "User")
-                //        {
-                //            MultiView1.Visible = false;
-                //            lblError.Visible = true;
-                //            lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
-                //        }
-                //    }
-                //}
-                //else
-                //{
-                //    lblError.Visible = true;
-                //    lblError.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
-                //}
-                ctxSRTC_DB = new SRTC_DBDataContext();
-                var tblUsers = ctxSRTC_DB.GetTable<TBLUser>().Where(x => x.UserID.Equals(Session["UserID"]) && x.Role.Equals("Admin")).FirstOrDefault();
-                if (tblUsers != null)
-                { }
+                dtUsers = cls_Users.SearchUser((string)Session["UserID"]);
+                if (dtUsers.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtUsers.Rows)
+                    {
+                        if (row["Role"].ToString() == "Admin")
+                        { }
+                        else if (row["Role"].ToString() == "User")
+                        {
+                            MultiView1.Visible = false;
+                            lblError.Visible = true;
+                            lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
+                        }
+                        break;
+                    }
+                }
                 else
                 {
-                    MultiView1.Visible = false;
                     lblError.Visible = true;
-                    lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
+                    lblError.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
                 }
+                //ctxSRTC_DB = new SRTC_DBDataContext();
+                //var tblUsers = ctxSRTC_DB.GetTable<TBLUser>().Where(x => x.UserID.Equals(Session["UserID"]) && x.Role.Equals("Admin")).FirstOrDefault();
+                //if (tblUsers != null)
+                //{ }
+                //else
+                //{
+                //    MultiView1.Visible = false;
+                //    lblError.Visible = true;
+                //    lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
+                //}
             }
             catch (Exception excRoleAccess)
             {
@@ -102,7 +103,7 @@ namespace Smart_Reservation_Training_Classes
             {
                 if (!string.IsNullOrEmpty(txtCourseCode.Text) && !string.IsNullOrEmpty(txtCourseName.Text) && !string.IsNullOrEmpty(DDLCourseType.SelectedValue))
                 {
-                    dtCourses = cls_Courses.SearchCourse(txtCourseCode.Text);
+                    dtCourses = cls_Courses.SearchCourse(txtCourseCode.Text.Trim());
                     if (dtCourses.Rows.Count > 0)
                     {
                         cls_Courses.UpdateCourse(txtCourseCode.Text, txtCourseName.Text, DDLCourseType.SelectedValue.ToString());
@@ -206,78 +207,74 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
-        protected void gvRooms_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvCourses_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
             {
-                //if (e.CommandName == "Edited")
-                //{
-                //    string UserID = e.CommandArgument.ToString();
-                //    dtUsers = cls_users.SearchUser(UserID);
-                //    if (dtUsers.Rows.Count > 0)
-                //    {
-                //        if (!string.IsNullOrEmpty(UserID))
-                //        {
-                //            foreach (DataRow dr in dtUsers.Rows)
-                //            {
-                //                //hfUserID.Value = dr["UserID"].ToString();
-                //                txtName.Text = dr["Name"].ToString();
-                //                txtUserName.Text = dr["UserName"].ToString();
-                //                txtPassword.Text = dr["Password"].ToString();
-                //                txtEmail.Text = dr["Email"].ToString();
-                //                RblRole.SelectedValue = dr["Role"].ToString();
-
-                //                txtUserName.Enabled = false;
-                //                txtEmail.Enabled = false;
-                //            }
-                //            lblError.Visible = false;
-                //        }
-                //        else
-                //        {
-                //            lblError.Visible = true;
-                //            lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم";
-                //        }
-                //    }
-                //    else
-                //    {
-                //        lblError.Visible = true;
-                //        lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم";
-                //    }
-                //    MultiView1.ActiveViewIndex = 1;
-                //}
-                //else if (e.CommandName == "Deleted")
-                //{
-                //    string UserID = e.CommandArgument.ToString();
-                //    dtUsers = cls_users.SearchUser(UserID);
-                //    if (dtUsers.Rows.Count > 0)
-                //    {
-                //        if (!string.IsNullOrEmpty(UserID))
-                //        {
-                //            cls_users.DeleteUser(Convert.ToDecimal(UserID));
-                //            DataRow dr = dtUsers.Rows[0];
-                //            dr.Delete();
-                //            lblError.Visible = false;
-                //            lblSuccess.Visible = true;
-                //            lblSuccess.Text = "لقد تم حذف صلاحية المستخدم بنجاح";
-                //        }
-                //        else
-                //        {
-                //            lblError.Visible = true;
-                //            lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم حتى يتم حذفه";
-                //        }
-                //    }
-                //    else
-                //    {
-                //        lblError.Visible = true;
-                //        lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم حتى يتم حذفه";
-                //    }
-                //    BindDataUsers();
-                //}
+                string CourseCode = e.CommandArgument.ToString();
+                dtCourses = cls_Courses.SearchCourse(CourseCode);
+                if (e.CommandName == "Edited")
+                {
+                    //dtCourses = cls_Courses.SearchCourse(CourseCode);
+                    if (dtCourses.Rows.Count > 0)
+                    {
+                        if (!string.IsNullOrEmpty(CourseCode))
+                        {
+                            foreach (DataRow dr in dtCourses.Rows)
+                            {
+                                txtCourseCode.Text = dr["CourseCode"].ToString();
+                                txtCourseName.Text = dr["CourseName"].ToString();
+                                DDLCourseType.SelectedValue = dr["CourseType"].ToString();
+                                txtCourseCode.Enabled = false;
+                            }
+                            lblError.Visible = false;
+                        }
+                        else
+                        {
+                            lblError.Visible = true;
+                            lblError.Text = "لم يتم العثور على بيانات الدورة التدريبية التي تم اختيارها";
+                        }
+                    }
+                    else
+                    {
+                        lblError.Visible = true;
+                        lblError.Text = "لم يتم العثور على بيانات الدورة التدريبية التي تم اختيارها";
+                    }
+                    MultiView1.ActiveViewIndex = 1;
+                }
+                else if (e.CommandName == "Deleted")
+                {
+                    //string CourseCode = e.CommandArgument.ToString();
+                    //dtCourses = cls_Courses.SearchCourse(CourseCode);
+                    if (dtCourses.Rows.Count > 0)
+                    {
+                        if (!string.IsNullOrEmpty(CourseCode))
+                        {
+                            cls_Courses.DeleteCourse(CourseCode);
+                            DataRow dr = dtCourses.Rows[0];
+                            dr.Delete();
+                            lblError.Visible = false;
+                            lblSuccess.Visible = true;
+                            lblSuccess.Text = "لقد تم حذف بيانات الدورة التدريبية بنجاح";
+                        }
+                        else
+                        {
+                            lblError.Visible = true;
+                            lblError.Text = "لم يتم العثور على بيانات الدورة التدريبية التي تم اختيارها حتى يتم حذفها";
+                        }
+                    }
+                    else
+                    {
+                        lblError.Visible = true;
+                        lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم حتى يتم حذفها";
+                    }
+                    BindDataCourses();
+                }
             }
-            catch (Exception excgvUsers)
+            catch (Exception excgvCourses)
             {
                 lblError.Visible = true;
-                lblError.Text = excgvUsers.Message.ToString();
+                lblError.Text = excgvCourses.Message.ToString();
             }
         }
 
@@ -285,81 +282,6 @@ namespace Smart_Reservation_Training_Classes
         {
             gvCourses.PageIndex = e.NewPageIndex;
             BindDataCourses();
-        }
-
-        protected void gvCourses_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            try
-            {
-                //if (e.CommandName == "Edited")
-                //{
-                //    string UserID = e.CommandArgument.ToString();
-                //    dtUsers = cls_users.SearchUser(UserID);
-                //    if (dtUsers.Rows.Count > 0)
-                //    {
-                //        if (!string.IsNullOrEmpty(UserID))
-                //        {
-                //            foreach (DataRow dr in dtUsers.Rows)
-                //            {
-                //                //hfUserID.Value = dr["UserID"].ToString();
-                //                txtName.Text = dr["Name"].ToString();
-                //                txtUserName.Text = dr["UserName"].ToString();
-                //                txtPassword.Text = dr["Password"].ToString();
-                //                txtEmail.Text = dr["Email"].ToString();
-                //                RblRole.SelectedValue = dr["Role"].ToString();
-
-                //                txtUserName.Enabled = false;
-                //                txtEmail.Enabled = false;
-                //            }
-                //            lblError.Visible = false;
-                //        }
-                //        else
-                //        {
-                //            lblError.Visible = true;
-                //            lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم";
-                //        }
-                //    }
-                //    else
-                //    {
-                //        lblError.Visible = true;
-                //        lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم";
-                //    }
-                //    MultiView1.ActiveViewIndex = 1;
-                //}
-                //else if (e.CommandName == "Deleted")
-                //{
-                //    string UserID = e.CommandArgument.ToString();
-                //    dtUsers = cls_users.SearchUser(UserID);
-                //    if (dtUsers.Rows.Count > 0)
-                //    {
-                //        if (!string.IsNullOrEmpty(UserID))
-                //        {
-                //            cls_users.DeleteUser(Convert.ToDecimal(UserID));
-                //            DataRow dr = dtUsers.Rows[0];
-                //            dr.Delete();
-                //            lblError.Visible = false;
-                //            lblSuccess.Visible = true;
-                //            lblSuccess.Text = "لقد تم حذف صلاحية المستخدم بنجاح";
-                //        }
-                //        else
-                //        {
-                //            lblError.Visible = true;
-                //            lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم حتى يتم حذفه";
-                //        }
-                //    }
-                //    else
-                //    {
-                //        lblError.Visible = true;
-                //        lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم حتى يتم حذفه";
-                //    }
-                //    BindDataUsers();
-                //}
-            }
-            catch (Exception excgvUsers)
-            {
-                lblError.Visible = true;
-                lblError.Text = excgvUsers.Message.ToString();
-            }
         }
     }
 }

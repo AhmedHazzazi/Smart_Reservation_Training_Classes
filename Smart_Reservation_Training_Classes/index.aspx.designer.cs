@@ -51,13 +51,13 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.HtmlControls.HtmlAnchor linkRoles;
 
         /// <summary>
-        /// linkViewReservations control.
+        /// linkManageReservations control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkViewReservations;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkManageReservations;
 
         /// <summary>
         /// linkRooms control.
@@ -96,12 +96,12 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.HtmlControls.HtmlAnchor linkNewReservationUser;
 
         /// <summary>
-        /// linkManageReservations control.
+        /// linkUserReservations control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkManageReservations;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor linkUserReservations;
     }
 }

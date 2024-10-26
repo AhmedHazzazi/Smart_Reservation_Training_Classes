@@ -48,7 +48,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[5];
-            param[0] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 200);
+            param[0] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 300);
             param[0].Value = RoomCode;
             param[1] = new SqlParameter("@RoomName", SqlDbType.NVarChar);
             param[1].Value = RoomName;
@@ -66,7 +66,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[5];
-            param[0] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 200);
+            param[0] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 300);
             param[0].Value = RoomCode;
             param[1] = new SqlParameter("@RoomName", SqlDbType.NVarChar);
             param[1].Value = RoomName;
@@ -84,7 +84,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 200);
+            param[0] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 300);
             param[0].Value = RoomCode;
             DAL.ExecuteCommandProcedure("SP_DeleteRoom", param);
             DAL.CloseConnectionDB();

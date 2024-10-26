@@ -30,12 +30,9 @@
                         <asp:Button ID="BtnResetSearch" runat="server" Text="X" CssClass="btn btn-danger w-auto" OnClientClick="Loader()" Visible="False" OnClick="BtnResetSearch_Click" />
                     </asp:Panel>
                     <asp:Panel ID="ViewsPanel" runat="server" CssClass="m-1">
-                        <asp:GridView ID="gvRooms" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="RoomCode" HeaderStyle-BackColor="green" AutoGenerateColumns="False"
-                            Font-Names="Arial" Font-Size="11pt" AlternatingRowStyle-BackColor="#C2D69B" AllowPaging="True"
-                            CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gvRoomsAvailable_RowCommand"
-                            OnPageIndexChanging="gvRooms_PageIndexChanging">
+                        <asp:GridView ID="gvRooms" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="RoomCode" AutoGenerateColumns="False"  AllowPaging="True"  OnRowCommand="gvRooms_RowCommand" OnPageIndexChanging="gvRooms_PageIndexChanging">
                             <Columns>
-                                <asp:TemplateField>
+                                <asp:TemplateField HeaderText="#">
                                     <ItemTemplate>
                                         <%# Container.DataItemIndex + 1 %>
                                         <asp:HiddenField ID="hfRoomCode" runat="server" Value='<%#Eval("RoomCode")%>' />
@@ -47,12 +44,12 @@
                                 <asp:BoundField DataField="RoomType" HeaderText="نوع القاعة"></asp:BoundField>
                                 <asp:BoundField DataField="RoomLocation" HeaderText="مقر القاعة"></asp:BoundField>
                                 <asp:BoundField DataField="RoomCapacity" HeaderText="سعة القاعة"></asp:BoundField>
-                                <asp:TemplateField HeaderText=".....">
+                                <asp:TemplateField HeaderText="الإجراء">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lnkEdit" runat="server" CausesValidation="False" CommandName="Edited" OnClientClick="Loader();" CommandArgument='<%# Eval("RoomCode") %>'>
+                                        <asp:LinkButton ID="lnkEdit" runat="server" CausesValidation="False" CommandName="Edited" OnClientClick="Loader();" CommandArgument='<%# Eval("RoomCode") %>' ToolTip="تعديل">
                                             <asp:Image ID="imgEdit" runat="server" ImageUrl="~/content/img/Edit.png" />
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف الصلاحية من المستخدم ؟')" CommandArgument='<%# Eval("RoomCode") %>'>
+                                        <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف الصلاحية من المستخدم ؟')" CommandArgument='<%# Eval("RoomCode") %>' ToolTip="حذف">
                                             <asp:Image ID="imgRemove" runat="server" ImageUrl="~/content/img/Delete.png" />
                                         </asp:LinkButton>
                                     </ItemTemplate>

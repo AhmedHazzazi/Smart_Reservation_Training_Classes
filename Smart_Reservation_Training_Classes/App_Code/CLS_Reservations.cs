@@ -24,7 +24,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@Criterion", SqlDbType.NVarChar, 500);
+            param[0] = new SqlParameter("@Criterion", SqlDbType.NVarChar);
             param[0].Value = Criterion;
             DataTable Dt = new DataTable();
             Dt = DAL.SelectDataProcedure("SP_SearchReservation", param);
@@ -41,9 +41,9 @@ namespace Smart_Reservation_Training_Classes.App_Code
             param[0].Value = ReservationID;
             param[1] = new SqlParameter("@UserID", SqlDbType.Int);
             param[1].Value = UserID;
-            param[2] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 200);
+            param[2] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 300);
             param[2].Value = CourseCode;
-            param[3] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 200);
+            param[3] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 300);
             param[3].Value = RoomCode;
             param[4] = new SqlParameter("@TypeSubtraction", SqlDbType.NVarChar);
             param[4].Value = TypeSubtraction;
@@ -91,9 +91,9 @@ namespace Smart_Reservation_Training_Classes.App_Code
             param[0].Value = ReservationID;
             param[1] = new SqlParameter("@UserID", SqlDbType.Int);
             param[1].Value = UserID;
-            param[2] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 200);
+            param[2] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 300);
             param[2].Value = CourseCode;
-            param[3] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 200);
+            param[3] = new SqlParameter("@RoomCode", SqlDbType.NVarChar, 300);
             param[3].Value = RoomCode;
             param[4] = new SqlParameter("@TypeSubtraction", SqlDbType.NVarChar);
             param[4].Value = TypeSubtraction;

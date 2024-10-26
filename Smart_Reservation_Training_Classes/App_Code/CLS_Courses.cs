@@ -24,7 +24,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@Criterion", SqlDbType.NVarChar, 500);
+            param[0] = new SqlParameter("@Criterion", SqlDbType.NVarChar, 300);
             param[0].Value = Criterion;
             DataTable Dt = new DataTable();
             Dt = DAL.SelectDataProcedure("SP_SearchCourse", param);
@@ -35,7 +35,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[3];
-            param[0] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 200);
+            param[0] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 300);
             param[0].Value = CourseCode;
             param[1] = new SqlParameter("@CourseName", SqlDbType.NVarChar);
             param[1].Value = CourseName;
@@ -49,7 +49,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[3];
-            param[0] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 200);
+            param[0] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 300);
             param[0].Value = CourseCode;
             param[1] = new SqlParameter("@CourseName", SqlDbType.NVarChar);
             param[1].Value = CourseName;
@@ -63,7 +63,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 200);
+            param[0] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 300);
             param[0].Value = CourseCode;
             DAL.ExecuteCommandProcedure("SP_DeleteCourse", param);
             DAL.CloseConnectionDB();

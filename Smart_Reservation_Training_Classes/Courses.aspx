@@ -28,12 +28,9 @@
                         <asp:Button ID="BtnResetSearch" runat="server" Text="X" CssClass="btn btn-danger w-auto" OnClientClick="Loader()" Visible="False" OnClick="BtnResetSearch_Click" />
                     </asp:Panel>
                     <asp:Panel ID="ViewsPanel" runat="server" CssClass="m-1">
-                        <asp:GridView ID="gvCourses" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="CourseCode" HeaderStyle-BackColor="green" AutoGenerateColumns="False"
-                            Font-Names="Arial" Font-Size="11pt" AlternatingRowStyle-BackColor="#C2D69B" AllowPaging="True"
-                            CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gvCourses_RowCommand"
-                            OnPageIndexChanging="gvCourses_PageIndexChanging">
+                        <asp:GridView ID="gvCourses" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="CourseCode" AutoGenerateColumns="False" AllowPaging="True" OnRowCommand="gvCourses_RowCommand" OnPageIndexChanging="gvCourses_PageIndexChanging">
                             <Columns>
-                                <asp:TemplateField>
+                                <asp:TemplateField HeaderText="#">
                                     <ItemTemplate>
                                         <%# Container.DataItemIndex + 1 %>
                                         <asp:HiddenField ID="hfCourseCode" runat="server" Value='<%#Eval("CourseCode")%>' />
@@ -43,12 +40,12 @@
                                 <asp:BoundField DataField="CourseCode" HeaderText="كود الدورة"></asp:BoundField>
                                 <asp:BoundField DataField="CourseName" HeaderText="اسم الدورة"></asp:BoundField>
                                 <asp:BoundField DataField="CourseType" HeaderText="نوع الدورة"></asp:BoundField>
-                                <asp:TemplateField HeaderText=".....">
+                                <asp:TemplateField HeaderText="الإجراء">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lnkEdit" runat="server" CausesValidation="False" CommandName="Edited" OnClientClick="Loader();" CommandArgument='<%# Eval("CourseCode") %>'>
+                                        <asp:LinkButton ID="lnkEdit" runat="server" CausesValidation="False" CommandName="Edited" OnClientClick="Loader();" CommandArgument='<%# Eval("CourseCode") %>' ToolTip="تعديل">
                                             <asp:Image ID="imgEdit" runat="server" ImageUrl="~/content/img/Edit.png" />
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف الصلاحية من المستخدم ؟')" CommandArgument='<%# Eval("CourseCode") %>'>
+                                        <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف الصلاحية من المستخدم ؟')" CommandArgument='<%# Eval("CourseCode") %>' ToolTip="حذف">
                                             <asp:Image ID="imgRemove" runat="server" ImageUrl="~/content/img/Delete.png" />
                                         </asp:LinkButton>
                                     </ItemTemplate>
@@ -62,7 +59,7 @@
                             </EmptyDataTemplate>
                             <RowStyle BackColor="#EFF3FB" />
                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle CssClass="pagination" />
                             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                             <EditRowStyle BackColor="#2461BF" />
                         </asp:GridView>

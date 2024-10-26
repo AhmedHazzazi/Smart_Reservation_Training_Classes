@@ -2,130 +2,48 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="PanelWizard3" runat="server" CssClass="mt-1">
-        <div class="card">
-            <div class="card-header">
-                ملخص طلب حجز القاعة التدريبية
-            </div>
-            <div class="card-block Panel-wizard">
-                <asp:HiddenField ID="hfReservationID" runat="server" />
-                <asp:HiddenField ID="hfUserID" runat="server" />
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="alert alert-primary">بيانات مقدم طلب الحجز</div>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtName">الإسم</label>
-                        <asp:TextBox ID="txtName" runat="server" CssClass="form-control text-wizard" placeholder="الإسم" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtUserName">إسم المستخدم</label>
-                        <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control text-wizard" placeholder="إسم المستخدم" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtEmail">البريد الإلكتروني</label>
-                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control text-wizard" placeholder="البريد الإلكتروني" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="alert alert-primary">بيانات حجز القاعة التدريبية</div>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtTypeSubtraction">نوع الطرح</label>
-                        <asp:TextBox ID="txtTypeSubtraction" runat="server" CssClass="form-control text-wizard" placeholder="الفئة المستهدفة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtTargetGroup">الفئة المستهدفة</label>
-                        <asp:TextBox ID="txtTargetGroup" runat="server" CssClass="form-control text-wizard" placeholder="الفئة المستهدفة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtImplementingEntity">الجهة المنفذة</label>
-                        <asp:TextBox ID="txtImplementingEntity" runat="server" CssClass="form-control text-wizard" placeholder="الجهة المنفذة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtBeneficiaryEntity">الجهة المستفيدة</label>
-                        <asp:TextBox ID="txtBeneficiaryEntity" runat="server" CssClass="form-control text-wizard" placeholder="الجهة المستفيدة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtTime">الوقت</label>
-                        <asp:TextBox ID="txtTime" runat="server" CssClass="form-control text-wizard" placeholder="الوقت" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;">التاريخ</label>
-                        <asp:TextBox ID="txtStartDate" runat="server" CssClass="form-control d-inline-block" ReadOnly="true" autocomplete="off" Width="200px"></asp:TextBox>
-                        <div class="vr"></div>
-                        <asp:TextBox ID="txtEndDate" runat="server" CssClass="form-control d-inline-block" ReadOnly="true" autocomplete="off" Width="200px"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtExpectedNumber">العدد المتوقع</label>
-                        <asp:TextBox ID="txtExpectedNumber" runat="server" CssClass="form-control text-wizard" placeholder="العدد المتوقع" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtDuration">مدتها</label>
-                        <asp:TextBox ID="txtDuration" runat="server" CssClass="form-control text-wizard" placeholder="مدتها" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtRoomCode">كود القاعة</label>
-                        <asp:TextBox ID="txtRoomCode" runat="server" CssClass="form-control text-wizard" placeholder="كود القاعة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtRoomName">إسم القاعة</label>
-                        <asp:TextBox ID="txtRoomName" runat="server" CssClass="form-control text-wizard" placeholder="إسم القاعة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtRoomType">نوع القاعة</label>
-                        <asp:TextBox ID="txtRoomType" runat="server" CssClass="form-control text-wizard" placeholder="نوع القاعة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtRoomLocation">مكان القاعة</label>
-                        <asp:TextBox ID="txtRoomLocation" runat="server" CssClass="form-control text-wizard" placeholder="مكان القاعة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtRoomCapacity">سعة القاعة</label>
-                        <asp:TextBox ID="txtRoomCapacity" runat="server" CssClass="form-control text-wizard" placeholder="سعة القاعة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtCourseCode">كود الدورة</label>
-                        <asp:TextBox ID="txtCourseCode" runat="server" CssClass="form-control text-wizard" placeholder="كود الدورة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtCourseName">إسم الدورة</label>
-                        <asp:TextBox ID="txtCourseName" runat="server" CssClass="form-control text-wizard" placeholder="إسم الدورة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtCourseType">نوع الدورة</label>
-                        <asp:TextBox ID="txtCourseType" runat="server" CssClass="form-control text-wizard" placeholder="نوع الدورة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtLecturerName">اسم المدرب</label>
-                        <asp:TextBox ID="txtLecturerName" runat="server" CssClass="form-control text-wizard" placeholder="اسم المدرب" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtRequirements">المتطلبات</label>
-                        <asp:TextBox ID="txtRequirements" runat="server" CssClass="form-control text-wizard" placeholder="المتطلبات" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtLanguage">اللغة</label>
-                        <asp:TextBox ID="txtLanguage" runat="server" CssClass="form-control text-wizard" placeholder="اللغة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtUseOfComputer">استخدام معمل الحاسب</label>
-                        <asp:TextBox ID="txtUseOfComputer" runat="server" CssClass="form-control text-wizard" placeholder="استخدام معمل الحاسب" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtCourseTopics">محاور الدورة</label>
-                        <asp:TextBox ID="txtCourseTopics" runat="server" CssClass="form-control text-wizard" placeholder="محاور الدورة" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                    <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
-                        <label class="control-label label-wizard" style="max-width: 200px;" for="txtNotes">ملاحظات</label>
-                        <asp:TextBox ID="txtNotes" runat="server" CssClass="form-control text-wizard" placeholder="ملاحظات" MaxLength="300" ReadOnly="true" autocomplete="off"></asp:TextBox>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <asp:Panel ID="SearchPanel" runat="server" CssClass="" DefaultButton="BtnSearch">
+        <label class="label">البحث : </label>
+        <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control d-inline-block" autocomplete="off" Width="200px"></asp:TextBox>
+        <asp:Button ID="BtnSearch" runat="server" Text="بحث" CssClass="btn btn-primary m-1" OnClientClick="Loader()" OnClick="BtnSearch_Click" />
+        <asp:Button ID="BtnResetSearch" runat="server" Text="X" CssClass="btn btn-danger" OnClientClick="Loader()" Visible="False" OnClick="BtnResetSearch_Click" />
+        <asp:Label ID="lblError" runat="server" CssClass="error" Visible="false"></asp:Label>
     </asp:Panel>
-    <div class="row-cols-6 text-center">
-        <asp:Button ID="BtnApproval" runat="server" Text="إعتماد الطلب" CssClass="btn btn-primary w-auto" OnClientClick="Loader()" OnClick="BtnApproval_Click" />
-        <div class="vr"></div>
-        <asp:Button ID="BtnReject" runat="server" CssClass="btn btn-primary w-auto" Text="رفض الطلب" OnClientClick="Loader()" OnClick="BtnReject_Click" />
-    </div>
+    <asp:Panel ID="ViewsPanel" runat="server" CssClass="m-1">
+        <asp:GridView ID="gvReservations" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="ReservationID"
+            AutoGenerateColumns="False" AllowPaging="True" OnRowDataBound="gvReservations_RowDataBound" OnPageIndexChanging="gvReservations_PageIndexChanging">
+            <Columns>
+                <asp:TemplateField HeaderText="#">
+                    <ItemTemplate>
+                        <%# Container.DataItemIndex + 1 %>
+                    </ItemTemplate>
+                    <ItemStyle Width="10px" />
+                </asp:TemplateField>
+                <asp:BoundField DataField="ReservationID" HeaderText="رقم الحجز"></asp:BoundField>
+                <asp:BoundField DataField="Name" HeaderText="الإسم"></asp:BoundField>
+                <asp:BoundField DataField="RoomName" HeaderText="القاعة"></asp:BoundField>
+                <asp:BoundField DataField="Email" HeaderText="الدورة"></asp:BoundField>
+                <asp:BoundField DataField="Status" HeaderText="الحالة"></asp:BoundField>
+                <asp:HyperLinkField HeaderText="التفاصيل" Text="عرض" DataNavigateUrlFields="ReservationID" DataNavigateUrlFormatString="ViewReservations.aspx?ReservationID={0}" ControlStyle-CssClass="btn btn-primary" Target="_self" />
+                <asp:TemplateField HeaderText=".....">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف بيانات الحجز ؟')" CommandArgument='<%# Eval("ReservationID") %>'>
+                            <asp:Image ID="imgRemove" runat="server" ImageUrl="~/content/img/Delete.png" />
+                        </asp:LinkButton>
+                    </ItemTemplate>
+                    <ItemStyle Width="10px" />
+                </asp:TemplateField>
+            </Columns>
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <AlternatingRowStyle BackColor="White" />
+            <EmptyDataTemplate>
+                <div class="alert alert-danger">لا يوجد بيانات</div>
+            </EmptyDataTemplate>
+            <RowStyle BackColor="#EFF3FB" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle CssClass="pagination" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <EditRowStyle BackColor="#2461BF" />
+        </asp:GridView>
+    </asp:Panel>
 </asp:Content>

@@ -118,6 +118,7 @@
     <Content Include="Roles.aspx" />
     <Content Include="Rooms.aspx" />
     <Content Include="UpdatePassword.aspx" />
+    <Content Include="UserReservations.aspx" />
     <Content Include="ViewReservations.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -140,6 +141,11 @@
     </Compile>
     <Compile Include="ManageReservations.aspx.designer.cs">
       <DependentUpon>ManageReservations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RecoverUserName.aspx.cs">
       <DependentUpon>RecoverUserName.aspx</DependentUpon>
@@ -166,6 +172,13 @@
     </Compile>
     <Compile Include="UpdatePassword.aspx.designer.cs">
       <DependentUpon>UpdatePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserReservations.aspx.cs">
+      <DependentUpon>UserReservations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserReservations.aspx.designer.cs">
+      <DependentUpon>UserReservations.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewReservations.aspx.cs">
       <DependentUpon>ViewReservations.aspx</DependentUpon>
@@ -247,6 +260,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

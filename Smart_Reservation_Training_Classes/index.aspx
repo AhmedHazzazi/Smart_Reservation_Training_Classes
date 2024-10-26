@@ -22,7 +22,7 @@
                 <img src="content/img/Reservations.png" class="item-image" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">إدارة الحجوزات</h5>
-                    <a id="linkViewReservations" runat="server" href="ViewReservations.aspx" class="btn btn-group-lg btn-primary" onclick="return Loader();">عرض</a>
+                    <a id="linkManageReservations" runat="server" href="ManageReservations.aspx" class="btn btn-group-lg btn-primary" onclick="return Loader();">عرض</a>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                 <img src="content/img/Reservations.png" class="item-image" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">إدارة الحجوزات</h5>
-                    <a id="linkManageReservations" runat="server" href="ManageReservations.aspx" class="btn btn-group-lg btn-primary" onclick="return Loader()">حجز جديد</a>
+                    <a id="linkUserReservations" runat="server" href="UserReservations.aspx" class="btn btn-group-lg btn-primary" onclick="return Loader()">حجز جديد</a>
                 </div>
             </div>
         </div>

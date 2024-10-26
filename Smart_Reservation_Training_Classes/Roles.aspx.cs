@@ -25,8 +25,8 @@ namespace Smart_Reservation_Training_Classes
             }
             if (!IsPostBack)
             {
-                BindDataUsers();
                 RoleAccess();
+                BindDataUsers();
             }
         }
 

@@ -13,7 +13,7 @@
             <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                 <asp:View ID="View1" runat="server">
                     <div class="text-primary fs-5 py-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
                             <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 2h-4v3h4zm0 4h-4v3h4zm0 4h-4v3h3a1 1 0 0 0 1-1zm-5 3v-3H6v3zm-5 0v-3H1v2a1 1 0 0 0 1 1zm-4-4h4V8H1zm0-4h4V4H1zm5-3v3h4V4zm4 4H6v3h4z" />
                         </svg>
                         إدارة الدورات التدريبية
@@ -74,19 +74,19 @@
                             إضافة - تعديل الدورات تدريبية
                         </div>
                         <div class="form-group row mb-3">
-                            <label class="col-sm-1 col-form-label">كود القاعة</label>
+                            <label class="col-sm-1 col-form-label">كود الدورة</label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtCourseCode" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group row mb-3">
-                            <label class="col-sm-1 col-form-label">اسم القاعة</label>
+                            <label class="col-sm-1 col-form-label">اسم الدورة</label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtCourseName" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group row mb-3">
-                            <label class="col-sm-1 col-form-label">نوع القاعة</label>
+                            <label class="col-sm-1 col-form-label">نوع الدورة</label>
                             <div class="col-sm-4">
                                 <asp:DropDownList ID="DDLCourseType" runat="server" CssClass="dropdown dropdown-item dropdown-item-text">
                                     <asp:ListItem Value="">-- أختر --</asp:ListItem>
@@ -104,6 +104,7 @@
                         <div class="form-group row mb-3">
                             <div class="col-sm-10">
                                 <asp:Button ID="BtnSave" runat="server" Text="حفظ" CssClass="btn btn-primary" OnClientClick="Loader()" OnClick="BtnSave_Click" />
+                                <a href="Courses.aspx" class="btn btn-danger" onclick="Loader();">إغلاق</a>
                             </div>
                         </div>
                     </form>

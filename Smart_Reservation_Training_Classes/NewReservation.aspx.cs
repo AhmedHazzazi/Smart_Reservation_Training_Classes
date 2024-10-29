@@ -208,17 +208,17 @@ namespace Smart_Reservation_Training_Classes
                 if (dtReservations == null)
                 {
                     cls_Reservations.InsertReservation(Convert.ToInt32(hfReservationID_S.Value), Convert.ToInt32(hfUserID_S.Value),
-                    txtRoomCode_S.Text, txtCourseCode_S.Text, txtTypeSubtraction_S.Text, txtEndDate_S.Text, txtExpectedNumber_S.Text, txtTargetGroup_S.Text,
-                    txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtTime_S.Text, txtStartDate_S.Text, "قيد المراجعة", txtDuration_S.Text,
-                    txtLecturerName_S.Text, txtRequirements_S.Text, txtLanguage_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
+                    txtRoomCode_S.Text, txtCourseCode_S.Text, txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text, 
+                    txtDuration_S.Text, "قيد المراجعة", txtLanguage_S.Text, txtTargetGroup_S.Text, txtExpectedNumber_S.Text, txtImplementingEntity_S.Text, 
+                    txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text, txtRequirements_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
                     //Response.Redirect("CompleteRequest.aspx");
                 }
                 else
                 {
                     cls_Reservations.UpdateReservation(Convert.ToInt32(hfReservationID_S.Value), Convert.ToInt32(hfUserID_S.Value),
-                    txtRoomCode_S.Text, txtCourseCode_S.Text, txtTypeSubtraction_S.Text, txtEndDate_S.Text, txtExpectedNumber_S.Text, txtTargetGroup_S.Text,
-                    txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtTime_S.Text, txtStartDate_S.Text, "قيد المراجعة", txtDuration_S.Text,
-                    txtLecturerName_S.Text, txtRequirements_S.Text, txtLanguage_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
+                    txtRoomCode_S.Text, txtCourseCode_S.Text, txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text,
+                    txtDuration_S.Text, "قيد المراجعة", txtLanguage_S.Text, txtTargetGroup_S.Text, txtExpectedNumber_S.Text, txtImplementingEntity_S.Text,
+                    txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text, txtRequirements_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
                     //Response.Redirect("CompleteRequest.aspx");
                 }
                 Response.Redirect("CompleteRequest.aspx");

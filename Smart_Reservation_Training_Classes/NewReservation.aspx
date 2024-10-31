@@ -53,7 +53,7 @@
                                         <asp:Button ID="BtnResetSearch" runat="server" Text="X" CssClass="btn btn-danger w-auto" OnClientClick="Loader()" Visible="False" OnClick="BtnResetSearch_Click" />
                                     </asp:Panel>
                                     <asp:Panel ID="ViewsPanel" runat="server" CssClass="mt-1" Visible="false">
-                                        <asp:GridView ID="gvRoomsAvailable" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="RoomCode" AutoGenerateColumns="False" AlternatingRowStyle-BackColor="#C2D69B" AllowPaging="True" CellPadding="4" GridLines="None">
+                                        <asp:GridView ID="gvRoomsAvailable" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="RoomCode" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="gvRoomsAvailable_PageIndexChanging">
                                             <Columns>
                                                 <asp:TemplateField HeaderText="اختار">
                                                     <ItemTemplate>
@@ -75,7 +75,7 @@
                                             </EmptyDataTemplate>
                                             <RowStyle BackColor="#EFF3FB" />
                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                            <PagerStyle CssClass="pagination-lg" />
                                             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                             <EditRowStyle BackColor="#2461BF" />
                                         </asp:GridView>

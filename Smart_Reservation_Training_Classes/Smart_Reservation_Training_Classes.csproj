@@ -99,6 +99,7 @@
     <Content Include="Courses.aspx" />
     <Content Include="index.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="ManageMyReservations.aspx" />
     <Content Include="ManageReservations.aspx" />
     <Content Include="NewReservation.aspx" />
     <Content Include="RecoverUserName.aspx" />
@@ -122,6 +123,13 @@
     </Compile>
     <Compile Include="CompleteRequest.aspx.designer.cs">
       <DependentUpon>CompleteRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageMyReservations.aspx.cs">
+      <DependentUpon>ManageMyReservations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageMyReservations.aspx.designer.cs">
+      <DependentUpon>ManageMyReservations.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManageReservations.aspx.cs">
       <DependentUpon>ManageReservations.aspx</DependentUpon>

@@ -59,7 +59,7 @@
                             </EmptyDataTemplate>
                             <RowStyle BackColor="#EFF3FB" />
                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <PagerStyle CssClass="pagination" />
+                            <PagerStyle CssClass="pagination-lg" />
                             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                             <EditRowStyle BackColor="#2461BF" />
                         </asp:GridView>

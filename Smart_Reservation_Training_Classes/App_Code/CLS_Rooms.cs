@@ -58,7 +58,6 @@ namespace Smart_Reservation_Training_Classes.App_Code
             param[3].Value = RoomLocation;
             param[4] = new SqlParameter("@RoomCapacity", SqlDbType.NVarChar);
             param[4].Value = RoomCapacity;
-
             DAL.ExecuteCommandProcedure("SP_InsertRoom", param);
             DAL.CloseConnectionDB();
         }
@@ -76,7 +75,6 @@ namespace Smart_Reservation_Training_Classes.App_Code
             param[3].Value = RoomLocation;
             param[4] = new SqlParameter("@RoomCapacity", SqlDbType.NVarChar);
             param[4].Value = RoomCapacity;
-
             DAL.ExecuteCommandProcedure("SP_UpdateRoom", param);
             DAL.CloseConnectionDB();
         }

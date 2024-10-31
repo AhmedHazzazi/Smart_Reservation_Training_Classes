@@ -15,7 +15,7 @@ namespace Smart_Reservation_Training_Classes
     {
         CLS_Users cls_Users = new CLS_Users();
         DataTable dtUsers, dtUserName, dtEmail;
-        public decimal Id;
+        public int Id;
         SRTC_DBDataContext ctxSRTC_DB;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,35 +35,26 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                //dtUsers = cls_Users.SearchUser((string)Session["UserID"]);
-                //if (dtUsers.Rows.Count > 0)
-                //{
-                //    foreach (DataRow row in dtUsers.Rows)
-                //    {
-                //        if (row["Role"].ToString() == "Admin")
-                //        { }
-                //        else if (row["Role"].ToString() == "User")
-                //        {
-                //            MultiView1.Visible = false;
-                //            lblError.Visible = true;
-                //            lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
-                //        }
-                //    }
-                //}
-                //else
-                //{
-                //    lblError.Visible = true;
-                //    lblError.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
-                //}
-                ctxSRTC_DB = new SRTC_DBDataContext();
-                var tblUsers = ctxSRTC_DB.GetTable<TBLUser>().Where(x => x.UserID.Equals(Session["UserID"]) && x.Role.Equals("Admin")).FirstOrDefault();
-                if (tblUsers != null)
-                { }
+                dtUsers = cls_Users.SearchUser((string)Session["UserID"]);
+                if (dtUsers.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtUsers.Rows)
+                    {
+                        if (row["Role"].ToString() == "Admin")
+                        { }
+                        else if (row["Role"].ToString() == "User")
+                        {
+                            MultiView1.Visible = false;
+                            lblError.Visible = true;
+                            lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
+                        }
+                        break;
+                    }
+                }
                 else
                 {
-                    MultiView1.Visible = false;
                     lblError.Visible = true;
-                    lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
+                    lblError.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
                 }
             }
             catch (Exception excRoleAccess)
@@ -123,7 +114,7 @@ namespace Smart_Reservation_Training_Classes
                     dtEmail = cls_Users.SearchAvailableEmail(txtEmail.Text);
                     if (dtUserName.Rows.Count > 0)
                     {
-                        Id = Convert.ToDecimal(hfUserID.Value = dtUserName.Rows[0]["UserID"].ToString());
+                        Id = Convert.ToInt32(hfUserID.Value = dtUserName.Rows[0]["UserID"].ToString());
                         cls_Users.UpdateUser(Id, txtName.Text, txtUserName.Text, txtPassword.Text, txtEmail.Text, RblRole.SelectedValue.ToString());
                         lblSuccess.Visible = true;
                         lblSuccess.Text = "لقد تم تعديل بيانات المستخدم بنجاح";
@@ -144,7 +135,7 @@ namespace Smart_Reservation_Training_Classes
                         }
                         else
                         {
-                            Id = Convert.ToDecimal(hfUserID.Value = cls_Users.MaxIDUserID().Rows[0]["UserID"].ToString());
+                            Id = Convert.ToInt32(hfUserID.Value = cls_Users.MaxIDUserID().Rows[0]["UserID"].ToString());
                             cls_Users.InsertUser(Id, txtName.Text, txtUserName.Text, txtPassword.Text, txtEmail.Text, RblRole.SelectedValue.ToString());
                             dtUsers = cls_Users.SearchUser(Id.ToString());
                             lblError.Visible = false;

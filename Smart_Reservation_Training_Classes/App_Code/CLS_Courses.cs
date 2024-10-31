@@ -41,7 +41,6 @@ namespace Smart_Reservation_Training_Classes.App_Code
             param[1].Value = CourseName;
             param[2] = new SqlParameter("@CourseType", SqlDbType.NVarChar);
             param[2].Value = CourseType;
-
             DAL.ExecuteCommandProcedure("SP_InsertCourse", param);
             DAL.CloseConnectionDB();
         }
@@ -55,7 +54,6 @@ namespace Smart_Reservation_Training_Classes.App_Code
             param[1].Value = CourseName;
             param[2] = new SqlParameter("@CourseType", SqlDbType.NVarChar);
             param[2].Value = CourseType;
-
             DAL.ExecuteCommandProcedure("SP_UpdateCourse", param);
             DAL.CloseConnectionDB();
         }

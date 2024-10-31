@@ -61,7 +61,7 @@
                             </EmptyDataTemplate>
                             <RowStyle BackColor="#EFF3FB" />
                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle CssClass="pagination-lg" />
                             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                             <EditRowStyle BackColor="#2461BF" />
                         </asp:GridView>
@@ -123,6 +123,8 @@
         </ContentTemplate>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="BtnSave" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="BtnResetSearch" EventName="Click" />
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>

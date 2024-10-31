@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ManageReservations.aspx.cs" Inherits="Smart_Reservation_Training_Classes.ManageReservations" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ManageMyReservations.aspx.cs" Inherits="Smart_Reservation_Training_Classes.ManageMyReservations" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -7,7 +7,7 @@
             <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0" />
             <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
         </svg>
-        إدارة الحجوزات
+        إدارة حجوزاتي
     </div>
     <asp:Panel ID="SearchPanel" runat="server" CssClass="" DefaultButton="BtnSearch">
         <label class="label">البحث : </label>
@@ -17,8 +17,8 @@
         <asp:Label ID="lblError" runat="server" CssClass="error" Visible="false"></asp:Label>
     </asp:Panel>
     <asp:Panel ID="ViewsPanel" runat="server" CssClass="m-1">
-        <asp:GridView ID="gvReservations" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="ReservationID"
-            AutoGenerateColumns="False" AllowPaging="True" OnRowDataBound="gvReservations_RowDataBound" OnPageIndexChanging="gvReservations_PageIndexChanging">
+        <asp:GridView ID="gvMyReservations" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="ReservationID"
+            AutoGenerateColumns="False" AllowPaging="True" OnRowDataBound="gvMyReservations_RowDataBound" OnPageIndexChanging="gvMyReservations_PageIndexChanging">
             <Columns>
                 <asp:TemplateField HeaderText="#">
                     <ItemTemplate>
@@ -31,7 +31,7 @@
                 <asp:BoundField DataField="RoomName" HeaderText="القاعة"></asp:BoundField>
                 <asp:BoundField DataField="Email" HeaderText="الدورة"></asp:BoundField>
                 <asp:BoundField DataField="Status" HeaderText="الحالة"></asp:BoundField>
-                <asp:HyperLinkField HeaderText="التفاصيل" Text="عرض" DataNavigateUrlFields="ReservationID" DataNavigateUrlFormatString="ViewReservations.aspx?ReservationID={0}" ControlStyle-CssClass="btn btn-primary" Target="_self" />
+                <asp:HyperLinkField HeaderText="التفاصيل" Text="عرض" DataNavigateUrlFields="ReservationID" DataNavigateUrlFormatString="UserReservations.aspx?ReservationID={0}" ControlStyle-CssClass="btn btn-primary" Target="_self" />
                 <asp:TemplateField HeaderText=".....">
                     <ItemTemplate>
                         <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف بيانات الحجز ؟')" CommandArgument='<%# Eval("ReservationID") %>'>

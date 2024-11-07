@@ -31,7 +31,7 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                dtReservations = cls_Reservations.GetMyReservation(Convert.ToInt32(Session["UserID"]));
+                dtReservations = cls_Reservations.GetMyReservation(Session["UserID"].ToString());
                 if (dtReservations.Rows.Count > 0)
                 {
                     gvMyReservations.DataSource = dtReservations;

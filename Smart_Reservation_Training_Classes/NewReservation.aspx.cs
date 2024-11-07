@@ -217,7 +217,7 @@ namespace Smart_Reservation_Training_Classes
                 DTFormat.ShortDatePattern = "yyyy-MM-dd";
                 DateTime dt = DateTime.Now;
                 //dt.ToString(DTFormat)
-                dtMaxReservationID = cls_Reservations.GetMaxReservation(Convert.ToInt32(Session["UserID"]));
+                dtMaxReservationID = cls_Reservations.GetMaxReservation(Session["UserID"].ToString());
                 if (dtMaxReservationID.Rows.Count > 0)
                 {
                     foreach (DataRow row1 in dtMaxReservationID.Rows)
@@ -228,7 +228,7 @@ namespace Smart_Reservation_Training_Classes
                             string ReservationID = hfReservationID.Value = row1[0].ToString();
                             if (txtRoomCode_S.Text != string.Empty && txtCourseCode_S.Text != string.Empty)
                             {
-                                dtReservations = cls_Reservations.GetReservation(Convert.ToInt32(ReservationID), Convert.ToInt32(Session["UserID"]));
+                                dtReservations = cls_Reservations.GetReservation(ReservationID, Session["UserID"].ToString());
                                 if (dtReservations == null)
                                 {
                                     foreach (DataRow row in dtReservations.Rows)
@@ -237,7 +237,7 @@ namespace Smart_Reservation_Training_Classes
                                         if (Status == "طلب منفذ")
                                         {
                                             ReservationId = Convert.ToInt32(hfUserID.Value = cls_Reservations.MaxIDReservationID().Rows[0]["ReservationID"].ToString());
-                                            cls_Reservations.InsertReservation(ReservationId, Convert.ToInt32(hfUserID_S.Value), txtRoomCode_S.Text,
+                                            cls_Reservations.InsertReservation(ReservationId, hfUserID_S.Value, txtRoomCode_S.Text,
                                                 txtCourseCode_S.Text, txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text,
                                                 txtDuration_S.Text, dt, "قيد المراجعة", dt, txtLanguage_S.Text, txtTargetGroup_S.Text, txtExpectedNumber_S.Text,
                                                 txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text, txtRequirements_S.Text,
@@ -246,7 +246,7 @@ namespace Smart_Reservation_Training_Classes
                                         else
                                         {
                                             ReservationId = Convert.ToInt32(hfReservationID_S.Value = dtReservations.Rows[0]["ReservationID"].ToString());
-                                            cls_Reservations.UpdateReservation(Convert.ToInt32(hfReservationID_S.Value), Convert.ToInt32(hfUserID_S.Value), txtRoomCode_S.Text,
+                                            cls_Reservations.UpdateReservation(Convert.ToInt32(hfReservationID_S.Value), hfUserID_S.Value, txtRoomCode_S.Text,
                                                 txtCourseCode_S.Text, txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text,
                                                 txtDuration_S.Text, "قيد المراجعة", dt, txtLanguage_S.Text, txtTargetGroup_S.Text, txtExpectedNumber_S.Text,
                                                 txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text, txtRequirements_S.Text,
@@ -276,7 +276,7 @@ namespace Smart_Reservation_Training_Classes
                             if (txtRoomCode_S.Text != string.Empty && txtCourseCode_S.Text != string.Empty)
                             {
                                 ReservationId = Convert.ToInt32(hfUserID.Value = cls_Reservations.MaxIDReservationID().Rows[0]["ReservationID"].ToString());
-                                cls_Reservations.InsertReservation(ReservationId, Convert.ToInt32(hfUserID_S.Value), txtRoomCode_S.Text,
+                                cls_Reservations.InsertReservation(ReservationId, hfUserID_S.Value, txtRoomCode_S.Text,
                                     txtCourseCode_S.Text, txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text,
                                     txtDuration_S.Text, dt, "قيد المراجعة", dt, txtLanguage_S.Text, txtTargetGroup_S.Text, txtExpectedNumber_S.Text,
                                     txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text, txtRequirements_S.Text,

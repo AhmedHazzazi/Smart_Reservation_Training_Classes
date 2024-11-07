@@ -20,7 +20,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.CloseConnectionDB();
             return Dt;
         }
-        public DataTable GetMyReservation(int UserID)
+        public DataTable GetMyReservation(string UserID)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[1];
@@ -42,7 +42,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.CloseConnectionDB();
             return Dt;
         }
-        public DataTable GetReservation(int ReservationID, int UserID)
+        public DataTable GetReservation(string ReservationID, string UserID)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[2];
@@ -55,7 +55,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.CloseConnectionDB();
             return Dt;
         }
-        public DataTable GetMaxReservation(int UserID)
+        public DataTable GetMaxReservation(string UserID)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[1];
@@ -66,7 +66,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.CloseConnectionDB();
             return Dt;
         }
-        public void InsertReservation(int ReservationID, int UserID, string CourseCode, string RoomCode, string TypeSubtraction, string StartDate, string EndDate,
+        public void InsertReservation(int ReservationID, string UserID, string CourseCode, string RoomCode, string TypeSubtraction, string StartDate, string EndDate,
             string Time, string Duration, DateTime DateOfReservation, string Status, DateTime DateOfStatus, string Language, string TargetGroup, string ExpectedNumber, string ImplementingEntity,
             string BeneficiaryEntity, string LecturerName, string Requirements, string UseOfComputer, string CourseTopics, string Notes)
         {
@@ -74,7 +74,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
             SqlParameter[] param = new SqlParameter[22];
             param[0] = new SqlParameter("@ReservationID", SqlDbType.Int);
             param[0].Value = ReservationID;
-            param[1] = new SqlParameter("@UserID", SqlDbType.Int);
+            param[1] = new SqlParameter("@UserID", SqlDbType.NVarChar, 300);
             param[1].Value = UserID;
             param[2] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 300);
             param[2].Value = CourseCode;
@@ -119,7 +119,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.ExecuteCommandProcedure("SP_InsertReservation", param);
             DAL.CloseConnectionDB();
         }
-        public void UpdateReservation(int ReservationID, int UserID, string CourseCode, string RoomCode, string TypeSubtraction, string StartDate, string EndDate,
+        public void UpdateReservation(int ReservationID, string UserID, string CourseCode, string RoomCode, string TypeSubtraction, string StartDate, string EndDate,
             string Time, string Duration, string Status, DateTime DateOfStatus, string Language, string TargetGroup, string ExpectedNumber, string ImplementingEntity,
             string BeneficiaryEntity, string LecturerName, string Requirements, string UseOfComputer, string CourseTopics, string Notes)
         {
@@ -127,7 +127,7 @@ namespace Smart_Reservation_Training_Classes.App_Code
             SqlParameter[] param = new SqlParameter[21];
             param[0] = new SqlParameter("@ReservationID", SqlDbType.Int);
             param[0].Value = ReservationID;
-            param[1] = new SqlParameter("@UserID", SqlDbType.Int);
+            param[1] = new SqlParameter("@UserID", SqlDbType.NVarChar, 300);
             param[1].Value = UserID;
             param[2] = new SqlParameter("@CourseCode", SqlDbType.NVarChar, 300);
             param[2].Value = CourseCode;

@@ -65,11 +65,11 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.CloseConnectionDB();
             return Dt;
         }
-        public void InsertUser(decimal UserID, string Name, string UserName, string Password, string Email, string Role)
+        public void InsertUser(string UserID, string Name, string UserName, string Password, string Email, string Role)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[6];
-            param[0] = new SqlParameter("@UserID", SqlDbType.Decimal);
+            param[0] = new SqlParameter("@UserID", SqlDbType.NVarChar, 300);
             param[0].Value = UserID;
             param[1] = new SqlParameter("@Name", SqlDbType.NVarChar);
             param[1].Value = Name;
@@ -84,11 +84,11 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.ExecuteCommandProcedure("SP_InsertUser", param);
             DAL.CloseConnectionDB();
         }
-        public void UpdateUser(decimal UserID, string Name, string UserName, string Password, string Email, string Role)
+        public void UpdateUser(string UserID, string Name, string UserName, string Password, string Email, string Role)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[6];
-            param[0] = new SqlParameter("@UserID", SqlDbType.Decimal);
+            param[0] = new SqlParameter("@UserID", SqlDbType.NVarChar, 300);
             param[0].Value = UserID;
             param[1] = new SqlParameter("@Name", SqlDbType.NVarChar);
             param[1].Value = Name;
@@ -103,11 +103,11 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.ExecuteCommandProcedure("SP_UpdateUser", param);
             DAL.CloseConnectionDB();
         }
-        public void DeleteUser(decimal UserID)
+        public void DeleteUser(string UserID)
         {
             DAL.OpenConnectionDB();
             SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@UserID", SqlDbType.Decimal);
+            param[0] = new SqlParameter("@UserID", SqlDbType.NVarChar, 300);
             param[0].Value = UserID;
             DAL.ExecuteCommandProcedure("SP_DeleteUser", param);
             DAL.CloseConnectionDB();
@@ -134,11 +134,11 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.ExecuteCommandProcedure("SP_UpdatePasswordUser", param);
             DAL.CloseConnectionDB();
         }
-        public DataTable MaxIDUserID()
+        public DataTable MaxUserID()
         {
             DAL.OpenConnectionDB();
             DataTable Dt = new DataTable();
-            Dt = DAL.SelectDataProcedure("SP_MaxIDUserID", null);
+            Dt = DAL.SelectDataProcedure("SP_MaxUserID", null);
             DAL.CloseConnectionDB();
             return Dt;
         }

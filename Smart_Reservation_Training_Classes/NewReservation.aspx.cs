@@ -22,7 +22,7 @@ namespace Smart_Reservation_Training_Classes
         CLS_Rooms cls_Rooms = new CLS_Rooms();
         CLS_Reservations cls_Reservations = new CLS_Reservations();
         DataTable dtRoomsAvailable, dtReservations, dtMaxReservationID;
-        public int ReservationId, UserId;
+        public string ReservationId, UserId;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -236,21 +236,21 @@ namespace Smart_Reservation_Training_Classes
                                         string Status = row["Status"].ToString();
                                         if (Status == "طلب منفذ")
                                         {
-                                            ReservationId = Convert.ToInt32(hfUserID.Value = cls_Reservations.MaxIDReservationID().Rows[0]["ReservationID"].ToString());
-                                            cls_Reservations.InsertReservation(ReservationId, hfUserID_S.Value, txtRoomCode_S.Text,
-                                                txtCourseCode_S.Text, txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text,
-                                                txtDuration_S.Text, dt, "قيد المراجعة", dt, txtLanguage_S.Text, txtTargetGroup_S.Text, txtExpectedNumber_S.Text,
-                                                txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text, txtRequirements_S.Text,
-                                                txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
+                                            ReservationId = hfReservationID_S.Value = cls_Reservations.MaxReservationID().Rows[0]["ReservationID"].ToString();
+                                            cls_Reservations.InsertReservation(ReservationId, hfUserID_S.Value, txtRoomCode_S.Text, txtCourseCode_S.Text,
+                                                txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text, txtDuration_S.Text,
+                                                dt, dt.ToString(DTFormat), "قيد المراجعة", dt, dt.ToString(DTFormat), txtLanguage_S.Text, txtTargetGroup_S.Text,
+                                                txtExpectedNumber_S.Text, txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text,
+                                                txtRequirements_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
                                         }
                                         else
                                         {
-                                            ReservationId = Convert.ToInt32(hfReservationID_S.Value = dtReservations.Rows[0]["ReservationID"].ToString());
-                                            cls_Reservations.UpdateReservation(Convert.ToInt32(hfReservationID_S.Value), hfUserID_S.Value, txtRoomCode_S.Text,
+                                            ReservationId = hfReservationID_S.Value = dtReservations.Rows[0]["ReservationID"].ToString();
+                                            cls_Reservations.UpdateReservation(ReservationId, hfUserID_S.Value, txtRoomCode_S.Text,
                                                 txtCourseCode_S.Text, txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text,
-                                                txtDuration_S.Text, "قيد المراجعة", dt, txtLanguage_S.Text, txtTargetGroup_S.Text, txtExpectedNumber_S.Text,
-                                                txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text, txtRequirements_S.Text,
-                                                txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
+                                                txtDuration_S.Text, "قيد المراجعة", dt, dt.ToString(DTFormat), txtLanguage_S.Text, txtTargetGroup_S.Text,
+                                                txtExpectedNumber_S.Text, txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text,
+                                                txtRequirements_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
                                         }
                                         Response.Redirect("CompleteRequest.aspx");
                                         gvRoomsAvailable.Visible = true;
@@ -275,12 +275,12 @@ namespace Smart_Reservation_Training_Classes
                         {
                             if (txtRoomCode_S.Text != string.Empty && txtCourseCode_S.Text != string.Empty)
                             {
-                                ReservationId = Convert.ToInt32(hfUserID.Value = cls_Reservations.MaxIDReservationID().Rows[0]["ReservationID"].ToString());
-                                cls_Reservations.InsertReservation(ReservationId, hfUserID_S.Value, txtRoomCode_S.Text,
-                                    txtCourseCode_S.Text, txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text,
-                                    txtDuration_S.Text, dt, "قيد المراجعة", dt, txtLanguage_S.Text, txtTargetGroup_S.Text, txtExpectedNumber_S.Text,
-                                    txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text, txtRequirements_S.Text,
-                                    txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
+                                ReservationId = hfReservationID_S.Value = cls_Reservations.MaxReservationID().Rows[0]["ReservationID"].ToString();
+                                cls_Reservations.InsertReservation(ReservationId, hfUserID_S.Value, txtRoomCode_S.Text, txtCourseCode_S.Text,
+                                    txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text, txtDuration_S.Text,
+                                    dt, dt.ToString(DTFormat), "قيد المراجعة", dt, dt.ToString(DTFormat), txtLanguage_S.Text, txtTargetGroup_S.Text,
+                                    txtExpectedNumber_S.Text, txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text,
+                                    txtRequirements_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
                                 Response.Redirect("CompleteRequest.aspx");
                                 //Response.Redirect("CompleteRequest.aspx?EmpNumber=" + Convert.ToInt32(Session["UserID"]));
                                 gvRoomsAvailable.Visible = true;

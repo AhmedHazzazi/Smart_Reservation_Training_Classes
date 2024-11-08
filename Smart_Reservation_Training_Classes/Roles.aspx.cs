@@ -15,7 +15,7 @@ namespace Smart_Reservation_Training_Classes
     {
         CLS_Users cls_Users = new CLS_Users();
         DataTable dtUsers, dtUserName, dtEmail;
-        public int Id;
+        public string Id;
         SRTC_DBDataContext ctxSRTC_DB;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -114,7 +114,7 @@ namespace Smart_Reservation_Training_Classes
                     dtEmail = cls_Users.SearchAvailableEmail(txtEmail.Text);
                     if (dtUserName.Rows.Count > 0)
                     {
-                        Id = Convert.ToInt32(hfUserID.Value = dtUserName.Rows[0]["UserID"].ToString());
+                        Id = hfUserID.Value = dtUserName.Rows[0]["UserID"].ToString();
                         cls_Users.UpdateUser(Id, txtName.Text, txtUserName.Text, txtPassword.Text, txtEmail.Text, RblRole.SelectedValue.ToString());
                         lblSuccess.Visible = true;
                         lblSuccess.Text = "لقد تم تعديل بيانات المستخدم بنجاح";
@@ -135,7 +135,7 @@ namespace Smart_Reservation_Training_Classes
                         }
                         else
                         {
-                            Id = Convert.ToInt32(hfUserID.Value = cls_Users.MaxIDUserID().Rows[0]["UserID"].ToString());
+                            Id = hfUserID.Value = cls_Users.MaxUserID().Rows[0]["UserID"].ToString();
                             cls_Users.InsertUser(Id, txtName.Text, txtUserName.Text, txtPassword.Text, txtEmail.Text, RblRole.SelectedValue.ToString());
                             dtUsers = cls_Users.SearchUser(Id.ToString());
                             lblError.Visible = false;
@@ -283,7 +283,7 @@ namespace Smart_Reservation_Training_Classes
                     {
                         if (!string.IsNullOrEmpty(UserID))
                         {
-                            cls_Users.DeleteUser(Convert.ToDecimal(UserID));
+                            cls_Users.DeleteUser(UserID);
                             DataRow dr = dtUsers.Rows[0];
                             dr.Delete();
                             lblError.Visible = false;

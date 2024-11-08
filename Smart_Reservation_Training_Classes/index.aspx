@@ -74,7 +74,7 @@
                     </svg>
                     <div class="card-body">
                         <h5 class="card-title btn btn-group-lg btn-primary">حجز جديد</h5>
-                        <%--<label class="btn btn-group-lg btn-primary">عرض</label>--%>
+                        <label class="btn btn-group-lg btn-primary">عرض</label>
                     </div>
                 </a>
             </div>
@@ -88,7 +88,7 @@
                     </svg>
                     <div class="card-body">
                         <h5 class="card-title btn btn-group-lg btn-primary">حجوزاتي</h5>
-                        <%--<label class="btn btn-group-lg btn-primary">عرض</label>--%>
+                        <label class="btn btn-group-lg btn-primary">عرض</label>
                     </div>
                 </a>
             </div>

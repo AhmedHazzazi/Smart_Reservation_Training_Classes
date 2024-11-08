@@ -15,7 +15,7 @@ namespace Smart_Reservation_Training_Classes
     {
         CLS_Users cls_users = new CLS_Users();
         DataTable dtUsers, dtUserName, dtEmail;
-        public decimal Id;
+        public string Id;
         protected void Page_Load(object sender, EventArgs e)
         {
             HtmlGenericControl Logout = (HtmlGenericControl)Master.FindControl("Logout");
@@ -105,7 +105,7 @@ namespace Smart_Reservation_Training_Classes
                     }
                     else
                     {
-                        Id = Convert.ToDecimal(hfUserID.Value = cls_users.MaxIDUserID().Rows[0]["UserID"].ToString());
+                        Id = hfUserID.Value = cls_users.MaxUserID().Rows[0]["UserID"].ToString();
                         cls_users.InsertUser(Id, txtName.Text, txtUserName.Text, txtPassword.Text, txtEmail.Text, "User");
                         dtUsers = cls_users.SearchUser(Id.ToString());
                         lblError.Visible = false;

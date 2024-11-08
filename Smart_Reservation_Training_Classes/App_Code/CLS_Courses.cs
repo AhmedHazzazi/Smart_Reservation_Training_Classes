@@ -66,13 +66,13 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.ExecuteCommandProcedure("SP_DeleteCourse", param);
             DAL.CloseConnectionDB();
         }
-        public DataTable MaxIDRoomID()
-        {
-            DAL.OpenConnectionDB();
-            DataTable Dt = new DataTable();
-            Dt = DAL.SelectDataProcedure("SP_MaxIDRoomID", null);
-            DAL.CloseConnectionDB();
-            return Dt;
-        }
+        //public DataTable MaxRoomID()
+        //{
+        //    DAL.OpenConnectionDB();
+        //    DataTable Dt = new DataTable();
+        //    Dt = DAL.SelectDataProcedure("SP_MaxIDRoomID", null);
+        //    DAL.CloseConnectionDB();
+        //    return Dt;
+        //}
     }
 }

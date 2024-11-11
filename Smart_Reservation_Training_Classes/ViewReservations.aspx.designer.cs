@@ -60,6 +60,15 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.WebControls.HiddenField hfUserID;
 
         /// <summary>
+        /// txtUserID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUserID;
+
+        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>
@@ -292,6 +301,15 @@ namespace Smart_Reservation_Training_Classes
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNotes;
+
+        /// <summary>
+        /// txtReasonReject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtReasonReject;
 
         /// <summary>
         /// BtnApproval control.

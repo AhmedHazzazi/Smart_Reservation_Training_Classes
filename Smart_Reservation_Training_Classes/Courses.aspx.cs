@@ -54,16 +54,6 @@ namespace Smart_Reservation_Training_Classes
                     lblError.Visible = true;
                     lblError.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
                 }
-                //ctxSRTC_DB = new SRTC_DBDataContext();
-                //var tblUsers = ctxSRTC_DB.GetTable<TBLUser>().Where(x => x.UserID.Equals(Session["UserID"]) && x.Role.Equals("Admin")).FirstOrDefault();
-                //if (tblUsers != null)
-                //{ }
-                //else
-                //{
-                //    MultiView1.Visible = false;
-                //    lblError.Visible = true;
-                //    lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
-                //}
             }
             catch (Exception excRoleAccess)
             {
@@ -215,7 +205,6 @@ namespace Smart_Reservation_Training_Classes
                 dtCourses = cls_Courses.SearchCourse(CourseCode);
                 if (e.CommandName == "Edited")
                 {
-                    //dtCourses = cls_Courses.SearchCourse(CourseCode);
                     if (dtCourses.Rows.Count > 0)
                     {
                         if (!string.IsNullOrEmpty(CourseCode))
@@ -244,8 +233,6 @@ namespace Smart_Reservation_Training_Classes
                 }
                 else if (e.CommandName == "Deleted")
                 {
-                    //string CourseCode = e.CommandArgument.ToString();
-                    //dtCourses = cls_Courses.SearchCourse(CourseCode);
                     if (dtCourses.Rows.Count > 0)
                     {
                         if (!string.IsNullOrEmpty(CourseCode))

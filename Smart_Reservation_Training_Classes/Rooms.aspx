@@ -18,10 +18,10 @@
                         </svg>
                         إدارة القاعات التدريبية
                     </div>
-                    <div class="d-grid gap-2 d-md-block">
+                    <div class="d-grid gap-2 d-md-block p-1">
                         <asp:Button ID="BtnAddRoom" runat="server" Text="إضافة قاعة" CssClass="btn btn-success w-auto" OnClientClick="Loader()" OnClick="BtnAddRoom_Click" />
                     </div>
-                    <asp:Panel ID="SearchPanel" runat="server" CssClass="py-2" DefaultButton="BtnSearch">
+                    <asp:Panel ID="SearchPanel" runat="server" CssClass="py-1" DefaultButton="BtnSearch">
                         <label class="label">البحث : </label>
                         <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control d-inline-block" autocomplete="off" Width="200px"></asp:TextBox>
                         <asp:Button ID="BtnSearch" runat="server" Text="بحث" CssClass="btn btn-primary w-auto" OnClientClick="Loader()" OnClick="BtnSearch_Click" />

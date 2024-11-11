@@ -30,7 +30,7 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
-        //Function Allow Access To Manage Roles For Admin And Not Allow For User
+        // وظيفة تسمح بالوصول لإدارة الأدوار للمسؤول وعدم السماح للمستخدم
         public void RoleAccess()
         {
             try
@@ -63,7 +63,7 @@ namespace Smart_Reservation_Training_Classes
                 lblError.Text = excRoleAccess.Message.ToString();
             }
         }
-        //Function To Fetch Users Data And Display It In GridView
+        // وظيفة جلب قائمة المستخدمين وعرضها في عرض القائمة
         public void BindDataUsers()
         {
             try
@@ -79,19 +79,6 @@ namespace Smart_Reservation_Training_Classes
                     gvUsers.DataSource = null;
                     gvUsers.DataBind();
                 }
-
-                //ctxSRTC_DB = new SRTC_DBDataContext();
-                //var tblUsers = ctxSRTC_DB.GetTable<TBLUser>();
-                //if (tblUsers.Count() > 0)
-                //{
-                //    gvUsers.DataSource = tblUsers;
-                //    gvUsers.DataBind();
-                //}
-                //else
-                //{
-                //    gvUsers.DataSource = null;
-                //    gvUsers.DataBind();
-                //}
             }
             catch (Exception excBindDataUsers)
             {
@@ -100,7 +87,7 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
-        //Save Data To Database After Verification
+        // وظيفة حفظ البيانات في قاعدة البيانات بعد التحقق منها
         protected void BtnSave_Click(object sender, EventArgs e)
         {
             try
@@ -160,7 +147,7 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
-        //User Search Event -- حدث البحث عن المستخدمين
+        // حدث البحث عن المستخدمين
         protected void BtnSearch_Click(object sender, EventArgs e)
         {
             try
@@ -201,7 +188,7 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
-        //Search Reset Event -- حدث إعادة تعيين البحث
+        // حدث إعادة تعيين البحث
         protected void BtnResetSearch_Click(object sender, EventArgs e)
         {
             try
@@ -221,7 +208,7 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
-        //Navigation To The Add User Form -- حدث الانتقال إلى نموذج إضافة مستخدم
+        // حدث الانتقال إلى نموذج إضافة مستخدم
         protected void BtnAddUser_Click(object sender, EventArgs e)
         {
             try
@@ -235,7 +222,7 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
-        //User Edit Form Navigation Event And User Delete Event -- حدث الإنتقال إلى نموذج تعديل المستخدم و حدث حذف المستخدم
+        // حدث الإنتقال إلى نموذج تعديل المستخدم و حدث حذف المستخدم
         protected void gvUsers_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
@@ -311,7 +298,7 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
-        //Check For Availability UserName Or Not Availability -- التحقق من توفر اسم المستخدم أو عدم توفره
+        // التحقق من توفر اسم المستخدم أو عدم توفره
         protected void txtUserName_TextChanged(object sender, EventArgs e)
         {
             try
@@ -337,7 +324,7 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
-        //Check For Availability Email Or Not Availability -- التحقق من التوفر عن طريق البريد الإلكتروني أو عدم التوفر
+        // التحقق من التوفر عن طريق البريد الإلكتروني أو عدم التوفر
         protected void txtEmail_TextChanged(object sender, EventArgs e)
         {
             try
@@ -369,7 +356,7 @@ namespace Smart_Reservation_Training_Classes
             BindDataUsers();
         }
 
-        //User Coloring Event System Administrator And User -- حدث تلوين المستخدمين مسؤول النظام ومستخدم 
+        // حدث تلوين المستخدمين مسؤول النظام ومستخدم 
         protected void gvUsers_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             for (int i = 0; i < gvUsers.Rows.Count; i++)
@@ -388,36 +375,15 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
-        //protected void BtnClose_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        MultiView1.ActiveViewIndex = 0;
-        //    }
-        //    catch (Exception excBtnClose)
-        //    {
-        //        //throw excBtnClose;
-        //        lblError.Visible = true;
-        //        lblError.Text = excBtnClose.Message.ToString();
-        //    }
-        //}
-
-        //Function To Clear Data From The Form After Saving -- Used In The Save Event
+        // وظيفة لمسح البيانات من النموذج بعد الحفظ -- تستخدم في حدث الحفظ
         public void ClearData()
         {
-            //hfUserID.Value = string.Empty;
             txtName.Text = string.Empty;
             txtUserName.Text = string.Empty;
             txtPassword.Text = string.Empty;
             txtEmail.Text = string.Empty;
             RblRole.SelectedValue = string.Empty;
             txtName.Focus();
-
-            //RFVtxtName.ErrorMessage = string.Empty;
-            //RFVtxtUserName.ErrorMessage = string.Empty;
-            //RFVtxtPassword.ErrorMessage = string.Empty;
-            //RFVtxtEmail.ErrorMessage = string.Empty;
-            //REVtxtEmail.ErrorMessage = string.Empty;
         }
     }
 }

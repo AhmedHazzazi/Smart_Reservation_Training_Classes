@@ -42,6 +42,19 @@ namespace Smart_Reservation_Training_Classes.App_Code
             DAL.CloseConnectionDB();
             return Dt;
         }
+        public DataTable SearchMyReservation(string Criterion, string UserID)
+        {
+            DAL.OpenConnectionDB();
+            SqlParameter[] param = new SqlParameter[2];
+            param[0] = new SqlParameter("@Criterion", SqlDbType.NVarChar);
+            param[0].Value = Criterion;
+            param[1] = new SqlParameter("@UserID", SqlDbType.NVarChar, 300);
+            param[1].Value = UserID;
+            DataTable Dt = new DataTable();
+            Dt = DAL.SelectDataProcedure("SP_SearchMyReservation", param);
+            DAL.CloseConnectionDB();
+            return Dt;
+        }
         public DataTable GetReservation(string ReservationID, string UserID)
         {
             DAL.OpenConnectionDB();
@@ -174,6 +187,25 @@ namespace Smart_Reservation_Training_Classes.App_Code
             param[21] = new SqlParameter("@Notes", SqlDbType.NVarChar);
             param[21].Value = Notes;
             DAL.ExecuteCommandProcedure("SP_UpdateReservation", param);
+            DAL.CloseConnectionDB();
+        }
+        public void UpdateRequestReservation(string ReservationID, string UserID, string Status, DateTime DateOfStatus, string HijriDateOfStatus, string ReasonReject)
+        {
+            DAL.OpenConnectionDB();
+            SqlParameter[] param = new SqlParameter[6];
+            param[0] = new SqlParameter("@ReservationID", SqlDbType.NVarChar, 300);
+            param[0].Value = ReservationID;
+            param[1] = new SqlParameter("@UserID", SqlDbType.NVarChar, 300);
+            param[1].Value = UserID;
+            param[2] = new SqlParameter("@Status", SqlDbType.NVarChar);
+            param[2].Value = Status;
+            param[3] = new SqlParameter("@DateOfStatus", SqlDbType.DateTime);
+            param[3].Value = DateOfStatus;
+            param[4] = new SqlParameter("@HijriDateOfStatus", SqlDbType.Char, 10);
+            param[4].Value = HijriDateOfStatus;
+            param[5] = new SqlParameter("@ReasonReject", SqlDbType.NVarChar);
+            param[5].Value = ReasonReject;
+            DAL.ExecuteCommandProcedure("SP_UpdateRequestReservation", param);
             DAL.CloseConnectionDB();
         }
         public void DeleteReservation(string ReservationID)

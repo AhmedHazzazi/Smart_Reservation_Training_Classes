@@ -14,11 +14,11 @@
         <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control d-inline-block" autocomplete="off" Width="200px"></asp:TextBox>
         <asp:Button ID="BtnSearch" runat="server" Text="بحث" CssClass="btn btn-primary m-1" OnClientClick="Loader()" OnClick="BtnSearch_Click" />
         <asp:Button ID="BtnResetSearch" runat="server" Text="X" CssClass="btn btn-danger" OnClientClick="Loader()" Visible="False" OnClick="BtnResetSearch_Click" />
+        <asp:Label ID="lblSuccess" runat="server" CssClass="success" Visible="false"></asp:Label>
         <asp:Label ID="lblError" runat="server" CssClass="error" Visible="false"></asp:Label>
     </asp:Panel>
     <asp:Panel ID="ViewsPanel" runat="server" CssClass="m-1">
-        <asp:GridView ID="gvReservations" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="ReservationID"
-            AutoGenerateColumns="False" AllowPaging="True" OnRowDataBound="gvReservations_RowDataBound" OnPageIndexChanging="gvReservations_PageIndexChanging">
+        <asp:GridView ID="gvReservations" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="ReservationID" AutoGenerateColumns="False" AllowPaging="True" OnRowCommand="gvReservations_RowCommand" OnRowDataBound="gvReservations_RowDataBound" OnPageIndexChanging="gvReservations_PageIndexChanging">
             <Columns>
                 <asp:TemplateField HeaderText="#">
                     <ItemTemplate>
@@ -26,12 +26,13 @@
                     </ItemTemplate>
                     <ItemStyle Width="10px" />
                 </asp:TemplateField>
+                <asp:BoundField DataField="UserID" HeaderText="رقم المستخدم" Visible="false"></asp:BoundField>
                 <asp:BoundField DataField="ReservationID" HeaderText="رقم الحجز"></asp:BoundField>
                 <asp:BoundField DataField="Name" HeaderText="الإسم"></asp:BoundField>
                 <asp:BoundField DataField="RoomName" HeaderText="القاعة"></asp:BoundField>
                 <asp:BoundField DataField="Email" HeaderText="الدورة"></asp:BoundField>
                 <asp:BoundField DataField="Status" HeaderText="الحالة"></asp:BoundField>
-                <asp:HyperLinkField HeaderText="التفاصيل" Text="عرض" DataNavigateUrlFields="ReservationID" DataNavigateUrlFormatString="ViewReservations.aspx?ReservationID={0}" ControlStyle-CssClass="btn btn-primary" Target="_self" />
+                <asp:HyperLinkField HeaderText="التفاصيل" Text="عرض" DataNavigateUrlFields="ReservationID, UserID" DataNavigateUrlFormatString="ViewReservations.aspx?ReservationID={0}&UserID={1}" ControlStyle-CssClass="btn btn-primary" Target="_self" />
                 <asp:TemplateField HeaderText=".....">
                     <ItemTemplate>
                         <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف بيانات الحجز ؟')" CommandArgument='<%# Eval("ReservationID") %>'>

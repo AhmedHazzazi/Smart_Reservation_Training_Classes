@@ -41,7 +41,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-10">
-                        <asp:Button ID="BtnUpdatePassword" runat="server" Text="إستعادة كلمة المرور" CssClass="btn btn-primary w-auto" OnClientClick="Loader()" OnClick="BtnUpdatePassword_Click" />
+                        <asp:Button ID="BtnUpdatePassword" runat="server" Text="تحديث كلمة المرور" CssClass="btn btn-primary w-auto" OnClientClick="Loader()" OnClick="BtnUpdatePassword_Click" />
                     </div>
                 </div>
             </div>

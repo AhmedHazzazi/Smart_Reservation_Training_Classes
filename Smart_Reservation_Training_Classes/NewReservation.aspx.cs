@@ -216,7 +216,6 @@ namespace Smart_Reservation_Training_Classes
                 DateTimeFormatInfo DTFormat = new CultureInfo("ar-SA").DateTimeFormat;
                 DTFormat.ShortDatePattern = "yyyy-MM-dd";
                 DateTime dt = DateTime.Now;
-                //dt.ToString(DTFormat)
                 dtMaxReservationID = cls_Reservations.GetMaxReservation(Session["UserID"].ToString());
                 if (dtMaxReservationID.Rows.Count > 0)
                 {

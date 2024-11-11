@@ -12,26 +12,25 @@
             </div>
             <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                 <asp:View ID="View1" runat="server">
-                    <div class="text-primary fs-5 p-3">
+                    <div class="text-primary fs-5 py-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
                             <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1" />
                         </svg>
                         إدارة الصلاحيات
                     </div>
-                    <div class="d-grid gap-2 d-md-block">
-                        <asp:Button ID="BtnAddUser" runat="server" Text="إضافة جديد" CssClass="btn btn-success" OnClientClick="Loader()" OnClick="BtnAddUser_Click" />
+                    <div class="d-grid gap-2 d-md-block p-1">
+                        <asp:Button ID="BtnAddUser" runat="server" Text="إضافة جديد" CssClass="btn btn-success w-auto" OnClientClick="Loader()" OnClick="BtnAddUser_Click" />
                     </div>
-                    <asp:Panel ID="SearchPanel" runat="server" CssClass="" DefaultButton="BtnSearch">
+                    <asp:Panel ID="SearchPanel" runat="server" CssClass="py-1" DefaultButton="BtnSearch">
                         <label class="label">البحث : </label>
                         <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control d-inline-block" autocomplete="off" Width="200px"></asp:TextBox>
-                        <asp:Button ID="BtnSearch" runat="server" Text="بحث" CssClass="btn btn-primary m-1" OnClientClick="Loader()" OnClick="BtnSearch_Click" />
-                        <asp:Button ID="BtnResetSearch" runat="server" Text="X" CssClass="btn btn-danger" OnClientClick="Loader()" Visible="False" OnClick="BtnResetSearch_Click" />
+                        <asp:Button ID="BtnSearch" runat="server" Text="بحث" CssClass="btn btn-primary w-auto" OnClientClick="Loader()" OnClick="BtnSearch_Click" />
+                        <asp:Button ID="BtnResetSearch" runat="server" Text="X" CssClass="btn btn-danger w-auto" OnClientClick="Loader()" Visible="False" OnClick="BtnResetSearch_Click" />
                         <%--<asp:Label ID="lblErrorSearch" runat="server" CssClass="error" Visible="false"></asp:Label>--%>
                     </asp:Panel>
                     <asp:Panel ID="ViewsPanel" runat="server" CssClass="m-1">
-                        <asp:GridView ID="gvUsers" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="UserID" 
-                            AutoGenerateColumns="False" AllowPaging="True" OnRowCommand="gvUsers_RowCommand" OnRowDataBound="gvUsers_RowDataBound" 
-                            OnPageIndexChanging="gvUsers_PageIndexChanging">
+                        <asp:GridView ID="gvUsers" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="UserID" AutoGenerateColumns="False" AllowPaging="True" 
+                            OnRowCommand="gvUsers_RowCommand" OnRowDataBound="gvUsers_RowDataBound" OnPageIndexChanging="gvUsers_PageIndexChanging">
                             <Columns>
                                 <asp:TemplateField HeaderText="#">
                                     <ItemTemplate>
@@ -39,7 +38,7 @@
                                     </ItemTemplate>
                                     <ItemStyle Width="10px" />
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="UserID" HeaderText="UserID" Visible="false"></asp:BoundField>
+                                <asp:BoundField DataField="UserID" HeaderText="رقم المستخدم"></asp:BoundField>
                                 <asp:BoundField DataField="Name" HeaderText="الإسم الكامل"></asp:BoundField>
                                 <asp:BoundField DataField="UserName" HeaderText="اسم المستخدم"></asp:BoundField>
                                 <asp:BoundField DataField="Email" HeaderText="البريد الإلكتروني"></asp:BoundField>

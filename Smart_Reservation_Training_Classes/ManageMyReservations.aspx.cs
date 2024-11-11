@@ -26,7 +26,7 @@ namespace Smart_Reservation_Training_Classes
                 BindDataMyReservations();
             }
         }
-        //Function To Fetch Reservations Data And Display It In GridView
+        // وظيفة جلب بيانات الحجوزات وعرضها في عرض القائمة
         public void BindDataMyReservations()
         {
             try
@@ -49,40 +49,48 @@ namespace Smart_Reservation_Training_Classes
                 lblError.Text = excBindDataUsers.Message.ToString();
             }
         }
-
+        // حدث تغيير القائمة عند التنقل في فهرس الطلبات
         protected void gvMyReservations_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvMyReservations.PageIndex = e.NewPageIndex;
             BindDataMyReservations();
         }
 
-        //User Coloring Event System Administrator And User -- حدث تلوين المستخدمين مسؤول النظام ومستخدم 
+        // حدث تمميز الحجوزات الجديدة و الحجوزات المنتهية 
         protected void gvMyReservations_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //for (int i = 0; i < gvMyReservations.Rows.Count; i++)
-            //{
-            //    for (int j = 0; j < gvMyReservations.Rows[i].Cells.Count; j++)
-            //    {
-            //        if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("قيد المراجعة"))
-            //        {
-            //            gvMyReservations.Rows[i].Cells[j].CssClass = "bg-success";
-            //        }
-            //        else if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("تم المراجعة"))
-            //        {
-            //            gvMyReservations.Rows[i].Cells[j].CssClass = "bg-warning";
-            //        }
-            //    }
-            //}
+            for (int i = 0; i < gvMyReservations.Rows.Count; i++)
+            {
+                for (int j = 0; j < gvMyReservations.Rows[i].Cells.Count; j++)
+                {
+                    if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("قيد المراجعة"))
+                    {
+                        gvMyReservations.Rows[i].Cells[j].CssClass = "bg-info";
+                    }
+                    else if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("تم الموافقة"))
+                    {
+                        gvMyReservations.Rows[i].Cells[j].CssClass = "bg-success";
+                    }
+                    else if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("تم الرفض"))
+                    {
+                        gvMyReservations.Rows[i].Cells[j].CssClass = "bg-danger";
+                    }
+                    else if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("منتهية"))
+                    {
+                        gvMyReservations.Rows[i].Cells[j].CssClass = "bg-warning";
+                    }
+                }
+            }
         }
 
-        //User Search Event -- حدث البحث عن المستخدمين
+        // حدث البحث عن حجز محدد في حجوزاتي
         protected void BtnSearch_Click(object sender, EventArgs e)
         {
             try
             {
                 if (!string.IsNullOrEmpty(txtSearch.Text))
                 {
-                    dtReservations = cls_Reservations.SearchReservation(txtSearch.Text);
+                    dtReservations = cls_Reservations.SearchMyReservation(txtSearch.Text, (string)Session["UserID"]);
                     if (dtReservations.Rows.Count > 0)
                     {
                         gvMyReservations.DataSource = dtReservations;
@@ -95,7 +103,7 @@ namespace Smart_Reservation_Training_Classes
                         gvMyReservations.DataSource = null;
                         gvMyReservations.DataBind();
                         lblError.Visible = true;
-                        lblError.Text = "لم يتم العثور على بيانات تأكد من القيمة المدخلة الصحيحة";
+                        lblError.Text = "لم يتم العثور على بيانات";
                     }
                 }
                 else
@@ -111,8 +119,48 @@ namespace Smart_Reservation_Training_Classes
                 lblError.Text = excBtnSearch.Message.ToString();
             }
         }
+        // حدث تمميز حذف طلب الحجز
+        protected void gvMyReservations_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "Deleted")
+                {
+                    string ReservationID = e.CommandArgument.ToString();
+                    dtReservations = cls_Reservations.SearchReservation(ReservationID);
+                    if (dtReservations.Rows.Count > 0)
+                    {
+                        if (!string.IsNullOrEmpty(ReservationID))
+                        {
+                            cls_Reservations.DeleteReservation(ReservationID);
+                            DataRow dr = dtReservations.Rows[0];
+                            dr.Delete();
+                            lblError.Visible = false;
+                            lblSuccess.Visible = true;
+                            lblSuccess.Text = "لقد تم حذف طلب الحجز بنجاح";
+                        }
+                        else
+                        {
+                            lblError.Visible = true;
+                            lblError.Text = "لم يتم العثور على بيانات طلب الحجز حتى يتم حذفه";
+                        }
+                    }
+                    else
+                    {
+                        lblError.Visible = true;
+                        lblError.Text = "لم يتم العثور على بيانات طلب الحجز حتى يتم حذفه";
+                    }
+                    BindDataMyReservations();
+                }
+            }
+            catch (Exception excgvMyReservationss)
+            {
+                lblError.Visible = true;
+                lblError.Text = excgvMyReservationss.Message.ToString();
+            }
+        }
 
-        //Search Reset Event -- حدث إعادة تعيين البحث
+        // حدث إعادة تعيين البحث
         protected void BtnResetSearch_Click(object sender, EventArgs e)
         {
             try

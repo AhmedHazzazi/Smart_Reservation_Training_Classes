@@ -26,7 +26,8 @@ namespace Smart_Reservation_Training_Classes
         }
         private void ReservationMessage()
         {
-            dtReservations = cls_Reservations.SearchReservation((string)Session["UserID"]);
+            string UserID = Request.QueryString["UserID"];
+            dtReservations = cls_Reservations.GetMaxReservation(UserID);
             if (dtReservations != null)
             {
                 foreach (DataRow dr in dtReservations.Rows)

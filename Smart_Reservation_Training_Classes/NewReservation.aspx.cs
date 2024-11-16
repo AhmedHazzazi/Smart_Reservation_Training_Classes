@@ -46,11 +46,12 @@ namespace Smart_Reservation_Training_Classes
                         RadioButton RadioButtonChooseRoom = (RadioButton)row.FindControl("RadioButtonChooseRoom");
                         if (RadioButtonChooseRoom.Checked)
                         {
-                            txtRoomCode.Text = gvRoomsAvailable.Rows[row.RowIndex].Cells[1].Text;
+                            hfRoomCode.Value = gvRoomsAvailable.Rows[row.RowIndex].Cells[1].Text;
+                            txtRoomName.Text= gvRoomsAvailable.Rows[row.RowIndex].Cells[2].Text;
                             txtStartDate.Text = txtSearchStartDate.Text;
                             txtEndDate.Text = txtSearchEndDate.Text;
 
-                            txtRoomCode.Enabled = false;
+                            txtRoomName.Enabled = false;
                             txtStartDate.Enabled = false;
                             txtEndDate.Enabled = false;
 
@@ -221,37 +222,38 @@ namespace Smart_Reservation_Training_Classes
                 {
                     foreach (DataRow row1 in dtMaxReservationID.Rows)
                     {
-                        if (!string.IsNullOrEmpty(row1[0].ToString()))
+                        MaxReservationID = Convert.ToInt32(row1[0].ToString());
+                        if (!string.IsNullOrEmpty(MaxReservationID.ToString()))
                         {
-                            MaxReservationID = Convert.ToInt32(row1[0].ToString());
-                            string ReservationID = hfReservationID.Value = row1[0].ToString();
+                            string ReservationID = hfReservationID.Value = MaxReservationID.ToString();
                             if (txtRoomCode_S.Text != string.Empty && txtCourseCode_S.Text != string.Empty)
                             {
-                                dtReservations = cls_Reservations.GetReservation(ReservationID, Session["UserID"].ToString());
-                                if (dtReservations == null)
+                                dtReservations = cls_Reservations.GetReservation(ReservationID, (string)Session["UserID"]);
+                                if (dtReservations != null)
                                 {
                                     foreach (DataRow row in dtReservations.Rows)
                                     {
                                         string Status = row["Status"].ToString();
-                                        if (Status == "طلب منفذ")
+                                        if (Status == "منفذ")
                                         {
                                             ReservationId = hfReservationID_S.Value = cls_Reservations.MaxReservationID().Rows[0]["ReservationID"].ToString();
                                             cls_Reservations.InsertReservation(ReservationId, hfUserID_S.Value, txtCourseCode_S.Text, txtRoomCode_S.Text,
                                                 txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text, txtDuration_S.Text,
-                                                dt, dt.ToString(DTFormat), "قيد المراجعة", dt, dt.ToString(DTFormat), txtLanguage_S.Text, txtTargetGroup_S.Text,
+                                                dt, dt.ToString(DTFormat), "جديد", dt, dt.ToString(DTFormat), txtLanguage_S.Text, txtTargetGroup_S.Text,
                                                 txtExpectedNumber_S.Text, txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text,
                                                 txtRequirements_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
                                         }
-                                        else
+                                        else if (Status == "جديد" || Status == "مرفوض")
                                         {
                                             ReservationId = hfReservationID_S.Value = dtReservations.Rows[0]["ReservationID"].ToString();
                                             cls_Reservations.UpdateReservation(ReservationId, hfUserID_S.Value, txtCourseCode_S.Text, txtRoomCode_S.Text,
                                                 txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text, txtDuration_S.Text,
-                                                "قيد المراجعة", dt, dt.ToString(DTFormat), txtLanguage_S.Text, txtTargetGroup_S.Text, txtExpectedNumber_S.Text,
+                                                "جديد", dt, dt.ToString(DTFormat), txtLanguage_S.Text, txtTargetGroup_S.Text, txtExpectedNumber_S.Text,
                                                 txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text, txtRequirements_S.Text,
                                                 txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
                                         }
-                                        Response.Redirect("CompleteRequest.aspx");
+                                        //Response.Redirect("CompleteRequest.aspx");
+                                        Response.Redirect("CompleteRequest.aspx?UserID=" + Session["UserID"]);
                                         gvRoomsAvailable.Visible = true;
                                         lblWizardError.Visible = false;
                                         txtSearchStartDate.Enabled = false;
@@ -260,6 +262,12 @@ namespace Smart_Reservation_Training_Classes
                                 }
                                 else
                                 {
+                                    //ReservationId = hfReservationID_S.Value = cls_Reservations.MaxReservationID().Rows[0]["ReservationID"].ToString();
+                                    //cls_Reservations.InsertReservation(ReservationId, hfUserID_S.Value, txtCourseCode_S.Text, txtRoomCode_S.Text,
+                                    //    txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text, txtDuration_S.Text,
+                                    //    dt, dt.ToString(DTFormat), "جديد", dt, dt.ToString(DTFormat), txtLanguage_S.Text, txtTargetGroup_S.Text,
+                                    //    txtExpectedNumber_S.Text, txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text,
+                                    //    txtRequirements_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
                                     lblWizardError.Visible = true;
                                     lblWizardError.Text = "نعتذر ؛ يوجد خطأ في حفظ البيانات ... الرجاء المحاولة لاحقا ..!";
                                 }
@@ -277,7 +285,7 @@ namespace Smart_Reservation_Training_Classes
                                 ReservationId = hfReservationID_S.Value = cls_Reservations.MaxReservationID().Rows[0]["ReservationID"].ToString();
                                 cls_Reservations.InsertReservation(ReservationId, hfUserID_S.Value, txtCourseCode_S.Text, txtRoomCode_S.Text,
                                     txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text, txtDuration_S.Text,
-                                    dt, dt.ToString(DTFormat), "قيد المراجعة", dt, dt.ToString(DTFormat), txtLanguage_S.Text, txtTargetGroup_S.Text,
+                                    dt, dt.ToString(DTFormat), "جديد", dt, dt.ToString(DTFormat), txtLanguage_S.Text, txtTargetGroup_S.Text,
                                     txtExpectedNumber_S.Text, txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text,
                                     txtRequirements_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
                                 //Response.Redirect("CompleteRequest.aspx");
@@ -311,12 +319,14 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                if (!string.IsNullOrEmpty(txtCourseCode.Text))
+                if (!string.IsNullOrEmpty(ddlCourseName.SelectedValue.ToString()))
                 {
                     hfReservationID_S.Value = hfReservationID.Value;
                     hfUserID_S.Value = hfUserID.Value;
-                    txtCourseCode_S.Text = txtCourseCode.Text;
-                    txtRoomCode_S.Text = txtRoomCode.Text;
+                    txtCourseCode_S.Text = ddlCourseName.SelectedValue.ToString();
+                    txtRoomCode_S.Text = hfRoomCode.Value;
+                    txtCourseName_S.Text = ddlCourseName.SelectedItem.ToString();
+                    txtRoomName_S.Text = txtRoomName.Text;
                     txtTypeSubtraction_S.Text = RBLTypeSubtraction.SelectedValue.ToString();
                     txtStartDate_S.Text = txtStartDate.Text;
                     txtEndDate_S.Text = txtEndDate.Text;
@@ -337,7 +347,8 @@ namespace Smart_Reservation_Training_Classes
                 {
                     lblWizardError.Visible = true;
                     lblWizardError.Text = "يجب إدخال كود الدورة التدريبية";
-                }                gvRoomsAvailable.Visible = true;
+                }
+                gvRoomsAvailable.Visible = true;
                 lblWizardError.Visible = false;
                 txtSearchStartDate.Enabled = false;
                 txtSearchEndDate.Enabled = false;

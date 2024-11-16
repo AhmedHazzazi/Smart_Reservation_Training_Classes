@@ -59,17 +59,6 @@ namespace Smart_Reservation_Training_Classes
                     lblError.Text = Resources.ErrorMessageRoleAccess;
                     //lblError.Text = "عفواً !!! حدث خطأ في إسترجاع البيانات أو أنه لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
                 }
-                //ctxSRTC_DB = new SRTC_DBDataContext();
-                //var tblUsers = ctxSRTC_DB.GetTable<TBLUser>().Where(x => x.UserID.Equals(Session["UserID"]) && x.Role.Equals("Admin")).FirstOrDefault();
-                //if (tblUsers != null)
-                //{ }
-                //else
-                //{
-                //    MultiView1.Visible = false;
-                //    lblError.Visible = true;
-                //    lblError.Text = Resources.ErrorMessageRoleAccess;
-                //    lblError.Text = "عفواً !!! حدث خطأ في إسترجاع البيانات أو أنه لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
-                //}
             }
             catch (Exception excRoleAccess)
             {
@@ -229,8 +218,6 @@ namespace Smart_Reservation_Training_Classes
                 dtUsers = cls_Rooms.SearchRoom(RoomCode);
                 if (e.CommandName == "Edited")
                 {
-                    //string RoomCode = e.CommandArgument.ToString();
-                    //dtUsers = cls_Rooms.SearchRoom(RoomCode);
                     if (dtUsers.Rows.Count > 0)
                     {
                         if (!string.IsNullOrEmpty(RoomCode))
@@ -261,8 +248,6 @@ namespace Smart_Reservation_Training_Classes
                 }
                 else if (e.CommandName == "Deleted")
                 {
-                    //string RoomCode = e.CommandArgument.ToString();
-                    //dtUsers = cls_Rooms.SearchRoom(RoomCode);
                     if (dtUsers.Rows.Count > 0)
                     {
                         if (!string.IsNullOrEmpty(RoomCode))

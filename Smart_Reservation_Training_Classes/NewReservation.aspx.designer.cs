@@ -258,22 +258,49 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.WebControls.TextBox txtDuration;
 
         /// <summary>
-        /// txtRoomCode control.
+        /// hfRoomCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRoomCode;
+        protected global::System.Web.UI.WebControls.HiddenField hfRoomCode;
 
         /// <summary>
-        /// txtCourseCode control.
+        /// txtRoomName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCourseCode;
+        protected global::System.Web.UI.WebControls.TextBox txtRoomName;
+
+        /// <summary>
+        /// hfCourseCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfCourseCode;
+
+        /// <summary>
+        /// ddlCourseName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCourseName;
+
+        /// <summary>
+        /// sdsCourseCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sdsCourseCode;
 
         /// <summary>
         /// txtLecturerName control.
@@ -481,6 +508,24 @@ namespace Smart_Reservation_Training_Classes
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCourseCode_S;
+
+        /// <summary>
+        /// txtRoomName_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRoomName_S;
+
+        /// <summary>
+        /// txtCourseName_S control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCourseName_S;
 
         /// <summary>
         /// txtLecturerName_S control.

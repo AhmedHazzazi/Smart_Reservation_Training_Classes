@@ -16,7 +16,6 @@ namespace Smart_Reservation_Training_Classes
         CLS_Users cls_Users = new CLS_Users();
         CLS_Reservations cls_Reservations = new CLS_Reservations();
         DataTable dtUsers, dtReservations;
-        SRTC_DBDataContext ctxSRTC_DB;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -102,22 +101,22 @@ namespace Smart_Reservation_Training_Classes
             {
                 for (int j = 0; j < gvReservations.Rows[i].Cells.Count; j++)
                 {
-                    if (gvReservations.Rows[i].Cells[j].Text.ToString().Equals("قيد المراجعة"))
+                    if (gvReservations.Rows[i].Cells[j].Text.ToString().Equals("جديد"))
                     {
                         gvReservations.Rows[i].Cells[j].CssClass = "bg-info";
                     }
-                    else if (gvReservations.Rows[i].Cells[j].Text.ToString().Equals("تم الموافقة"))
+                    else if (gvReservations.Rows[i].Cells[j].Text.ToString().Equals("منفذ"))
                     {
                         gvReservations.Rows[i].Cells[j].CssClass = "bg-success";
                     }
-                    else if (gvReservations.Rows[i].Cells[j].Text.ToString().Equals("تم الرفض"))
+                    else if (gvReservations.Rows[i].Cells[j].Text.ToString().Equals("مرفوض"))
                     {
                         gvReservations.Rows[i].Cells[j].CssClass = "bg-danger";
                     }
-                    else if (gvReservations.Rows[i].Cells[j].Text.ToString().Equals("منتهية"))
-                    {
-                        gvReservations.Rows[i].Cells[j].CssClass = "bg-warning";
-                    }
+                    //else if (gvReservations.Rows[i].Cells[j].Text.ToString().Equals("منتهية"))
+                    //{
+                    //    gvReservations.Rows[i].Cells[j].CssClass = "bg-warning";
+                    //}
                 }
             }
         }
@@ -159,7 +158,7 @@ namespace Smart_Reservation_Training_Classes
             }
         }
 
-        // حدث تمميز حذف طلب الحجز
+        // حدث حذف طلب الحجز
         protected void gvReservations_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try

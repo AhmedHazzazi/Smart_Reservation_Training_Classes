@@ -20,8 +20,6 @@ namespace Smart_Reservation_Training_Classes
             Logout.Visible = false;
             HtmlGenericControl Login = (HtmlGenericControl)Master.FindControl("Login");
             Login.Visible = true;
-            lblError.Visible = false;
-            lblSuccess.Visible = false;
         }
 
         protected void BtnRecoverUserName_Click(object sender, EventArgs e)
@@ -33,18 +31,15 @@ namespace Smart_Reservation_Training_Classes
                     dtUsers = cls_users.RecoverUername(txtEmail.Text);
                     if (dtUsers.Rows.Count > 0)
                     {
-                        //txtUserName.Text = dtUsers.Rows[0]["UserName"].ToString();
                         lblError.Visible = false;
                         lblSuccess.Visible = true;
-                        lblSuccess.Text = "اسم المستخدم الخاص بك هو : " + dtUsers.Rows[0]["UserName"].ToString();
+                        lblSuccess.Text = "اسم المستخدم التابع للبريد الإلكتروني الذي تم إدخاله هو : " + dtUsers.Rows[0]["UserName"].ToString();
                     }
                     else
                     {
                         lblSuccess.Visible = false;
                         lblError.Visible = true;
-                        lblError.Text = "معلومات البريد الإلكتروني التي أدخلتها خاطئة. يرجى التحقق مرة أخرى";
-                        //lblError.Text = "المعلومات التي أدخلتها خاطئة. يرجى التحقق مرة أخرى";
-                        //lblError.Text = "لم يتم العثور على بيانات مرتبطة بالبريد الإلكتروني المدخل في خانة البريد الإلكتروني !!!";
+                        lblError.Text = "لم يتم العثور على بيانات مرتبطة بالبريد الإلكتروني المدخل !!! يرجى التحقق مرة أخرى";
                     }
                 }
                 else

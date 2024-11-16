@@ -99,7 +99,7 @@
                                     <asp:Table ID="tblDataReservation" runat="server" CssClass="table table-responsive-lg">
                                         <asp:TableRow CssClass="forms-input-row">
                                             <asp:TableCell>
-                                            <label class="forms-input-label">نوع الطرح</label>
+                                                <label class="forms-input-label">نوع الطرح</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:RadioButtonList ID="RBLTypeSubtraction" runat="server" CssClass="hideradio" RepeatDirection="Horizontal">
@@ -108,10 +108,10 @@
                                                 </asp:RadioButtonList>
                                             </asp:TableCell>
                                             <asp:TableCell>
-                                        <label class="forms-input-label">الفئة المستهدفة</label>
+                                                <label class="forms-input-label">الفئة المستهدفة</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
-                                                <asp:DropDownList ID="DDLTargetGroup" runat="server" CssClass="dropdownlists">
+                                                <asp:DropDownList ID="DDLTargetGroup" runat="server" CssClass="dropdownlists text-wizard">
                                                     <asp:ListItem Value="" Selected="True">-- أختر --</asp:ListItem>
                                                     <asp:ListItem Value="هيئة التدريس">هيئة التدريس</asp:ListItem>
                                                     <asp:ListItem Value="هيئة التدريس الجدد">هيئة التدريس الجدد</asp:ListItem>
@@ -129,13 +129,13 @@
 
                                         <asp:TableRow CssClass="forms-input-row">
                                             <asp:TableCell>
-                                        <label class="forms-input-label">الجهة المنفذة</label>
+                                                <label class="forms-input-label">الجهة المنفذة</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:TextBox ID="txtImplementingEntity" runat="server" CssClass="form-control text-wizard"></asp:TextBox>
                                             </asp:TableCell>
                                             <asp:TableCell>
-                                        <label class="forms-input-label">الجهة المستفيدة</label>
+                                                <label class="forms-input-label">الجهة المستفيدة</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:TextBox ID="txtBeneficiaryEntity" runat="server" CssClass="form-control text-wizard"></asp:TextBox>
@@ -144,13 +144,13 @@
 
                                         <asp:TableRow CssClass="forms-input-row">
                                             <asp:TableCell>
-                                        <label class="forms-input-label">الوقت</label>
+                                                <label class="forms-input-label">الوقت</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:TextBox ID="txtTime" runat="server" CssClass="form-control text-wizard"></asp:TextBox>
                                             </asp:TableCell>
                                             <asp:TableCell>
-                                        <label class="forms-input-label">التاريخ</label>
+                                                <label class="forms-input-label">التاريخ</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:TextBox ID="txtStartDate" runat="server" CssClass="form-control d-inline-block" ReadOnly="true" Width="200px"></asp:TextBox>
@@ -161,13 +161,13 @@
 
                                         <asp:TableRow CssClass="forms-input-row">
                                             <asp:TableCell>
-                                        <label class="forms-input-label">العدد المتوقع</label>
+                                                <label class="forms-input-label">العدد المتوقع</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:TextBox ID="txtExpectedNumber" runat="server" CssClass="form-control text-wizard"></asp:TextBox>
                                             </asp:TableCell>
                                             <asp:TableCell>
-                                        <label class="forms-input-label">مدتها</label>
+                                                <label class="forms-input-label">مدتها</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:TextBox ID="txtDuration" runat="server" CssClass="form-control text-wizard"></asp:TextBox>
@@ -176,28 +176,31 @@
 
                                         <asp:TableRow CssClass="forms-input-row">
                                             <asp:TableCell>
-                                        <label class="forms-input-label">كود القاعة</label>
+                                                <label class="forms-input-label">اسم القاعة</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
-                                                <asp:TextBox ID="txtRoomCode" runat="server" CssClass="form-control text-wizard" ReadOnly="true"></asp:TextBox>
+                                                <asp:HiddenField ID="hfRoomCode" runat="server" />
+                                                <asp:TextBox ID="txtRoomName" runat="server" CssClass="form-control text-wizard" ReadOnly="true"></asp:TextBox>
                                             </asp:TableCell>
                                             <asp:TableCell>
-                                        <label class="forms-input-label">كود الدورة</label>
+                                                <label class="forms-input-label">اسم الدورة</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
-                                                <asp:TextBox ID="txtCourseCode" runat="server" CssClass="form-control text-wizard"></asp:TextBox>
+                                                <asp:HiddenField ID="hfCourseCode" runat="server" />
+                                                <asp:DropDownList ID="ddlCourseName" runat="server" CssClass="dropdownlists text-wizard" DataSourceID="sdsCourseCode" DataTextField="CourseName" DataValueField="CourseCode"></asp:DropDownList>
+                                                <asp:SqlDataSource runat="server" ID="sdsCourseCode" ConnectionString='<%$ ConnectionStrings:SRTC_DBConnectionString %>' SelectCommand="SELECT * FROM [TBLCourses] ORDER BY [CourseCode]"></asp:SqlDataSource>
                                             </asp:TableCell>
                                         </asp:TableRow>
 
                                         <asp:TableRow CssClass="forms-input-row">
                                             <asp:TableCell>
-                                        <label class="forms-input-label">اسم المدرب</label>
+                                                <label class="forms-input-label">اسم المدرب</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:TextBox ID="txtLecturerName" runat="server" CssClass="form-control text-wizard"></asp:TextBox>
                                             </asp:TableCell>
                                             <asp:TableCell>
-                                        <label class="forms-input-label">المتطلبات</label>
+                                                <label class="forms-input-label">المتطلبات</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:TextBox ID="txtRequirements" runat="server" CssClass="form-control text-wizard" TextMode="MultiLine"></asp:TextBox>
@@ -206,7 +209,7 @@
 
                                         <asp:TableRow CssClass="forms-input-row">
                                             <asp:TableCell>
-                                        <label class="forms-input-label">اللغة</label>
+                                                <label class="forms-input-label">اللغة</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:RadioButtonList ID="RblLanguage" runat="server" CssClass="hideradio" RepeatDirection="Horizontal">
@@ -215,7 +218,7 @@
                                                 </asp:RadioButtonList>
                                             </asp:TableCell>
                                             <asp:TableCell>
-                                        <label class="forms-input-label">استخدام معمل الحاسب</label>
+                                                <label class="forms-input-label">استخدام معمل الحاسب</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:RadioButtonList ID="RblUseOfComputer" runat="server" CssClass="hideradio" RepeatDirection="Horizontal">
@@ -227,13 +230,13 @@
 
                                         <asp:TableRow CssClass="forms-input-row">
                                             <asp:TableCell>
-                                        <label class="forms-input-label">محاور الدورة</label>
+                                                <label class="forms-input-label">محاور الدورة</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:TextBox ID="txtCourseTopics" runat="server" CssClass="form-control text-wizard" TextMode="MultiLine"></asp:TextBox>
                                             </asp:TableCell>
                                             <asp:TableCell>
-                                        <label class="forms-input-label">ملاحظات</label>
+                                                <label class="forms-input-label">ملاحظات</label>
                                             </asp:TableCell>
                                             <asp:TableCell>
                                                 <asp:TextBox ID="txtNotes" runat="server" CssClass="form-control text-wizard" TextMode="MultiLine"></asp:TextBox>
@@ -303,6 +306,14 @@
                                         <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
                                             <label class="control-label label-wizard" style="max-width: 200px;">كود الدورة</label>
                                             <asp:TextBox ID="txtCourseCode_S" runat="server" CssClass="form-control text-wizard" placeholder="كود الدورة" ReadOnly="true"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
+                                            <label class="control-label label-wizard" style="max-width: 200px;">اسم القاعة</label>
+                                            <asp:TextBox ID="txtRoomName_S" runat="server" CssClass="form-control text-wizard" placeholder="اسم القاعة" ReadOnly="true"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
+                                            <label class="control-label label-wizard" style="max-width: 200px;">اسم الدورة</label>
+                                            <asp:TextBox ID="txtCourseName_S" runat="server" CssClass="form-control text-wizard" placeholder="اسم الدورة" ReadOnly="true"></asp:TextBox>
                                         </div>
                                         <div class="col-md-6" style="text-align: right; margin-bottom: 10px;">
                                             <label class="control-label label-wizard" style="max-width: 200px;">اسم المدرب</label>

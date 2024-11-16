@@ -15,7 +15,7 @@ namespace Smart_Reservation_Training_Classes
     {
         CLS_Users cls_Users = new CLS_Users();
         CLS_Reservations cls_Reservations = new CLS_Reservations();
-        DataTable dtReservations;
+        DataTable dtUsers, dtReservations;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,8 +25,41 @@ namespace Smart_Reservation_Training_Classes
                 {
                     Response.Redirect("~/Login.aspx");
                 }
+                RoleAccess();
                 GetInfoReservation();
                 EnabledButtons();
+            }
+        }
+        // وظيفة تسمح بالوصول لإدارة الأدوار للمسؤول وعدم السماح للمستخدم
+        public void RoleAccess()
+        {
+            try
+            {
+                dtUsers = cls_Users.SearchUser((string)Session["UserID"]);
+                if (dtUsers.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtUsers.Rows)
+                    {
+                        if (row["Role"].ToString() == "Admin")
+                        { }
+                        else if (row["Role"].ToString() == "User")
+                        {
+                            lblError.Visible = true;
+                            lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
+                        }
+                        break;
+                    }
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "حدث خطأ في إسترجاع البيانات أو لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
+                }
+            }
+            catch (Exception excRoleAccess)
+            {
+                lblError.Visible = true;
+                lblError.Text = excRoleAccess.Message.ToString();
             }
         }
         // وظيفة جلب بيانات الحجز وعرضها في الحقول

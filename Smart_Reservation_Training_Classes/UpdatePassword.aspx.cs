@@ -20,8 +20,6 @@ namespace Smart_Reservation_Training_Classes
             Logout.Visible = false;
             HtmlGenericControl Login = (HtmlGenericControl)Master.FindControl("Login");
             Login.Visible = true;
-            lblError.Visible = false;
-            lblSuccess.Visible = false;
         }
 
         protected void BtnUpdatePassword_Click(object sender, EventArgs e)

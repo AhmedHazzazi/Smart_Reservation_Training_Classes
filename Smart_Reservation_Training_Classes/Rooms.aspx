@@ -47,7 +47,7 @@
                                         <asp:LinkButton ID="lnkEdit" runat="server" CausesValidation="False" CommandName="Edited" OnClientClick="Loader();" CommandArgument='<%# Eval("RoomCode") %>' ToolTip="تعديل">
                                             <asp:Image ID="imgEdit" runat="server" ImageUrl="~/content/img/Edit.png" />
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف الصلاحية من المستخدم ؟')" CommandArgument='<%# Eval("RoomCode") %>' ToolTip="حذف">
+                                        <asp:LinkButton ID="lnkDelete" runat="server" CausesValidation="False" CommandName="Deleted" OnClientClick="javascript: return confirm('هل أنت متأكد من حذف بيانات القاعة التدريبية المحددة ؟')" CommandArgument='<%# Eval("RoomCode") %>' ToolTip="حذف">
                                             <asp:Image ID="imgRemove" runat="server" ImageUrl="~/content/img/Delete.png" />
                                         </asp:LinkButton>
                                     </ItemTemplate>

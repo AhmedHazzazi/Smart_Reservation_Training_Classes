@@ -63,22 +63,22 @@ namespace Smart_Reservation_Training_Classes
             {
                 for (int j = 0; j < gvMyReservations.Rows[i].Cells.Count; j++)
                 {
-                    if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("قيد المراجعة"))
+                    if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("جديد"))
                     {
                         gvMyReservations.Rows[i].Cells[j].CssClass = "bg-info";
                     }
-                    else if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("تم الموافقة"))
+                    else if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("منفذ"))
                     {
                         gvMyReservations.Rows[i].Cells[j].CssClass = "bg-success";
                     }
-                    else if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("تم الرفض"))
+                    else if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("مرفوض"))
                     {
                         gvMyReservations.Rows[i].Cells[j].CssClass = "bg-danger";
                     }
-                    else if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("منتهية"))
-                    {
-                        gvMyReservations.Rows[i].Cells[j].CssClass = "bg-warning";
-                    }
+                    //else if (gvMyReservations.Rows[i].Cells[j].Text.ToString().Equals("منتهية"))
+                    //{
+                    //    gvMyReservations.Rows[i].Cells[j].CssClass = "bg-warning";
+                    //}
                 }
             }
         }
@@ -119,7 +119,7 @@ namespace Smart_Reservation_Training_Classes
                 lblError.Text = excBtnSearch.Message.ToString();
             }
         }
-        // حدث تمميز حذف طلب الحجز
+        // حدث حذف طلب الحجز
         protected void gvMyReservations_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try

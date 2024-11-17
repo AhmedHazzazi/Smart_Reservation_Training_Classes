@@ -133,6 +133,7 @@ namespace Smart_Reservation_Training_Classes
                     {
                         gvReservations.DataSource = dtReservations;
                         gvReservations.DataBind();
+                        lblSuccess.Visible = false;
                         lblError.Visible = false;
                         lblError.Text = string.Empty;
                     }
@@ -140,6 +141,7 @@ namespace Smart_Reservation_Training_Classes
                     {
                         gvReservations.DataSource = null;
                         gvReservations.DataBind();
+                        lblSuccess.Visible = false;
                         lblError.Visible = true;
                         lblError.Text = "لم يتم العثور على بيانات";
                     }

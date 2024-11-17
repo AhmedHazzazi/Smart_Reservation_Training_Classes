@@ -166,7 +166,7 @@ namespace Smart_Reservation_Training_Classes
                 dtReservations = cls_Reservations.GetReservation(ReservationID, UserID);
                 if (dtReservations.Rows.Count > 0)
                 {
-                    cls_Reservations.UpdateRequestReservation(ReservationID, UserID, "تم الموافقة", dt, dt.ToString(DTFormat), txtReasonReject.Text = string.Empty);
+                    cls_Reservations.UpdateRequestReservation(ReservationID, UserID, "منفذ", dt, dt.ToString(DTFormat), txtReasonReject.Text = string.Empty);
                     lblSuccess.Visible = true;
                     lblSuccess.Text = "لقد تم الموافقة طلب الحجز";
                     lblError.Visible = false;
@@ -199,7 +199,7 @@ namespace Smart_Reservation_Training_Classes
                     dtReservations = cls_Reservations.GetReservation(ReservationID, UserID);
                     if (dtReservations.Rows.Count > 0)
                     {
-                        cls_Reservations.UpdateRequestReservation(ReservationID, UserID, "تم الرفض", dt, dt.ToString(DTFormat), txtReasonReject.Text);
+                        cls_Reservations.UpdateRequestReservation(ReservationID, UserID, "مرفوض", dt, dt.ToString(DTFormat), txtReasonReject.Text);
                         lblSuccess.Visible = true;
                         lblSuccess.Text = "لقد تم رفض طلب الحجز";
                         lblError.Visible = false;

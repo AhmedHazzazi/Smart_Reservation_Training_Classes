@@ -9,7 +9,7 @@ using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using static System.Net.Mime.MediaTypeNames;
+//using static System.Net.Mime.MediaTypeNames;
 using System.Collections;
 using Smart_Reservation_Training_Classes.App_Code;
 using Microsoft.SqlServer.Server;

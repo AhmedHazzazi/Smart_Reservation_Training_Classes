@@ -16,7 +16,6 @@ namespace Smart_Reservation_Training_Classes
         CLS_Users cls_Users = new CLS_Users();
         DataTable dtUsers, dtUserName, dtEmail;
         public string Id;
-        SRTC_DBDataContext ctxSRTC_DB;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserID"] == null)
@@ -92,7 +91,6 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
-                //Id = Convert.ToDecimal(cls_users.MaxIDUserID().Rows[0]["UserID"].ToString());
                 if (!string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtUserName.Text) 
                     && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtConfirmPassword.Text)
                     && !string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(RblRole.SelectedValue))

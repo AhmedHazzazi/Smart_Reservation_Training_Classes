@@ -1,9 +1,12 @@
-﻿using Smart_Reservation_Training_Classes.App_Code;
+﻿using Microsoft.SqlServer.Server;
+using Smart_Reservation_Training_Classes.App_Code;
 using Smart_Reservation_Training_Classes.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,8 +19,8 @@ namespace Smart_Reservation_Training_Classes
     {
         CLS_Users cls_Users = new CLS_Users();
         CLS_Rooms cls_Rooms = new CLS_Rooms();
-        DataTable dtRooms, dtUsers;
-        SRTC_DBDataContext ctxSRTC_DB;
+        CLS_Reservations cls_Reservations = new CLS_Reservations();
+        DataTable dtRooms, dtUsers, dtRoomsAvailable;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -47,7 +50,7 @@ namespace Smart_Reservation_Training_Classes
                         {
                             MultiView1.Visible = false;
                             lblError.Visible = true;
-                            lblError.Text = Resources.ErrorMessageRoleAccess;
+                            lblError.Text = Resources.ErrorMessageNotRoleAccess;
                             //lblError.Text = "عفواً ... ليس لديك صلاحية على هذه الصفحة !!!";
                         }
                         break;
@@ -56,7 +59,7 @@ namespace Smart_Reservation_Training_Classes
                 else
                 {
                     lblError.Visible = true;
-                    lblError.Text = Resources.ErrorMessageRoleAccess;
+                    lblError.Text = Resources.ErrorMessageRecoverNotRoleAccess;
                     //lblError.Text = "عفواً !!! حدث خطأ في إسترجاع البيانات أو أنه لا يوجد لديك صلاحية الوصول إلى هذه الصفحة";
                 }
             }

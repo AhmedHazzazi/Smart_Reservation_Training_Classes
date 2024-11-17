@@ -63,9 +63,18 @@ namespace Smart_Reservation_Training_Classes.Properties {
         /// <summary>
         ///   Looks up a localized string similar to عفواً !!! حدث خطأ في إسترجاع البيانات أو أنه لا يوجد لديك صلاحية الوصول إلى هذه الصفحة.
         /// </summary>
-        internal static string ErrorMessageRoleAccess {
+        internal static string ErrorMessageNotRoleAccess {
             get {
-                return ResourceManager.GetString("ErrorMessageRoleAccess", resourceCulture);
+                return ResourceManager.GetString("ErrorMessageNotRoleAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to عفواً !!! حدث خطأ في إسترجاع البيانات أو أنه لا يوجد لديك صلاحية الوصول إلى هذه الصفحة.
+        /// </summary>
+        internal static string ErrorMessageRecoverNotRoleAccess {
+            get {
+                return ResourceManager.GetString("ErrorMessageRecoverNotRoleAccess", resourceCulture);
             }
         }
     }

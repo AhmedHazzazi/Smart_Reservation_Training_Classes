@@ -29,8 +29,7 @@
                         <%--<asp:Label ID="lblErrorSearch" runat="server" CssClass="error" Visible="false"></asp:Label>--%>
                     </asp:Panel>
                     <asp:Panel ID="ViewsPanel" runat="server" CssClass="m-1">
-                        <asp:GridView ID="gvUsers" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="UserID" AutoGenerateColumns="False" AllowPaging="True" 
-                            OnRowCommand="gvUsers_RowCommand" OnRowDataBound="gvUsers_RowDataBound" OnPageIndexChanging="gvUsers_PageIndexChanging">
+                        <asp:GridView ID="gvUsers" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="UserID" AutoGenerateColumns="False" AllowPaging="True" OnRowCommand="gvUsers_RowCommand" OnRowDataBound="gvUsers_RowDataBound" OnPageIndexChanging="gvUsers_PageIndexChanging">
                             <Columns>
                                 <asp:TemplateField HeaderText="#">
                                     <ItemTemplate>

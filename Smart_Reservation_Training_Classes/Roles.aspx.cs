@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -225,10 +226,10 @@ namespace Smart_Reservation_Training_Classes
         {
             try
             {
+                string UserID = e.CommandArgument.ToString();
+                dtUsers = cls_Users.SearchUser(UserID);
                 if (e.CommandName == "Edited")
                 {
-                    string UserID = e.CommandArgument.ToString();
-                    dtUsers = cls_Users.SearchUser(UserID);
                     if (dtUsers.Rows.Count > 0)
                     {
                         if (!string.IsNullOrEmpty(UserID))
@@ -244,6 +245,7 @@ namespace Smart_Reservation_Training_Classes
 
                                 txtUserName.Enabled = false;
                                 txtEmail.Enabled = false;
+                                break;
                             }
                             lblError.Visible = false;
                         }
@@ -262,18 +264,24 @@ namespace Smart_Reservation_Training_Classes
                 }
                 else if (e.CommandName == "Deleted")
                 {
-                    string UserID = e.CommandArgument.ToString();
-                    dtUsers = cls_Users.SearchUser(UserID);
                     if (dtUsers.Rows.Count > 0)
                     {
-                        if (!string.IsNullOrEmpty(UserID))
+                        if (dtUsers.Rows.Count > 0)
                         {
-                            cls_Users.DeleteUser(UserID);
-                            DataRow dr = dtUsers.Rows[0];
-                            dr.Delete();
-                            lblError.Visible = false;
-                            lblSuccess.Visible = true;
-                            lblSuccess.Text = "لقد تم حذف صلاحية المستخدم بنجاح";
+                            if (!string.IsNullOrEmpty(UserID))
+                            {
+                                cls_Users.DeleteUser(UserID);
+                                DataRow dr = dtUsers.Rows[0];
+                                dr.Delete();
+                                lblError.Visible = false;
+                                lblSuccess.Visible = true;
+                                lblSuccess.Text = "لقد تم حذف صلاحية المستخدم بنجاح";
+                            }
+                            else
+                            {
+                                lblError.Visible = true;
+                                lblError.Text = "لم يتم العثور على بيانات صلاحية المستخدم حتى يتم حذفه";
+                            }
                         }
                         else
                         {

@@ -195,12 +195,12 @@ namespace Smart_Reservation_Training_Classes
         protected global::System.Web.UI.WebControls.CompareValidator ComparetxtConfirmPassword;
 
         /// <summary>
-        /// BtnSave control.
+        /// BtnRegistration control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSave;
+        protected global::System.Web.UI.WebControls.Button BtnRegistration;
     }
 }

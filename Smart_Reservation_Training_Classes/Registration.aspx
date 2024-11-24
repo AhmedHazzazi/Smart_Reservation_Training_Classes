@@ -61,16 +61,14 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-10">
-                            <asp:Button ID="BtnSave" runat="server" Text="حفظ" CssClass="btn btn-primary w-auto" OnClientClick="Loader()" OnClick="BtnSave_Click" />
+                            <asp:Button ID="BtnRegistration" runat="server" Text="تسجيل" CssClass="btn btn-primary w-auto" OnClientClick="Loader()" OnClick="BtnRegistration_Click" />
                         </div>
                     </div>
                 </div>
             </asp:Panel>
         </ContentTemplate>
         <Triggers>
-            <%--<asp:PostBackTrigger ControlID="BtnSave" />--%>
-            <asp:AsyncPostBackTrigger ControlID="BtnSave" EventName="Click" />
-            <%--<asp:PostBackTrigger ControlID="txtUserName" />--%>
+            <asp:AsyncPostBackTrigger ControlID="BtnRegistration" EventName="Click" />
             <asp:AsyncPostBackTrigger ControlID="txtUserName" EventName="TextChanged" />
             <asp:AsyncPostBackTrigger ControlID="txtEmail" EventName="TextChanged" />
         </Triggers>

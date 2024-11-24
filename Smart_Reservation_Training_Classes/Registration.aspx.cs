@@ -24,7 +24,6 @@ namespace Smart_Reservation_Training_Classes
             Login.Visible = true;
             lblError.Visible = false;
             lblSuccess.Visible = false;
-            //txtName.Focus();
         }
 
         //Check For Availability UserName Or Not Availability -- التحقق من توفر اسم المستخدم أو عدم توفره
@@ -80,11 +79,10 @@ namespace Smart_Reservation_Training_Classes
         }
 
         //Save Data To Database After Verification
-        protected void BtnSave_Click(object sender, EventArgs e)
+        protected void BtnRegistration_Click(object sender, EventArgs e)
         {
             try
             {
-                //Id = Convert.ToDecimal(cls_users.MaxIDUserID().Rows[0]["UserID"].ToString());
                 if (!string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtUserName.Text) 
                     && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtConfirmPassword.Text) 
                     && !string.IsNullOrEmpty(txtEmail.Text))
@@ -131,19 +129,12 @@ namespace Smart_Reservation_Training_Classes
         //Function To Clear Data From The Form After Saving -- Used In The Save Event
         public void ClearData()
         {
-            //hfUserID.Value = string.Empty;
             txtName.Text = string.Empty;
             txtUserName.Text = string.Empty;
             txtPassword.Text = string.Empty;
             txtConfirmPassword.Text = string.Empty;
             txtEmail.Text = string.Empty;
             txtName.Focus();
-
-            //RFVtxtName.ErrorMessage = string.Empty;
-            //RFVtxtUserName.ErrorMessage = string.Empty;
-            //RFVtxtPassword.ErrorMessage = string.Empty;
-            //RFVtxtEmail.ErrorMessage = string.Empty;
-            //REVtxtEmail.ErrorMessage = string.Empty;
         }
     }
 }

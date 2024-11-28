@@ -13,7 +13,6 @@ namespace Smart_Reservation_Training_Classes
     {
         CLS_Users cls_Users = new CLS_Users();
         DataTable dtUsers = new DataTable();
-        SRTC_DBDataContext ctxSRTC_DB;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

@@ -96,6 +96,7 @@
     <Content Include="content\js\moment-with-locales.js" />
     <Content Include="content\js\momentjs.js" />
     <Content Include="content\js\script.js" />
+    <Content Include="content\js\sweetalert.min.js" />
     <Content Include="Courses.aspx" />
     <Content Include="index.aspx" />
     <Content Include="Login.aspx" />

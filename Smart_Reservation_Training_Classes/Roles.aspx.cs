@@ -104,6 +104,7 @@ namespace Smart_Reservation_Training_Classes
                         cls_Users.UpdateUser(Id, txtName.Text, txtUserName.Text, txtPassword.Text, txtEmail.Text, RblRole.SelectedValue.ToString());
                         lblSuccess.Visible = true;
                         lblSuccess.Text = "لقد تم تعديل بيانات المستخدم بنجاح";
+                        MultiView1.ActiveViewIndex = 0;
                     }
                     else
                     {
@@ -128,6 +129,7 @@ namespace Smart_Reservation_Training_Classes
                             lblSuccess.Visible = true;
                             lblSuccess.Text = "تم التسجيل بنجاح" + "\r\n" + "رقم المستخدم هو : " + Id.ToString() + "\r\n" + "اسم المستخدم هو : " + dtUsers.Rows[0]["UserName"].ToString();
                             ClearData();
+                            MultiView1.ActiveViewIndex = 0;
                         }
                     }
                 }

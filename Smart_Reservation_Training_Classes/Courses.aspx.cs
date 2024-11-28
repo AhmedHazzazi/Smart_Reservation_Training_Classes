@@ -14,7 +14,6 @@ namespace Smart_Reservation_Training_Classes
         CLS_Users cls_Users = new CLS_Users();
         CLS_Courses cls_Courses = new CLS_Courses();
         DataTable dtCourses, dtUsers;
-        SRTC_DBDataContext ctxSRTC_DB;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -106,6 +105,8 @@ namespace Smart_Reservation_Training_Classes
                         lblSuccess.Visible = true;
                         lblSuccess.Text = "لقد تم إضافة بيانات الدورة التدريبية الجديدة بنجاح";
                     }
+                    lblError.Visible = false;
+                    MultiView1.ActiveViewIndex = 0;
                 }
                 else
                 {
@@ -215,6 +216,7 @@ namespace Smart_Reservation_Training_Classes
                                 txtCourseName.Text = dr["CourseName"].ToString();
                                 DDLCourseType.SelectedValue = dr["CourseType"].ToString();
                                 txtCourseCode.Enabled = false;
+                                break;
                             }
                             lblError.Visible = false;
                         }

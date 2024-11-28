@@ -116,6 +116,8 @@ namespace Smart_Reservation_Training_Classes
                         lblSuccess.Visible = true;
                         lblSuccess.Text = "لقد تم إضافة بيانات القاعة التدريبية الجديدة بنجاح";
                     }
+                    lblError.Visible = false;
+                    MultiView1.ActiveViewIndex = 0;
                 }
                 else
                 {
@@ -233,6 +235,7 @@ namespace Smart_Reservation_Training_Classes
                                 txtRoomLocation.Text = dr["RoomLocation"].ToString();
                                 txtRoomCapacity.Text = dr["RoomCapacity"].ToString();
                                 txtRoomCode.Enabled = false;
+                                break;
                             }
                             lblError.Visible = false;
                         }

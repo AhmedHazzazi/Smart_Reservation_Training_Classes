@@ -23,11 +23,6 @@
     </div>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <contenttemplate>
-            <%--<div class="row p-2">
-                <div class="col">
-                    <asp:Label ID="lblWizardError" runat="server" CssClass="error" Visible="false"></asp:Label>
-                </div>
-            </div>--%>
             <div class="text-primary fs-5 py-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
                     <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
@@ -360,19 +355,12 @@
         </contenttemplate>
         <triggers>
             <asp:PostBackTrigger ControlID="BtnSearch" />
-            <%--<asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />--%>
             <asp:PostBackTrigger ControlID="BtnResetSearch" />
-            <%--<asp:AsyncPostBackTrigger ControlID="BtnResetSearch" EventName="Click" />--%>
             <asp:PostBackTrigger ControlID="BtnSaveNext2" />
-            <%--<asp:AsyncPostBackTrigger ControlID="BtnSaveNext2" EventName="Click" />--%>
             <asp:PostBackTrigger ControlID="BtnStepPrevious1" />
-            <%--<asp:AsyncPostBackTrigger ControlID="BtnStepPrevious1" EventName="Click" />--%>
             <asp:PostBackTrigger ControlID="BtnSaveNext3" />
-            <%--<asp:AsyncPostBackTrigger ControlID="BtnSaveNext3" EventName="Click" />--%>
             <asp:PostBackTrigger ControlID="BtnStepPrevious2" />
-            <%--<asp:AsyncPostBackTrigger ControlID="BtnStepPrevious2" EventName="Click" />--%>
             <asp:PostBackTrigger ControlID="BtnSend" />
-            <%--<asp:AsyncPostBackTrigger ControlID="BtnSend" EventName="Click" />--%>
         </triggers>
     </asp:UpdatePanel>
 </asp:Content>

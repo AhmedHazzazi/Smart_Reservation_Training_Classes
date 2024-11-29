@@ -222,9 +222,9 @@ namespace Smart_Reservation_Training_Classes
                 {
                     foreach (DataRow row1 in dtMaxReservationID.Rows)
                     {
-                        MaxReservationID = Convert.ToInt32(row1[0].ToString());
-                        if (!string.IsNullOrEmpty(MaxReservationID.ToString()))
+                        if (!string.IsNullOrEmpty(row1[0].ToString()))
                         {
+                            MaxReservationID = Convert.ToInt32(row1[0].ToString());
                             string ReservationID = hfReservationID.Value = MaxReservationID.ToString();
                             if (txtRoomCode_S.Text != string.Empty && txtCourseCode_S.Text != string.Empty)
                             {
@@ -252,7 +252,6 @@ namespace Smart_Reservation_Training_Classes
                                                 txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text, txtRequirements_S.Text,
                                                 txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
                                         }
-                                        //Response.Redirect("CompleteRequest.aspx");
                                         Response.Redirect("CompleteRequest.aspx?UserID=" + Session["UserID"]);
                                         gvRoomsAvailable.Visible = true;
                                         lblWizardError.Visible = false;
@@ -262,12 +261,6 @@ namespace Smart_Reservation_Training_Classes
                                 }
                                 else
                                 {
-                                    //ReservationId = hfReservationID_S.Value = cls_Reservations.MaxReservationID().Rows[0]["ReservationID"].ToString();
-                                    //cls_Reservations.InsertReservation(ReservationId, hfUserID_S.Value, txtCourseCode_S.Text, txtRoomCode_S.Text,
-                                    //    txtTypeSubtraction_S.Text, txtStartDate_S.Text, txtEndDate_S.Text, txtTime_S.Text, txtDuration_S.Text,
-                                    //    dt, dt.ToString(DTFormat), "جديد", dt, dt.ToString(DTFormat), txtLanguage_S.Text, txtTargetGroup_S.Text,
-                                    //    txtExpectedNumber_S.Text, txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text,
-                                    //    txtRequirements_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
                                     lblWizardError.Visible = true;
                                     lblWizardError.Text = "نعتذر ؛ يوجد خطأ في حفظ البيانات ... الرجاء المحاولة لاحقا ..!";
                                 }
@@ -288,7 +281,6 @@ namespace Smart_Reservation_Training_Classes
                                     dt, dt.ToString(DTFormat), "جديد", dt, dt.ToString(DTFormat), txtLanguage_S.Text, txtTargetGroup_S.Text,
                                     txtExpectedNumber_S.Text, txtImplementingEntity_S.Text, txtBeneficiaryEntity_S.Text, txtLecturerName_S.Text,
                                     txtRequirements_S.Text, txtUseOfComputer_S.Text, txtCourseTopics_S.Text, txtNotes_S.Text);
-                                //Response.Redirect("CompleteRequest.aspx");
                                 Response.Redirect("CompleteRequest.aspx?UserID=" + Session["UserID"]);
                                 gvRoomsAvailable.Visible = true;
                                 lblWizardError.Visible = false;
